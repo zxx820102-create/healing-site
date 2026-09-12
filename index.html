@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+ <title>星际疗愈 · 今天的一片理解</title>
+ <style>
+  :root {
+   --bg0: #030509;
+   --ink: #e8ecf4;
+   --dim: #8a93a8;
+   --faint: #3d4556;
+   --gold: #ffe8c8;
+   --serif: "Songti SC", "Noto Serif CJK SC", "STSong", serif;
+   --sans: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  }
+
+  * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box
+  }
+
+  html {
+   scroll-behavior: smooth
+  }
+
+  body {
+   background: var(--bg0);
+   color: var(--ink);
+   font-family: var(--sans);
+   min-height: 100vh;
+   overflow: hidden;
+   -webkit-font-smoothing: antialiased;
+   overscroll-behavior: none
+  }
+
+  #web {
+   position: fixed;
+   inset: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 0
+  }
+
+  #viewport {
+   position: fixed;
+   inset: 0;
+   overflow: hidden;
+   z-index: 1;
+   touch-action: none
+  }
+
+  #plane {
+   position: absolute;
+   width: 300vw;
+   height: 300vh;
+   top: 0;
+   left: 0;
+   transition: transform .55s cubic-bezier(.22, 1, .36, 1);
+   will-change: transform
+  }
+
+  .cell {
+   position: absolute;
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding: 4vh 5vw;
+   overflow: hidden
+  }
+
+  .cell .inner {
+   width: 100%;
+   max-width: 620px;
+   max-height: 100%;
+   overflow-y: auto;
+   padding: 4px;
+   scrollbar-width: none
+  }
+
+  .cell .inner::-webkit-scrollbar {
+   display: none
+  }
+
+  .h {
+   font-family: var(--serif);
+   font-size: 12px;
+   letter-spacing: .5em;
+   text-indent: .5em;
+   color: var(--dim);
+   text-align: center;
+   margin-bottom: 26px
+  }
+
+  /* 中心 · 今日一叶 */
+  #hub {
+   left: 100vw;
+   top: 100vh
+  }
+
+  .hero-mark {
+   text-align: center;
+   margin-bottom: 20px
+  }
+
+  .hero-mark h1 {
+   font-family: var(--serif);
+   font-weight: 300;
+   font-size: 28px;
+   letter-spacing: .35em;
+   text-indent: .35em;
+   color: #f2f6ff;
+   text-shadow: 0 0 30px rgba(150, 190, 255, .3)
+  }
+
+  .hero-mark p {
+   color: var(--dim);
+   font-size: 12px;
+   margin-top: 8px;
+   letter-spacing: .2em
+  }
+
+  .leafcard {
+   background: rgba(15, 21, 40, .78);
+   border: 1px solid rgba(255, 220, 160, .35);
+   border-radius: 18px;
+   padding: 26px 24px;
+   backdrop-filter: blur(12px)
+  }
+
+  .leaf-tag {
+   font-size: 10px;
+   letter-spacing: .3em;
+   color: #8fd8ff;
+   margin-bottom: 12px
+  }
+
+  .leafcard h3 {
+   font-family: var(--serif);
+   font-weight: 400;
+   font-size: 20px;
+   color: var(--gold);
+   margin-bottom: 12px;
+   line-height: 1.6
+  }
+
+  .leafcard .story {
+   font-size: 14px;
+   color: #d5e0f5;
+   line-height: 2.05
+  }
+
+  .leafcard .fact {
+   margin-top: 14px;
+   padding: 11px 13px;
+   background: rgba(143, 216, 255, .06);
+   border-left: 2px solid rgba(143, 216, 255, .4);
+   border-radius: 0 10px 10px 0;
+   font-size: 12.5px;
+   color: #a8c6e8;
+   line-height: 1.9
+  }
+
+  .leafcard .grade {
+   display: block;
+   margin-top: 5px;
+   color: #6d84ad;
+   font-size: 11px
+  }
+
+  .leafcard .src {
+   margin-top: 10px;
+   font-size: 11px;
+   color: #56688c
+  }
+
+  .leaf-links {
+   margin-top: 16px;
+   display: flex;
+   gap: 16px;
+   justify-content: center;
+   flex-wrap: wrap
+  }
+
+  .leaf-links a {
+   color: #8fb4ff;
+   text-decoration: none;
+   font-size: 12.5px;
+   border-bottom: 1px solid rgba(143, 180, 255, .3);
+   padding-bottom: 2px
+  }
+
+  /* 方向格共用 */
+  .panel {
+   background: rgba(15, 21, 40, .65);
+   border: 1px solid rgba(90, 120, 200, .2);
+   border-radius: 16px;
+   padding: 22px;
+   backdrop-filter: blur(10px);
+   margin-bottom: 14px
+  }
+
+  .panel .t {
+   font-family: var(--serif);
+   font-size: 14px;
+   color: #a8d8c8;
+   margin-bottom: 10px;
+   letter-spacing: .15em
+  }
+
+  .panel p {
+   font-size: 13px;
+   color: #b9c6dd;
+   line-height: 2
+  }
+
+  /* 东·来：投票+悄悄话（未来岸） */
+  #north {
+   left: 100vw;
+   top: 0
+  }
+
+  .chips {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 9px;
+   justify-content: center
+  }
+
+  .chip {
+   font-size: 12.5px;
+   color: #c3cfe4;
+   background: rgba(90, 120, 200, .1);
+   border: 1px solid rgba(90, 120, 200, .3);
+   border-radius: 99px;
+   padding: 7px 16px;
+   cursor: pointer;
+   transition: all .18s ease
+  }
+
+  .chip.on {
+   color: var(--gold);
+   border-color: rgba(255, 220, 160, .6);
+   background: rgba(255, 220, 160, .1)
+  }
+
+  .chip-btn {
+   display: block;
+   margin: 15px auto 0;
+   font-size: 12.5px;
+   letter-spacing: .2em;
+   color: #0a0e1a;
+   background: rgba(255, 232, 200, .85);
+   border: none;
+   border-radius: 99px;
+   padding: 9px 26px;
+   cursor: pointer
+  }
+
+  .chip-btn:disabled {
+   opacity: .4;
+   cursor: default
+  }
+
+  .msg {
+   text-align: center;
+   font-size: 11.5px;
+   color: #7ee0b8;
+   margin-top: 10px;
+   min-height: 16px
+  }
+
+  .bars {
+   margin-top: 14px
+  }
+
+  .bar-row {
+   display: flex;
+   align-items: center;
+   gap: 9px;
+   font-size: 11.5px;
+   color: var(--dim);
+   margin: 6px 0
+  }
+
+  .bar {
+   flex: 1;
+   height: 4px;
+   background: rgba(90, 120, 200, .15);
+   border-radius: 99px;
+   overflow: hidden
+  }
+
+  .bar i {
+   display: block;
+   height: 100%;
+   background: rgba(143, 216, 255, .55);
+   border-radius: 99px
+  }
+
+  .whisper textarea,
+  .whisper input {
+   width: 100%;
+   background: rgba(90, 120, 200, .08);
+   border: 1px solid rgba(90, 120, 200, .28);
+   border-radius: 10px;
+   color: var(--ink);
+   font-size: 13.5px;
+   font-family: var(--sans);
+   padding: 11px 13px;
+   outline: none;
+   resize: none
+  }
+
+  .whisper textarea {
+   min-height: 72px;
+   line-height: 1.9
+  }
+
+  .whisper input {
+   margin-top: 9px;
+   max-width: 200px
+  }
+
+  .whisper label {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   font-size: 12px;
+   color: var(--dim);
+   margin: 10px 0;
+   cursor: pointer
+  }
+
+  .answers {
+   margin-top: 8px
+  }
+
+  .answer {
+   border-top: 1px dashed rgba(90, 120, 200, .18);
+   padding: 12px 2px;
+   font-size: 12.5px;
+   color: #b9c6dd;
+   line-height: 1.95
+  }
+
+  .answer .who {
+   color: #8fd8ff;
+   font-size: 11px
+  }
+
+  /* 生命地图 */
+  #south {
+   left: 100vw;
+   top: 200vh
+  }
+
+  .steps {
+   text-align: left;
+   max-width: 470px;
+   margin: 0 auto
+  }
+
+  .step {
+   display: flex;
+   gap: 16px;
+   padding: 13px 0;
+   border-bottom: 1px solid rgba(90, 120, 200, .12)
+  }
+
+  .step:last-child {
+   border-bottom: none
+  }
+
+  .step .t {
+   font-family: var(--serif);
+   font-size: 14px;
+   color: var(--gold);
+   white-space: nowrap;
+   min-width: 58px;
+   padding-top: 2px
+  }
+
+  .step .d {
+   font-size: 12.5px;
+   color: #c3cfe4;
+   line-height: 2
+  }
+
+  .step .d b {
+   color: var(--ink);
+   font-weight: 400
+  }
+
+  /* 北·天（宏观）面板 */
+  #east {
+   left: 200vw;
+   top: 100vh
+  }
+
+  .four {
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 12px
+  }
+
+  @media (min-width: 640px) {
+   .four {
+    grid-template-columns: 1fr 1fr
+   }
+  }
+
+  /* 西·往（过去岸） */
+  #west {
+   left: 0;
+   top: 100vh
+  }
+
+  .doors {
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 12px
+  }
+
+  .door {
+   display: block;
+   text-decoration: none;
+   background: rgba(15, 21, 40, .65);
+   border: 1px solid rgba(90, 120, 200, .2);
+   border-radius: 16px;
+   padding: 20px;
+   color: var(--ink);
+   backdrop-filter: blur(10px)
+  }
+
+  .door .no {
+   font-family: var(--serif);
+   color: var(--faint);
+   font-size: 13px;
+   letter-spacing: .3em
+  }
+
+  .door h3 {
+   font-family: var(--serif);
+   font-weight: 400;
+   font-size: 17px;
+   color: var(--ink);
+   margin: 8px 0
+  }
+
+  .door p {
+   font-size: 12px;
+   color: var(--dim);
+   line-height: 1.95
+  }
+
+  .door .st {
+   display: inline-block;
+   margin-top: 10px;
+   font-size: 10px;
+   letter-spacing: .35em;
+   color: var(--faint)
+  }
+
+  /* 罗盘导航 */
+  #compass {
+   position: fixed;
+   right: 16px;
+   bottom: 18px;
+   z-index: 3;
+   width: 84px;
+   height: 84px;
+   user-select: none
+  }
+
+  #compass button {
+   position: absolute;
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   border: 1px solid rgba(90, 120, 200, .35);
+   background: rgba(10, 14, 26, .8);
+   color: var(--dim);
+   font-size: 10px;
+   cursor: pointer;
+   backdrop-filter: blur(8px)
+  }
+
+  #compass button.now {
+   color: var(--gold);
+   border-color: rgba(255, 232, 200, .7)
+  }
+
+  #compass .n {
+   left: 27px;
+   top: 0
+  }
+
+  #compass .e {
+   right: 0;
+   top: 27px
+  }
+
+  #compass .s {
+   left: 27px;
+   bottom: 0
+  }
+
+  #compass .w {
+   left: 0;
+   top: 27px
+  }
+
+  #compass .c {
+   left: 27px;
+   top: 27px;
+   border-color: rgba(255, 232, 200, .5)
+  }
+
+  .footer-line {
+   text-align: center;
+   color: var(--faint);
+   font-size: 10px;
+   letter-spacing: .3em;
+   padding: 18px 0 6px
+  }
+
+  .back-cue {
+   margin-top: 18px;
+   text-align: center;
+   font-size: 11px;
+   letter-spacing: .3em;
+   color: var(--faint);
+   cursor: pointer;
+   text-indent: .3em
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+   #plane {
+    transition: none
+   }
+  }
+ </style>
+</head>
+
+<body>
+ <canvas id="web"></canvas>
+
+ <div id="viewport">
+  <div id="plane">
+
+   <!-- 北 · 天（宏观 · 你与星空） -->
+   <section class="cell" id="north">
+    <div class="inner">
+     <div class="h">— 天 · 抬 头 看 见 的 —</div>
+     <div class="panel">
+      <div class="t">往上，是与所有人共享的天空</div>
+      <p style="color:var(--faint);font-size:13px;line-height:1.8">你身体里的每一个重元素——铁、钙、锌——都来自远古的恒星。仰头看见的星空，不是风景，是故乡。</p>
+     </div>
+     <div class="panel">
+      <div class="t">关 系</div>
+      <p>吵架不可怕——吵完之后的修复（道歉、澄清、重新靠近）才真正决定一段关系能走多远。</p>
+     </div>
+     <div class="panel">
+      <div class="t">家 庭</div>
+      <p>给老人一盏夜灯、一块防滑垫、每周三次太极——跌倒风险能降约四分之一。护住中年听力，就是护住老年的记忆。</p>
+     </div>
+     <div class="panel">
+      <div class="t">意 义</div>
+      <p>意义感不是鸡汤，它像血压一样真实——可以被测量，也可以被温柔地修复。知道自己为什么出发的人，走得更远。</p>
+     </div>
+     <div class="back-cue" data-go="hub">⊙ 回到今天的一叶</div>
+    </div>
+   </section>
+
+   <!-- 东 · 来（未来 · 你塑造的明天） -->
+   <section class="cell" id="east">
+    <div class="inner">
+     <div class="h">— 来 · 明 天 的 叶 子 —</div>
+     <div class="panel">
+      <div class="t">明天的叶子，写什么？由你定</div>
+      <div class="chips" id="chips">
+       <span class="chip" data-c="睡眠与休息">睡眠与休息</span>
+       <span class="chip" data-c="情绪与内心">情绪与内心</span>
+       <span class="chip" data-c="关系与修复">关系与修复</span>
+       <span class="chip" data-c="老人与孩子">老人与孩子</span>
+       <span class="chip" data-c="意义与事业">意义与事业</span>
+       <span class="chip" data-c="饮食与大脑">饮食与大脑</span>
+      </div>
+      <button class="chip-btn" id="voteBtn" disabled>为明天投一票</button>
+      <div class="msg" id="voteMsg"></div>
+      <div class="bars" id="bars"></div>
+     </div>
+     <div class="panel">
+      <div class="t">悄悄话 · 说给XYZ听</div>
+      <div class="whisper">
+       <textarea id="askText" maxlength="1000" placeholder="比如：睡前总是想很多，能写一片这个吗？"></textarea>
+       <input id="askName" maxlength="30" placeholder="怎么称呼你（可以不填）">
+       <label><input type="checkbox" id="askPublic" style="width:auto"> 允许把这条悄悄话和回答展示在这里</label>
+       <button class="chip-btn" id="askBtn">说出口</button>
+       <div class="msg" id="askMsg"></div>
+      </div>
+     </div>
+     <div class="panel answers" id="answers">
+      <div class="t">回声墙 · 你的问题，有了回答</div>
+      <div id="answerList">
+       <p style="color:var(--faint);font-size:12px">答案正在生长——第一批回声很快出现。</p>
+      </div>
+     </div>
+     <div class="doors">
+      <div class="door" style="opacity:.55">
+       <div class="no">打 磨 中</div>
+       <h3>认识你 · 问卷</h3>
+       <p>六十四种尺度，对应人的六十四种处境。做好那天，它会在中心等你。</p>
+       <span class="st">敬 请 期 待</span>
+      </div>
+      <div class="door" style="opacity:.55">
+       <div class="no">预 告</div>
+       <h3>一人之书</h3>
+       <p>为每一个愿意被理解的人，写一本只属于他的书。</p>
+       <span class="st">正 在 到 来</span>
+      </div>
+     </div>
+     <div class="back-cue" data-go="hub">⊙ 回到今天的一叶</div>
+    </div>
+   </section>
+
+   <!-- 西 · 往（过去 · 已经开过的叶子） -->
+   <section class="cell" id="west">
+    <div class="inner">
+     <div class="h">— 往 · 已 经 开 过 的 叶 子 —</div>
+     <div class="doors">
+      <a class="door" href="diary/">
+       <div class="no">已 开 放</div>
+       <h3>往期叶子</h3>
+       <p>读过的每一片理解都收在这里。越往后翻，越早的叶子。慢慢走回去。</p>
+       <span class="st">回 去 看 看</span>
+      </a>
+     </div>
+     <div class="panel">
+      <p style="color:var(--faint);font-size:13px;line-height:1.8">往左是时间的来路。总有一天，这里会有「一年前的今天」——让你看见自己走过的路。</p>
+     </div>
+     <div class="back-cue" data-go="hub">⊙ 回到今天的一叶</div>
+    </div>
+   </section>
+
+   <!-- 中心 · 今日一叶（自动织入标记区） -->
+   <section class="cell" id="hub">
+    <div class="inner">
+     <div class="hero-mark">
+      <h1>星际疗愈</h1>
+      <p>今天的一片理解 · 每天更新</p>
+     </div>
+     <!-- ◈今日一叶(自动织入·勿手改) -->
+<section class="daily">
+  <div class="h">— 今 日 一 叶 —</div>
+  <div class="leafcard" style="border-color:rgba(255,220,160,.35)">
+<div class="leaf-tag">今日一叶 · 2026-09-11 星期五</div>
+<h3>疼痛，不是零件磨损的水位计</h3>
+<p class="story">疼痛不是组织损伤的线性读数——影像上磨损程度相同的人，疼痛可以天差地别。所以慢性疼痛的出路也不只在「修零件」：循序渐进地活动、练习安顿心神、睡好觉、重新理解疼痛本身，都在调低这台仪器的灵敏度。</p>
+<p class="fact">慢性疼痛的非药物方法(渐进活动/正念/睡眠)有多项研究支持。<br><span class="grade">证据有多硬：【APPROX】多项研究支持(个体差异大)</span></p>
+<p class="src">来自「疼痛 · 身体」· XYZ真实探索的知识沉淀</p>
+</div>
+  <p class="more">想读往期的叶子？<a href="/diary/">点这里进入疗愈日记 →</a></p>
+</section>
+<!-- ◈织入结束 -->
+     <div class="footer-line">你在宇宙的中心——上天、下渊、左往、右来，每个方向都有一片风景</div>
+    </div>
+   </section>
+
+   <!-- 南 · 渊（微观 · 你身体的内部宇宙） -->
+   <section class="cell" id="south">
+    <div class="inner">
+     <div class="h">— 渊 · 低 头 看 见 的 —</div>
+     <div class="panel">
+      <div class="t">往下，是你身体内部的宇宙</div>
+      <p style="color:var(--faint);font-size:13px;line-height:1.8">三十八万亿细胞此刻正在为你工作。你不需要懂全部——只需要知道：它们一直站在你这边。</p>
+     </div>
+     <div class="panel">
+      <div class="t">睡觉时，大脑在洗浴</div>
+      <p>深睡时，脑脊液会冲走白天的代谢废料——所以一场好觉是真的「焕然一新」。把床只留给睡眠，就是对大脑洗澡间的尊重。</p>
+     </div>
+     <div class="panel">
+      <div class="t">肠道，是第二大脑</div>
+      <p>肠道里住着几十万亿细菌，它们参与决定你的情绪。你吃下去的每一口饭，有一半是喂给它们的——善待它们，就是善待心情。</p>
+     </div>
+     <div class="panel">
+      <div class="t">运动，是最广谱的药</div>
+      <p>每周三到五次、每次三十分钟，强度「能说话、不能唱歌」——这一条几乎对全身所有器官都有效，而且免费。</p>
+     </div>
+     <!-- ◈正典书架入口(生成器 scripts/xyz-healing-site-gen-v1.py·勿删) -->
+     <div class="doors">
+      <a class="door" href="canon-index.html">
+       <div class="no">已 开 放</div>
+       <h3>正典书架</h3>
+       <p>全部健康正典与十二册教材，按身心、慢病、专科、生命周期、急救安全、社会决定分簇——可浏览、可检索、可打印，就医红旗一键直达。</p>
+       <span class="st">翻 开 书 架</span>
+      </a>
+     </div>
+     <div class="back-cue" data-go="hub">⊙ 回到今天的一叶</div>
+    </div>
+   </section>
+
+  </div>
+ </div>
+
+ <div id="compass">
+  <button class="n" data-go="north" title="天 · 抬头看见的">天</button>
+  <button class="e" data-go="east" title="来 · 明天的叶子">来</button>
+  <button class="c now" data-go="hub" title="今天">今</button>
+  <button class="w" data-go="west" title="往 · 已经开过的叶子">往</button>
+  <button class="s" data-go="south" title="渊 · 身体内部的宇宙">渊</button>
+ </div>
+
+ <script>
+  /* ── 空间导航：十字拓扑——只走向真正的邻居，绝无瞬移 ── */
+  const POS = {hub: [0, 0], north: [0, -1], south: [0, 1], west: [-1, 0], east: [1, 0]};
+  const NEIGH = {
+   hub: {north: 'north', south: 'south', east: 'east', west: 'west'},
+   north: {south: 'hub'},
+   south: {north: 'hub'},
+   east: {west: 'hub'},
+   west: {east: 'hub'},
+  };
+  let cur = 'hub', lock = false;
+  const plane = document.getElementById('plane');
+  function apply() {
+   const [gx, gy] = POS[cur];
+   plane.style.transform = `translate(${(-100 - gx * 100).toFixed(2)}vw, ${(-100 - gy * 100).toFixed(2)}vh)`;
+   document.querySelectorAll('#compass button').forEach(b => b.classList.toggle('now', b.dataset.go === cur));
+   history.replaceState(null, '', cur === 'hub' ? '#' : '#' + cur);
+  }
+  window.go = (name) => {if (POS[name] && !lock) {cur = name; apply();} };
+  document.querySelectorAll('[data-go]').forEach(el => el.addEventListener('click', () => go(el.dataset.go)));
+  addEventListener('keydown', e => {
+   const dir = {ArrowUp: 'north', ArrowDown: 'south', ArrowLeft: 'west', ArrowRight: 'east'}[e.key];
+   const next = dir && NEIGH[cur][dir];
+   if (next) {cur = next; apply();}
+  });
+  vp.addEventListener('pointerdown', e => {sx = e.clientX; sy = e.clientY; tracking = true;});
+  let sx = 0, sy = 0, tracking = false;
+  vp.addEventListener('pointerup', e => {
+   if (!tracking) return; tracking = false;
+   const dx = e.clientX - sx, dy = e.clientY - sy;
+   if (Math.max(Math.abs(dx), Math.abs(dy)) < 46 || lock) return;
+   const dir = Math.abs(dx) > Math.abs(dy) ? (dx < 0 ? 'east' : 'west') : (dy < 0 ? 'south' : 'north');
+   const next = NEIGH[cur][dir];
+   if (next) {cur = next; apply();}
+  });
+  /* 桌面滚轮：仅中心格生效（向上进北、向下滑回南……拓扑邻接） */
+  addEventListener('wheel', e => {
+   if (lock || cur !== 'hub' || Math.abs(e.deltaY) < 24) return;
+   const next = NEIGH[cur][e.deltaY > 0 ? 'north' : 'south'];
+   if (next) {cur = next; apply();}
+  }, {passive: true});
+  apply();
+
+  /* ── 互动闭环 ── */
+  const API = 'https://xyz-healing-api.zxx820102.workers.dev';
+  const $ = (id) => document.getElementById(id);
+  let picked = null;
+  document.querySelectorAll('#chips .chip').forEach(ch => ch.addEventListener('click', () => {
+   document.querySelectorAll('#chips .chip').forEach(c => c.classList.remove('on'));
+   ch.classList.add('on'); picked = ch.dataset.c; $('voteBtn').disabled = false;
+  }));
+  $('voteBtn').addEventListener('click', async () => {
+   if (!picked) return;
+   try {
+    const j = await (await fetch(API + '/api/vote', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({choice: picked})})).json();
+    $('voteMsg').textContent = j.ok ? '收到了。明天的叶子，会记得你这一票。' : '这一票没能送达，晚点再试试？';
+    if (j.ok) {$('voteBtn').disabled = true; loadBars();}
+   } catch (e) {$('voteMsg').textContent = '网络打了个盹，晚点再试试？';}
+  });
+  async function loadBars() {
+   try {
+    const j = await (await fetch(API + '/api/vote/results')).json();
+    if (!j.ok) return;
+    const total = j.results.reduce((s, r) => s + r.n, 0) || 1;
+    $('bars').innerHTML = j.results.map(r =>
+     `<div class="bar-row"><span style="min-width:84px">${r.choice}</span><div class="bar"><i style="width:${Math.round(r.n / total * 100)}%"></i></div><span>${r.n}</span></div>`).join('');
+   } catch (e) { }
+  }
+  loadBars();
+  $('askBtn').addEventListener('click', async () => {
+   const text = $('askText').value.trim();
+   if (!text) {$('askMsg').textContent = '写点什么吧，哪怕一句话。'; return;}
+   try {
+    const j = await (await fetch(API + '/api/ask', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({text, name: $('askName').value.trim(), is_public: $('askPublic').checked})})).json();
+    $('askMsg').textContent = j.ok ? '已收进抽屉。每个字都会被认真读到。' : '没放进去，晚点再试试？';
+    if (j.ok) $('askText').value = '';
+   } catch (e) {$('askMsg').textContent = '网络打了个盹，晚点再试试？';}
+  });
+  async function loadAnswers() {
+   try {
+    const j = await (await fetch(API + '/api/asks/public')).json();
+    if (!j.ok || !j.asks.length) return;
+    $('answerList').innerHTML = j.asks.map(a =>
+     `<div class="answer"><span class="who">${a.name} 问：</span>${a.text}<br><span class="who" style="color:#7ee0b8">${a.answer ? 'XYZ 答：' + a.answer : '回答正在路上——下一片叶子可能就是它。'}</span></div>`).join('');
+   } catch (e) { }
+  }
+  loadAnswers();
+
+  /* ── 宇宙之网 v6：一体光流粒子+螺旋整体旋转（首页同源背景） ── */
+  const cv = document.getElementById('web'), ctx = cv.getContext('2d');
+  let W, H;
+  const flows = [[], []];
+  const FLOW_N = 46;
+  function rs() {W = cv.width = innerWidth; H = cv.height = innerHeight}
+  function helixX(y, phase, time) {
+   const A0 = Math.min(W, H) * .16;
+   const A = A0 * (1 + .07 * Math.sin(time * .8));
+   return W / 2 + Math.sin(y * .012 + phase + time * .35) * A;
+  }
+  function dr() {
+   ctx.clearRect(0, 0, W, H);
+   const time = performance.now() / 1000;
+   ctx.strokeStyle = 'rgba(232,240,255,.03)';
+   ctx.lineWidth = .5;
+   ctx.beginPath();
+   for (let y = 0; y < H; y += 18) {
+    ctx.moveTo(helixX(y, 0, time), y); ctx.lineTo(helixX(y, Math.PI, time), y);
+   }
+   ctx.stroke();
+   for (let c = 0; c < 2; c++) {
+    const phase = c * Math.PI;
+    ctx.beginPath();
+    ctx.moveTo(helixX(0, phase, time), 0);
+    for (let y = 3; y <= H; y += 3) ctx.lineTo(helixX(y, phase, time), y);
+    const g2 = ctx.createLinearGradient(0, 0, 0, H);
+    g2.addColorStop(0, 'rgba(232,240,255,.05)');
+    g2.addColorStop(.5, 'rgba(232,240,255,.07)');
+    g2.addColorStop(1, 'rgba(232,240,255,.05)');
+    ctx.strokeStyle = g2; ctx.lineWidth = .8; ctx.stroke();
+    const headY = (time * 75) % (H + 400) - 200;
+    for (let i = 0; i < FLOW_N; i++) {
+     const lag = i * 3.2;
+     const y = headY - lag;
+     const x = helixX(y, phase, time);
+     const f = 1 - i / FLOW_N;
+     ctx.fillStyle = `rgba(255,255,255,${.05 + .7 * f * f})`;
+     ctx.beginPath();
+     ctx.arc(x, y, .6 + 1.7 * f, 0, 7);
+     ctx.fill();
+     if (f < .5) {
+      ctx.fillStyle = `rgba(220,232,255,${.12 * f})`;
+      ctx.beginPath();
+      ctx.arc(x, y, .5 + 1.2 * f, 0, 7);
+      ctx.fill();
+     }
+    }
+   }
+   requestAnimationFrame(dr);
+  }
+  addEventListener('resize', () => {rs()}); rs(); dr();
+ </script>
+ <!--
+[candidate_only]
+-->
+ <footer style="text-align:center;margin:28px 16px;font-size:12px;color:rgba(230,238,255,.55);line-height:1.9">
+  <p>健康不是没有病，是你的连接都活着。本页是候选生活方式参考，不是诊断，不替代专业医疗建议。</p>
+  <p>🚩 红旗边界：若出现胸痛、呼吸困难、意识异常或症状快速恶化，立即联系当地急诊；症状明显加重，同日就医。</p>
+ </footer>
+</body>
+
+</html>
