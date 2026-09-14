@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<!--
+status: candidate_only
+-->
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>疗愈日记 · 星际疗愈</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0e1a;color:#dfe8fb;font-family:Georgia,'Songti SC','PingFang SC',serif;line-height:2.05;-webkit-font-smoothing:antialiased}
+#cosmos{position:fixed;inset:0;z-index:0}
+main{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:2.4rem 1.4rem 4rem}
+.hd{text-align:center;margin-bottom:2.6rem}
+.hd h1{font-weight:300;font-size:1.9rem;letter-spacing:.3em;color:#f2f6ff}
+.hd p{color:#5f7398;font-size:.88rem;margin-top:.7rem;letter-spacing:.15em}
+.leafcard{background:rgba(15,21,40,.78);border:1px solid rgba(90,120,200,.25);border-radius:18px;padding:1.8rem 1.7rem;margin:1.3rem 0;backdrop-filter:blur(12px)}
+.leaf-tag{font-size:.75rem;letter-spacing:.3em;color:#8fd8ff;margin-bottom:.9rem}
+.leafcard h3{font-weight:400;font-size:1.45rem;color:#ffe8c8;margin-bottom:.9rem;line-height:1.55}
+.story{font-size:1rem;color:#d5e0f5}
+.fact{margin-top:1.1rem;padding:.9rem 1.1rem;background:rgba(143,216,255,.06);border-left:2px solid rgba(143,216,255,.4);border-radius:0 10px 10px 0;font-size:.9rem;color:#a8c6e8}
+.grade{color:#6d84ad;font-size:.78rem;letter-spacing:.06em}
+.src{margin-top:1rem;font-size:.78rem;color:#56688c}
+.past h3{font-size:1.15rem;color:#e8d9b8}
+.back{text-align:center;margin:2.2rem 0 0}
+.back a{color:#8fb4ff;text-decoration:none;font-size:.92rem;letter-spacing:.2em}
+.note{margin-top:2.6rem;color:#5a6a8f;font-size:.76rem;border-top:1px dashed #22304f;padding-top:1.1rem;line-height:2;text-align:center}
+</style></head><body><canvas id="cosmos"></canvas><main>
+<div class="hd"><h1>疗愈日记</h1><p>每天一叶 · 对人的理解 · 对生命的理解 · 对宇宙的理解</p></div>
+<div class="leafcard" style="border-color:rgba(255,220,160,.35)">
+<div class="leaf-tag">今日一叶 · 2026-09-14 星期一</div>
+<h3>孤独，重得像每天十五支烟</h3>
+<p class="story">研究里有个让人心里一紧的换算：长期孤独对健康的损耗，约等于每天抽十五支烟。但解药不在药瓶里——英国的医生开始开「园艺班处方」「合唱团处方」：让陌生人一起种花、一起唱歌。药，是人。</p>
+<p class="fact">「社会处方」已被英国国家医疗服务体系真实采用，用于孤独和轻度情绪困扰。<br><span class="grade">证据有多硬：【FACT】已在真实医疗系统中运行多年</span></p>
+<p class="src">来自「孤独 · 关系」· XYZ真实探索的知识沉淀</p>
+</div><div class="leafcard past"><h3>床，应该只用来做一件事</h3><p class="story">失眠的人常常把床变成办公室、餐厅和电影院。而失眠的第一张处方意外地朴素：把客厅还给客厅，把床还给睡眠——睡不着就起身，困了再回来。几个星期后，身体会重新记住「躺下＝入睡」这条古老的回路。</p>
+<p class="fact">这套方法叫「失眠认知行为疗法」，是国际睡眠医学界公认的成人慢性失眠首选——排在安眠药前面。<br><span class="grade">证据有多硬：【FACT】多个国家的治疗指南一致推荐</span></p><p class="src">睡眠 · 身体</p></div><div class="leafcard past"><h3>耳朵，是大脑的存折</h3><p class="story">家里的老人电视声越开越大，不是固执，是听力在悄悄离开。研究发现一件让人意外的事：中年保护好听力，是在给老年的记忆存钱——听力下降是老年痴呆最大的、可以改变的风险因素。一副助听器，可能是最划算的脑保护。</p>
+<p class="fact">这是全球最权威的医学期刊之一《柳叶刀》2024年痴呆预防报告的核心结论之一。<br><span class="grade">证据有多硬：【FACT】顶级期刊委员会报告的正式结论</span></p><p class="src">听力 · 家庭</p></div><div class="leafcard past"><h3>太极，老人最被低估的铠甲</h3><p class="story">一次跌倒，可能改变一位老人此后所有的人生。而铠甲不需要高科技：每周三次太极或平衡力量训练，跌倒风险降低约四分之一。再加上一盏夜灯、一块防滑垫——守护可以这么具体。</p>
+<p class="fact">权威医学证据库考科兰(Cochrane)的分析：平衡与力量训练让老年人跌倒率下降约23%。<br><span class="grade">证据有多硬：【FACT】全球证据库综合分析</span></p><p class="src">防跌倒 · 家庭</p></div><div class="leafcard past"><h3>意义感，是能测量的生命体征</h3><p class="story">「人为什么活着」听起来像哲学课，但在医生眼里它更像血压：可以测量、可以干预、恶化时需要认真对待。写下自己的故事、澄清真正在乎的事——意义危机有它结构化的、温柔的解法。</p>
+<p class="fact">「意义疗法」有几十年的临床传统，对存在性的痛苦有结构化的工作方法。<br><span class="grade">证据有多硬：【APPROX】长期临床传统+研究观察支持</span></p><p class="src">意义 · 事业</p></div><div class="leafcard past"><h3>意志力，不是改掉坏习惯的关键</h3><p class="story">想改掉熬夜刷手机的人总责怪自己意志薄弱。但行为科学说：主变量不是意志力，是环境。认清什么在触发你→准备一个替代动作→改造环境→温和地记录——四步，把「坚持」变成「顺水推舟」。</p>
+<p class="fact">这来自「习惯回路」的行为科学研究，四步法被广泛验证。<br><span class="grade">证据有多硬：【APPROX】行为科学多研究支持</span></p><p class="src">习惯 · 事业</p></div><div class="leafcard past"><h3>运动这味药，说明书写在阳光里</h3><p class="story">如果运动是一味药，它的说明书会写：每周三到五次，每次三十分钟起，强度以「能说话、不能唱歌」为度。有氧、力量、柔韧、平衡——这是全球健康指南的共同基线，也是最深情的抗衰老处方。</p>
+<p class="fact">世界卫生组织2020年身体活动指南，全球共识。<br><span class="grade">证据有多硬：【FACT】全球卫生机构共识指南</span></p><p class="src">运动 · 身体</p></div><div class="leafcard past"><h3>把死亡，还给生命</h3><p class="story">安宁疗护不是放弃，是把最后的日子从「延命」转向「安详」：疼痛被控制，决定被尊重，家人被支持，地点合乎心意。谈论死亡不是教人赴死，是把它还给生命——成为生命的一部分，而不是生命的敌人。</p>
+<p class="fact">安宁疗护有成熟的质量评估框架；生前预嘱正在被越来越多人了解。<br><span class="grade">证据有多硬：【APPROX】成熟领域的评估体系</span></p><p class="src">安宁 · 生命</p></div><div class="leafcard past"><h3>创伤，留在身体里</h3><p class="story">有些伤，事件结束后才真正开始——它在身体里继续。疗愈的第一步不是「忘掉」，是让身体重新确认：现在安全了。感受脚踩着的地面、说出眼前五样东西的名字——这些朴素的动作是最古老的锚。而更深的修复，请交给专业的人。</p>
+<p class="fact">「创伤知情照护」是国际公认的原则框架；接地技术是最基础的自我稳定方法。<br><span class="grade">证据有多硬：【APPROX】国际公认原则+请注意专业支持</span></p><p class="src">创伤 · 心灵</p></div><div class="leafcard past"><h3>吵架之后的修复，才是关系的黄金时刻</h3><p class="story">关系的质量，不是由「从不吵架」定义的，而是由「吵完之后怎么修」定义的。冲突后的修复——道歉、澄清、重新靠近——比避免冲突更能预测一段关系能走多远。</p>
+<p class="fact">关系科学研究里，修复行为对关系质量的预测力超过冲突频率。<br><span class="grade">证据有多硬：【APPROX】关系科学多项研究</span></p><p class="src">修复 · 关系</p></div><div class="leafcard past"><h3>疼痛，不是零件磨损的水位计</h3><p class="story">疼痛不是组织损伤的线性读数——影像上磨损程度相同的人，疼痛可以天差地别。所以慢性疼痛的出路也不只在「修零件」：循序渐进地活动、练习安顿心神、睡好觉、重新理解疼痛本身，都在调低这台仪器的灵敏度。</p>
+<p class="fact">慢性疼痛的非药物方法(渐进活动/正念/睡眠)有多项研究支持。<br><span class="grade">证据有多硬：【APPROX】多项研究支持(个体差异大)</span></p><p class="src">疼痛 · 身体</p></div><div class="leafcard past"><h3>绿叶菜，是大脑的下午茶</h3><p class="story">有一种被研究得最认真的吃法叫MIND膳食，像一封写给大脑的情书：绿叶菜每天一份，浆果和坚果常相伴，鱼每周来一次，黄油和红肉退到幕后。观察研究里它让大脑显得年轻；更严格的试验结果中性——诚实地说：这是有希望的日常，不是保证书。</p>
+<p class="fact">MIND膳食：观察研究证据强，严格随机试验中性——如实呈现。<br><span class="grade">证据有多硬：【APPROX】观察研究强/严格试验中性(如实说)</span></p><p class="src">饮食 · 大脑</p></div>
+<div class="back"><a href="/">← 回到首页 · 那里有今天的光</a></div>
+<div class="note">本页由 XYZ 基于真实探索的知识自动撰写 · 所有内容均为理解性参考，不是诊断、不是治疗建议，不能代替专业医疗 · 如有紧急情况请立即联系当地急救服务</div>
+<div class="note" style="margin-top:.4rem">🚩 何时立即就医：出现胸痛、呼吸困难、意识异常、中风征兆（突发口齿不清/单侧肢体无力）、自伤念头或症状快速恶化——立即联系当地急诊；症状明显加重，同日就医。本页内容不构成医疗建议，不替代专业医疗建议。<br>标注体系：FACT=指南/系统综述级 · APPROX=多项研究/临床传统 · MODEL=机制/动物模型 · CANDIDATE=候选假设 · 未标注=UNKNOWN（宁空勿编）</div>
+</main><script>
+const cv=document.getElementById('cosmos'),ctx=cv.getContext('2d');let W,H;
+const flows=[[],[]];const FLOW_N=72;
+const stars=Array.from({length:130},()=>({x:Math.random(),y:Math.random(),r:Math.random()*1.3+.3,tw:Math.random()*6.28,s:.25+Math.random()*.4}));
+function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+addEventListener('resize',rs);rs();
+function helixX(y,phase,time){const A0=Math.min(W,H)*.16;const A=A0*(1+.07*Math.sin(time*.8));return W/2+Math.sin(y*.012+phase+time*.35)*A}
+function dr(){ctx.clearRect(0,0,W,H);const time=performance.now()/1000;
+for(const s of stars){s.tw+=.02;s.y-=s.s*.001;if(s.y<0)s.y+=1;const a=.18+.3*Math.sin(s.tw);ctx.beginPath();ctx.arc(s.x*W,s.y*H,s.r,0,7);ctx.fillStyle=`rgba(225,235,255,${a})`;ctx.fill()}
+ctx.strokeStyle='rgba(232,240,255,.055)';ctx.lineWidth=.5;ctx.beginPath();
+for(let y=0;y<H;y+=18){ctx.moveTo(helixX(y,0,time),y);ctx.lineTo(helixX(y,Math.PI,time),y)}
+ctx.stroke();
+for(let c=0;c<2;c++){const phase=c*Math.PI;
+ctx.beginPath();ctx.moveTo(helixX(0,phase,time),0);
+for(let y=3;y<=H;y+=3)ctx.lineTo(helixX(y,phase,time),y);
+const g2=ctx.createLinearGradient(0,0,0,H);g2.addColorStop(0,'rgba(232,240,255,.09)');g2.addColorStop(.5,'rgba(232,240,255,.13)');g2.addColorStop(1,'rgba(232,240,255,.09)');
+ctx.strokeStyle=g2;ctx.lineWidth=.8;ctx.stroke();
+const headY=(time*75)%(H+400)-200;
+for(let i=0;i<FLOW_N;i++){const lag=i*4.2,y=headY-lag,x=helixX(y,phase,time),f=1-i/FLOW_N;
+ctx.fillStyle=`rgba(255,255,255,${.08+.85*f*f})`;
+ctx.beginPath();ctx.arc(x,y,.8+2.2*f,0,7);ctx.fill();
+if(f<.5){ctx.fillStyle=`rgba(220,232,255,${.12*f})`;ctx.beginPath();ctx.arc(x,y,.5+1.2*f,0,7);ctx.fill()}}}
+requestAnimationFrame(dr)}
+dr();
+</script></body></html>
