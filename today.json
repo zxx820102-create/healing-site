@@ -1,7 +1,7 @@
 {
  "radio": "v1",
- "date": "2026-09-15",
- "generated_at": "2026-09-15T20:34:10",
+ "date": "2026-09-16",
+ "generated_at": "2026-09-16T07:30:05",
  "tz": "Asia/Shanghai",
  "censored": false,
  "message": {
@@ -10,10 +10,10 @@
   "censored": false
  },
  "counters": {
-  "nodes": 1808007,
-  "edges": 12628380,
+  "nodes": 1808023,
+  "edges": null,
   "healing_cards": 13777,
-  "edges_today": 653908,
+  "edges_today": 22,
   "censored": false
  },
  "card_of_day": {
@@ -24,31 +24,22 @@
  "world_pulse": {
   "items": [
    {
-    "region": "东亚·中国香港",
-    "text": "9月7日进入白露节气。香港医院管理局中医平台介绍：白露时节夜间气温下降较快，清晨水气凝露，谚语「处暑十八盆，白露勿露身」提醒人们早晚莫再贪凉。",
-    "url": "https://cmk.ha.org.hk/zh-cht/information-index/news/solar_terms/%E7%99%BD%E9%9C%B2",
+    "region": "全球多国",
+    "text": "Families received early-warning messages to prepare for the dry months ahead, along with support and information in key areas such as nutrition, ...",
+    "url": "https://www.wfp.org/stories/mighty-el-nino-deepens-global-hunger-early-action-pays",
     "epistemic": "FACT",
     "censored": false,
-    "source": "香港医院管理局「中医动」",
-    "date": "2026-09-07"
+    "source": "www.wfp.org",
+    "date": "2026-09-11"
    },
    {
-    "region": "非洲中部·刚果民主共和国",
-    "text": "截至9月6日，刚果民主共和国七个省共报告7,200例确诊埃博拉（本迪布焦病毒）病例、3,475例确诊死亡；英国国家旅行健康网络9月14日更新。",
-    "url": "https://travelhealthpro.org.uk/outbreaks",
+    "region": "东亚·日本",
+    "text": "9月の初めに夜明け前の空で、月が火星、木星に接近します。9月半ばには夕空で月が金星と、月末には満月が土星と接近する様子が見られます。25日は中秋の名月です。",
+    "url": "https://www.nao.ac.jp/astro/sky/2026/09.html",
     "epistemic": "FACT",
     "censored": false,
-    "source": "英国国家旅行健康网络（NaTHNaC）疫情监测",
-    "date": "2026-09-14"
-   },
-   {
-    "region": "非洲西部·塞拉利昂",
-    "text": "联合国人口基金塞拉利昂办公室介绍，建模研究显示：若助产士护理实现全覆盖，塞拉利昂可挽救约2,278名母亲与19,029名新生儿的生命。",
-    "url": "https://sierraleone.unfpa.org",
-    "epistemic": "FACT",
-    "censored": false,
-    "source": "联合国人口基金塞拉利昂办公室",
-    "date": "2026-03-02"
+    "source": "www.nao.ac.jp",
+    "date": "2026-09-16"
    }
   ],
   "censored": false
