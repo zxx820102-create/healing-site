@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>生命蓝图 · 使命、天赋与人生课程 | 星际疗愈</title>
+<style>
+  :root{
+    --ink:#2c2a26;--dim:#6d675c;--paper:#faf9f6;--line:#e2ddd2;--navy:#3d4b6e;
+    --fact:#2e7d4f;--model:#3d5a9e;--approx:#a8742a;--cand:#7a7a85;
+  }
+  body{font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;margin:0;background:var(--paper);color:var(--ink);line-height:1.8;font-size:17px}
+  header{background:linear-gradient(135deg,#43557e,#5a6b96);color:#fff;padding:2.4rem 1.2rem 1.8rem;text-align:center}
+  header h1{margin:.2rem 0;font-size:1.55rem;letter-spacing:.12em}
+  header p{margin:.35rem 0;opacity:.92;font-size:.95rem}
+  .disc{background:#fff6e6;border:1px solid #e8d5a8;border-radius:8px;max-width:860px;margin:1rem auto;padding:.75rem 1rem;font-size:.88rem;color:#6b5a2e}
+  nav{max-width:860px;margin:1rem auto;display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;padding:0 .8rem}
+  nav a{background:#fff;border:1px solid #d8d3c8;border-radius:999px;padding:.3rem .9rem;font-size:.9rem;color:var(--navy);text-decoration:none}
+  main{max-width:860px;margin:0 auto;padding:0 .8rem 3rem}
+  section.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1.25rem 1.35rem;margin:1.5rem 0;box-shadow:0 1px 3px rgba(60,50,30,.06)}
+  section.card h2{margin:.1rem 0 .6rem;font-size:1.22rem;color:var(--navy);border-bottom:2px solid #eef;padding-bottom:.4rem}
+  h3{font-size:1rem;margin:1.1rem 0 .35rem;color:#5a5346}
+  p{margin:.5rem 0}
+  .note{font-size:.88rem;color:var(--dim)}
+  /* ── 64 格 ── */
+  .gridwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.8rem 0}
+  .grid{display:grid;grid-template-columns:2.7rem repeat(8,minmax(2.35rem,1fr));gap:3px;min-width:390px}
+  .ghead{font-size:.72rem;color:var(--dim);display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.3;padding:.15rem 0}
+  .ghead.rowh{justify-content:center;font-size:.78rem;color:#4a4438;font-weight:600}
+  .cell{aspect-ratio:1/1;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.95rem;min-height:2.35rem;padding:0;border:none}
+  .cell.empty{background:#f4f2ec;border:1px dashed #ddd6c8;color:#b8b0a0;font-size:.6rem;line-height:1.2}
+  .cell.lit{cursor:pointer;font-weight:600;color:#fff;font-family:Songti SC,serif;box-shadow:0 1px 2px rgba(40,40,60,.18)}
+  .cell.lit:active{transform:scale(.94)}
+  .lv-fact{background:var(--fact)} .lv-model{background:var(--model)}
+  .lv-approx{background:var(--approx)} .lv-cand{background:var(--cand)}
+  .legend{display:flex;flex-wrap:wrap;gap:.5rem;font-size:.82rem;margin:.6rem 0}
+  .legend span{display:inline-flex;align-items:center;gap:.3rem;color:var(--dim)}
+  .dot{width:.7rem;height:.7rem;border-radius:50%;display:inline-block}
+  /* 弹层 */
+  #mask{position:fixed;inset:0;background:rgba(20,20,30,.45);display:none;z-index:50;align-items:flex-end;justify-content:center}
+  #mask.on{display:flex}
+  #sheet{background:#fff;border-radius:14px 14px 0 0;max-width:620px;width:100%;max-height:78vh;overflow-y:auto;padding:1.1rem 1.2rem 1.4rem}
+  #sheet h4{margin:.1rem 0 .2rem;font-size:1.08rem;color:var(--navy)}
+  #sheet .pos{font-size:.82rem;color:var(--dim);margin-bottom:.5rem}
+  #sheet .sum{background:#f2f5fb;border-left:4px solid var(--navy);padding:.55rem .8rem;border-radius:0 8px 8px 0;margin:.5rem 0;font-size:.94rem}
+  #sheet a{color:var(--navy);font-weight:600;text-decoration:none}
+  .badge{display:inline-block;font-size:.75rem;border-radius:999px;padding:.1rem .6rem;color:#fff;vertical-align:middle}
+  #close{float:right;border:none;background:#eee;color:#555;border-radius:50%;width:1.8rem;height:1.8rem;font-size:1rem;cursor:pointer}
+  /* 七问 */
+  .q{border-top:1px dashed var(--line);padding:.8rem 0}
+  .q:first-of-type{border-top:none}
+  .q .qt{font-size:1.05rem;font-weight:600;color:#3a3630;margin:.2rem 0}
+  .q .quote{background:#f7f4ee;border-left:4px solid #b8a678;padding:.5rem .8rem;border-radius:0 8px 8px 0;margin:.5rem 0;font-size:.92rem;color:#5c5340}
+  .q .hint{font-size:.9rem;color:var(--dim)}
+  .tag{display:inline-block;font-size:.72rem;border:1px solid #cfc6b2;border-radius:4px;padding:0 .35rem;color:#8a7d5e;background:#fbf8f1}
+  /* 报告样例 */
+  .report{background:#fbfaf7;border:1px solid #e5e0d4;border-radius:10px;padding:.9rem 1rem;font-size:.9rem;white-space:pre-line;font-family:inherit}
+  .report b{color:var(--navy)}
+  .rf{color:#8c2f2b;font-weight:600}
+  footer{text-align:center;font-size:.85rem;color:#8a8474;padding:1.2rem;line-height:1.9}
+  .bounds{font-size:.85rem;color:#6d675c;background:#f7f5f0;border-radius:8px;padding:.6rem .9rem;margin-top:.8rem;text-align:left}
+  .bounds li{margin:.3rem 0}
+  #full h3{margin-top:1.4rem;border-left:4px solid var(--navy);padding-left:.55rem}
+  #full .blk{font-size:.92rem;margin:.3rem 0 .2rem}
+  #full .blk b{color:#4a4438}
+  @media(min-width:640px){#mask{align-items:center}#sheet{border-radius:14px}}
+</style>
+<meta name="description" content="生命蓝图：64 格人生课程图、使命与天赋自省七问、个人五维报告样例——意识探索与传统智慧面，不诊断不预测命运。">
+<meta property="og:title" content="生命蓝图 · 使命、天赋与人生课程 | 星际疗愈">
+<meta property="og:description" content="64 格人生课程图 × 自省七问 × 个人五维报告样例。诚实留白，不预测命运。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zxx820102-create.github.io/healing-site/blueprint/index.html">
+<meta property="og:site_name" content="星际疗愈">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<header>
+  <h1>生命蓝图</h1>
+  <p>使命 · 天赋 · 人生课程 —— 以及你此刻的状态</p>
+</header>
+<div class="disc">⚠️ 本页<b>零诊断、零处方</b>：涉及健康的内容只是生活参考，身体不适请及时就医，急症请立即拨打 <b>120</b>。<br>「使命、天赋、蓝图」属于<b>意识探索与传统智慧</b>层面（按 <span class="tag">传统</span><span class="tag">模型 MODEL</span><span class="tag">类比 ANALOGY</span> 标注），<b>不预测命运、不是科学测评</b>。</div>
+<nav>
+  <a href="#grid64">① 生命课程 64 格</a>
+  <a href="#seven">② 自省七问</a>
+  <a href="#report">③ 五维报告样例</a>
+  <a href="#get">④ 如何获得</a>
+</nav>
+<main>
+
+<!-- ══════════ ① 64 格 ══════════ -->
+<section class="card" id="grid64">
+<h2>① 生命课程 64 格</h2>
+<p>把人生看成 <b>八个阶段 × 八个生活面向</b> 的一张课程图。每一格是一门「生活课程」：亮起的格子是我们已经整理并核实过的课；暗着的格子表示<b>这一格的课程正在准备中</b>——我们只点亮已核实的内容，不预先填满。</p>
+<p class="note">当前已点亮 <b>19 / 64</b> 格。点击亮格可看这一课的卡面摘要。</p>
+<div class="legend">
+  <span><i class="dot lv-fact"></i>事实级（强证据）</span>
+  <span><i class="dot lv-model"></i>模型级（关联/效应层）</span>
+  <span><i class="dot lv-approx"></i>近似级（证据汇总）</span>
+  <span><i class="dot lv-cand"></i>候选级（证据待查）</span>
+</div>
+<p class="note">列：衣＝穿着 · 食＝进食 · 住＝居住 · 行＝移动 · 医＝医疗 · 伴＝关系 · 心＝心理情绪 · 义＝意义与哀伤</p>
+<div class="gridwrap">
+<div class="grid" id="g" aria-label="人生阶段乘以生活面向的64格课程图">
+  <div class="ghead"></div>
+  <div class="ghead">衣</div><div class="ghead">食</div><div class="ghead">住</div><div class="ghead">行</div><div class="ghead">医</div><div class="ghead">伴</div><div class="ghead">心</div><div class="ghead">义</div>
+
+  <div class="ghead rowh">胎儿</div>
+  <button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell lit lv-fact" data-c="home06" aria-label="孕期居住面·已点亮">住</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button>
+
+  <div class="ghead rowh">婴幼</div>
+  <button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell lit lv-fact" data-c="home02" aria-label="婴幼儿安全睡眠·已点亮">住</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell lit lv-fact" data-c="inf01" aria-label="依恋·已点亮">伴</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button>
+
+  <div class="ghead rowh">儿童</div>
+  <button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell lit lv-fact" data-c="home03" aria-label="儿童家居伤害预防·已点亮">住</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button>
+
+  <div class="ghead rowh">青少</div>
+  <button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell lit lv-model" data-c="home04" aria-label="青少年居家心理空间·已点亮">住</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button>
+
+  <div class="ghead rowh">成人</div>
+  <button class="cell lit lv-fact" data-c="cloth01" aria-label="衣物微气候界面·已点亮（全段通用）">衣</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell lit lv-fact" data-c="home05" aria-label="成人室内空气与湿环境·已点亮">住</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button>
+
+  <div class="ghead rowh">中年</div>
+  <button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell lit lv-approx" data-c="mid02" aria-label="三明治一代·已点亮">伴</button><button class="cell lit lv-model" data-c="mid01" aria-label="围绝经期情绪·已点亮">心</button><button class="cell lit lv-fact" data-c="mid04" aria-label="传承与目标重估·已点亮">义</button>
+
+  <div class="ghead rowh">老年</div>
+  <button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell lit lv-approx" data-c="eld01" aria-label="居家防跌倒环境·已点亮">住</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button><button class="cell empty" title="这一格的课程正在准备中">准备中</button>
+
+  <div class="ghead rowh">临终</div>
+  <button class="cell lit lv-cand" data-c="cloth02" aria-label="照护衣物·已点亮">衣</button><button class="cell lit lv-fact" data-c="eol05" aria-label="临终舒适喂养·已点亮">食</button><button class="cell lit lv-fact" data-c="eol06" aria-label="离世地点与居家环境·已点亮">住</button><button class="cell lit lv-fact" data-c="eol07" aria-label="体位舒适与活动维持·已点亮">行</button><button class="cell lit lv-fact" data-c="eol01" aria-label="缓和医疗·已点亮">医</button><button class="cell lit lv-model" data-c="eol03" aria-label="预立意愿与照护者支持·已点亮">伴</button><button class="cell lit lv-model" data-c="eol02" aria-label="尊严与存在痛苦·已点亮">心</button><button class="cell lit lv-model" data-c="eol04" aria-label="生命回顾与意义重建·已点亮">义</button>
+</div>
+</div>
+<p class="note">注：衣食住行四类里「衣 × 全生命段」的基础课放在成人段显示，适用全年龄；老年段「住」的防跌倒课同样关照「行」。空白的格子不是没有价值，只是课程还在准备——宁缺，勿编。</p>
+</section>
+
+<!-- ══════════ ② 自省七问 ══════════ -->
+<section class="card" id="seven">
+<h2>② 使命与天赋 · 自省七问</h2>
+<p>「我的使命是什么？我的天赋在哪里？」——这类问题很少被「想」出来，多半是在诚实回看自己时<b>被记起来</b>的。下面七问没有评分、没有标准答案，也不构成任何心理测评；每问配一句意识层或传统层的引言，供你安静时对照。</p>
+
+<div class="q">
+  <div class="qt">一 · 做什么事的时候，你会忘记时间？</div>
+  <div class="quote">「你专注什么，就会经验什么。」——化用赛斯《个人实相的本质》 <span class="tag">模型 MODEL</span></div>
+  <div class="hint">忘记时间的地方，往往是天赋的原产地。</div>
+</div>
+<div class="q">
+  <div class="qt">二 · 别人最常来找你帮的忙是什么？</div>
+  <div class="quote">「天生我材必有用。」——李白《将进酒》 <span class="tag">传统</span></div>
+  <div class="hint">别人眼里的你，是天赋的另一面镜子。</div>
+</div>
+<div class="q">
+  <div class="qt">三 · 如果不考虑收入，也不怕别人怎么看，你会怎么安排一天？</div>
+  <div class="quote">「当下是你的威力之点。」——化用赛斯《个人实相的本质》 <span class="tag">模型 MODEL</span></div>
+  <div class="hint">答案不在远方，在你敢如实写下的那一页上。</div>
+</div>
+<div class="q">
+  <div class="qt">四 · 回想一段很难的经历：它让你从此更在意什么？</div>
+  <div class="quote">「伤口是光进入你内心的地方。」——鲁米 <span class="tag">传统</span></div>
+  <div class="hint">被转化过的痛，常常成为你最愿意给别人的东西。</div>
+</div>
+<div class="q">
+  <div class="qt">五 · 小时候没人安排你的时候，你自然会去做什么？</div>
+  <div class="quote">「你是在行动中存在，而不是在等待中存在。」——化用道瑞「行动中的存在」 <span class="tag">类比 ANALOGY</span></div>
+  <div class="hint">没有人安排时的自发动向，常常比履历表更诚实。</div>
+</div>
+<div class="q">
+  <div class="qt">六 · 你希望被身边的人记住的是什么？</div>
+  <div class="quote">「太上有立德，其次有立功，其次有立言。」——《左传》 <span class="tag">传统</span></div>
+  <div class="hint">把「想被记住的」写下来，就是价值的第一次排序。</div>
+</div>
+<div class="q">
+  <div class="qt">七 · 此刻，你最想保护好的人或事是什么？</div>
+  <div class="quote">「老吾老以及人之老，幼吾幼以及人之幼。」——《孟子》 <span class="tag">传统</span></div>
+  <div class="hint">你愿意守护的，就是你使命的坐标原点。</div>
+</div>
+<p class="note">边界：七问属于<b>意识探索与传统智慧</b>面——它帮你整理自我观察，不预测命运、不下人生结论。若你正处于持续的情绪困扰中，请优先寻求专业心理支持，而不是先回答这些问题。</p>
+</section>
+
+<!-- ══════════ ③ 五维报告样例 ══════════ -->
+<section class="card" id="report">
+<h2>③ 个人五维报告 · 样例</h2>
+<p>排到号后，系统会为你生成一份「个人生命蓝图报告」。报告由五个部分组成，覆盖「现在的状态」与「下一步的方向」：</p>
+<ol>
+  <li><b>营养与身体面</b>——把症状线索、时机形态、节律规则、日常记录联动起来看身体当前的信号；</li>
+  <li><b>生活谱系面</b>——衣食住行、医疗、关系、心理、意义八个域，逐格显示你已覆盖与待准备的部分；</li>
+  <li><b>当前黄区面</b>——列出眼下最值得先照顾的五件小事，每件带一个「转绿入口」（下一步动作）；</li>
+  <li><b>红旗警戒面</b>——少数需要立即就医的信号清单，出现任一请直接就医，不等报告；</li>
+  <li><b>边界声明面</b>——报告是知识地图，不是医疗建议；决策权始终在你与你的医生。</li>
+</ol>
+<p>下面是一份<b>完全虚构</b>的示例人物报告，只演示格式（数据纯属编造，如与任何人相似纯属巧合）：</p>
+<div class="report">═══ 个人生命蓝图报告 · 示例人物「小澜」（完全虚构） ═══
+
+【一 · 营养与身体面】（示例数据）
+· 症状线索：午后腹胀 → 建议记录三餐时间与内容，观察规律
+· 时机与形态：晚餐常距睡眠不足两小时 → 可试提前
+· 节律规则：晨间光照＋规律起床时间是节律的锚（证据级：事实）
+· 冠军食物：深绿色叶菜、豆类（示例）
+· 数据缺口：过敏史未录入 → 该层暂空
+
+【二 · 生活谱系面】（示例数据）
+· 住 5/8 已点亮 · 食 3/8 已点亮 · 意义 2/8 准备中
+· 关系 4/8 已点亮 · 医疗 2/8 已点亮 · 衣 1/8 准备中
+
+【三 · 当前黄区 · 转绿入口】（示例数据）
+· 睡眠节律不稳 → 下一步：固定起床时间试一周
+· 久坐 → 下一步：每坐一小时起身活动三分钟
+· 晚餐过晚 → 下一步：把晚餐提前半小时
+
+【四 · 红旗警戒 · 出现任一请立即就医】
+· <span class="rf">胸痛伴呼吸困难 → 立即拨打急救电话</span>
+· <span class="rf">突发一侧无力或言语不清 → 立即急诊</span>
+
+【五 · 边界声明】
+本报告为知识地图与生活观察的整理，非医疗建议；
+健康决定请与你的医生共同做出。</div>
+<p class="note">示例中所有数字、事件与人物均为虚构演示。真实报告基于你自愿提供的记录生成，只发给你本人。</p>
+</section>
+
+<!-- ══════════ ④ 如何获得 ══════════ -->
+<section class="card" id="get">
+<h2>④ 如何获得你的蓝图</h2>
+<p><b>一句话：</b>内测期间，通过群内的「排号 · 星疗」流程排号，由 XYZ 系统为你生成个人生命蓝图报告。</p>
+<p class="note">温和说明：报告基于你自愿提供的日常记录生成，过程像一次安静的整理，而不是一场考试；生成的始终是知识地图，不是医疗诊断。什么时候想排、什么时候想停，都由你决定。</p>
+</section>
+
+<!-- ══════════ 卡面全文 ══════════ -->
+<section class="card" id="full">
+<h2>附 · 已点亮课程卡 · 完整说明</h2>
+<p class="note">以下为 64 格中已点亮 19 格的课程卡说明。每张卡按认识态分级标注，均不构成诊断或处方；就医与治疗决定归本人与医生。</p>
+
+<h3 id="full-cloth01">衣物 · 人体微气候界面 <span class="badge lv-fact">事实级＋近似级</span></h3>
+<div class="blk"><b>机理一句：</b>衣物是可穿脱的人体微气候界面——靠夹层静止空气隔热（纺织科学以 clo 单位计量）加上湿气管理来调节热交换；核心温度容差极窄而环境跨度极宽，衣层是代价最低的调节器。</div>
+<div class="blk"><b>证据面：</b>clo 隔热计量与热舒适模型（国际热舒适标准体系）把服装隔热作为正式变量——衣物对热平衡的作用是工程化可测量的事实。</div>
+<div class="blk"><b>诚实边界：</b>「贵＝更保暖」「天然纤维必然优于合成」没有热计量支持；婴幼儿过热风险与老人冷感觉迟钝只在一句级提示，不展开为机制断言。</div>
+
+<h3 id="full-cloth02">照护衣物 · 易穿脱与适应性服饰 <span class="badge lv-cand">候选级</span></h3>
+<div class="blk"><b>机理一句：</b>失能、久卧与临终照护场景中，常规衣物（套头、后扣、硬缝线）会变成摩擦点与疼痛源；适应性服饰（开背式、磁扣、宽口剪裁、缝线外置）用设计消解照护动作里的「硬拉」。</div>
+<div class="blk"><b>证据面：</b>该品类在照护实践中真实存在（观察级）；学术效果证据面尚空——按宁缺勿编原则不写任何效果数字。</div>
+<div class="blk"><b>诚实边界：</b>压疮等皮肤问题属医疗域，归医生；本卡只谈衣物这一层。</div>
+
+<h3 id="full-eld01">居家防跌倒环境 <span class="badge lv-approx">近似级＋事实级</span></h3>
+<div class="blk"><b>机理一句：</b>跌倒是老年人失能级联的头号环境触发器：风险＝内因（肌力、视力、用药）＋外因（地面、照明、扶手）——外因是可低成本改造的部分。</div>
+<div class="blk"><b>证据面：</b>汇总研究显示锻炼能使社区老人跌倒率下降约两成；居家危险因素改造对高风险人群有效（效应量小于运动）。</div>
+<div class="blk"><b>诚实边界：</b>对低风险人群全面改造可能过度；具体改造优先级随住宅结构而异，须按户评估；跌倒后的处置归医疗域。</div>
+
+<h3 id="full-eol01">缓和医疗 · 临终全人照护 <span class="badge lv-fact">事实级＋模型级</span></h3>
+<div class="blk"><b>机理一句：</b>缓和医疗是对生命威胁性疾病「预防与缓解痛苦」的全人路径（WHO 定义），跨学科团队同时处理躯体、心理、社会、灵性四个维度，并与延长生命的治疗并行——它不是放弃治疗。</div>
+<div class="blk"><b>证据面：</b>世界卫生大会 2014 年决议支持贯穿生命全程的缓和医疗；标志性随机对照试验显示重大疾病确诊即接入缓和医疗，生活质量与情绪优于对照组。</div>
+<div class="blk"><b>诚实边界：</b>「缓和＝临终才接」已被早期接入研究证伪；具体药物与剂量不在此讨论，归医生。</div>
+
+<h3 id="full-eol02">临终心理面 · 尊严与存在痛苦 <span class="badge lv-model">模型级＋事实级</span></h3>
+<div class="blk"><b>机理一句：</b>临终心理痛苦有独立于躯体症状的维度：尊严感受损、存在性痛苦（「我成了负担」）、抑郁焦虑，且新发谵妄在末期为高发事件——三者要分开识别，混在一起容易遗漏。</div>
+<div class="blk"><b>证据面：</b>尊严模型（2002 年起的系列实证研究）把负担感、角色存续、尊严保全做成可操作维度；尊严与意义类干预的试点结果积极，汇总证据仍在积累——如实记录。</div>
+<div class="blk"><b>诚实边界：</b>「临终抑郁＝正常老化表现」是不成立的；此面的识别与处置请交给专业团队。</div>
+
+<h3 id="full-eol03">临终关系面 · 预立意愿与照护者支持 <span class="badge lv-model">模型级＋事实级</span></h3>
+<div class="blk"><b>机理一句：</b>临终不只发生在患者身上：预立医疗计划决定末期照护能否与本人意愿一致；家庭照护者的负荷与预期性哀伤（丧失未至、哀伤先行）是可识别、可支持的状态。</div>
+<div class="blk"><b>证据面：</b>随机对照试验显示预立医疗计划使末期照护与本人意愿一致率升高、家属焦虑应激下降；照护者负荷是哀伤学与缓和照护的成熟研究对象。</div>
+<div class="blk"><b>诚实边界：</b>预立意愿的文件形式与效力随各地法规而异，本卡不提供法律建议。</div>
+
+<h3 id="full-eol04">临终意义面 · 生命回顾与意义重建 <span class="badge lv-model">模型级＋事实级</span></h3>
+<div class="blk"><b>机理一句：</b>临终期的意义工作＝生命回顾（系统性地回忆与整理一生）与意义重建（把一生整合进可接受的叙事）；它与遗属的哀伤是同一事件的两面。</div>
+<div class="blk"><b>证据面：</b>生命回顾概念有六十余年学术史；意义中心心理治疗的系列研究报告晚期患者意义、尊严、抑郁维度改善（汇总证据中等强度）。</div>
+<div class="blk"><b>诚实边界：</b>意义工作不是「普通聊天」的替代品，也不是所有人都需要的程序——意愿先行。</div>
+
+<h3 id="full-eol05">临终进食面 · 舒适喂养 <span class="badge lv-fact">事实级＋模型级</span></h3>
+<div class="blk"><b>机理一句：</b>临终阶段代谢与吞咽能力自然衰退，进食的意义从营养转为舒适与关系——决策轴是「本人意愿 × 舒适」，不是「热量达标」。</div>
+<div class="blk"><b>证据面：</b>临终照护指南（如英国 NICE 临终照护指南）以意愿与舒适为饮水进食支持的核心；人工补水营养须个体化评估。</div>
+<div class="blk"><b>诚实边界：</b>「临终进食减少＝照护失职」是常见错误叙事；喂养成败的判断与医疗决定归本人、家属与医生。</div>
+
+<h3 id="full-eol06">临终居住面 · 离世地点与居家环境 <span class="badge lv-fact">事实级＋模型级</span></h3>
+<div class="blk"><b>机理一句：</b>离世地点是临终生活质量的结构变量：多国调查一致显示多数人偏好居家离世，而实际实现比例显著更低——偏好与实现的落差是可支持的缺口。</div>
+<div class="blk"><b>证据面：</b>系统综述级证据显示：在支持到位的前提下，居家临终照护可增加居家离世的实现，且不加重照护者负担。</div>
+<div class="blk"><b>诚实边界：</b>「居家离世＝更好」是过度概括——症状未控或照护者独扛时，居家可能更苦；照护地点的医疗决定归本人、家属与医生。</div>
+
+<h3 id="full-eol07">临终移动面 · 体位舒适与活动维持 <span class="badge lv-fact">事实级＋近似级</span></h3>
+<div class="blk"><b>机理一句：</b>临终的「行」目标从移动能力转为舒适与尊严：体位变换预防压力性损伤，量力活动维持参与感——两者都服务舒适，而非功能恢复。</div>
+<div class="blk"><b>证据面：</b>定时体位变换是压疮预防国际指南的一致基线推荐；末期活动能力进行性下降为一致临床观察（个体差异大）。</div>
+<div class="blk"><b>诚实边界：</b>「必须绝对卧床」与「必须坚持锻炼」都可证伪——前者增加压力性损伤风险，后者违背舒适优先；护理方案归照护团队与医生。</div>
+
+<h3 id="full-home02">婴幼儿居住面 · 安全睡眠环境 <span class="badge lv-fact">事实级（强）</span></h3>
+<div class="blk"><b>机理一句：</b>婴儿猝死综合征与睡眠环境强相关：仰卧位＋硬质床面＋无软物＋同室不同床——四要素组合是儿科最强的环境干预之一。</div>
+<div class="blk"><b>证据面：</b>美国儿科学会安全睡眠指南口径：仰卧建议推广后，人群婴儿猝死率大幅下降；软床、过热与同床的风险关联在汇总研究中方向一致。</div>
+<div class="blk"><b>诚实边界：</b>「趴睡睡得香、侧卧也可以」已被证伪（侧卧不稳定可翻转为俯卧）；早产或患病的婴儿，睡眠方案归儿科医生。</div>
+
+<h3 id="full-home03">儿童居住面 · 家居伤害预防 <span class="badge lv-fact">事实级＋模型级</span></h3>
+<div class="blk"><b>机理一句：</b>儿童家居伤害高度可预测：误食中毒、跌落、烫伤、溺水四机制占大头，且风险随发育阶段迁移——环境改造（上锁、护栏、收纳）优先于口头看管。</div>
+<div class="blk"><b>证据面：</b>儿童伤害监测系统一致显示家居场景四机制主导；汇总研究表明「安全教育＋防护设备」组合可提升安全实践并可能降低伤害。</div>
+<div class="blk"><b>诚实边界：</b>异物窒息与溺水可在数分钟内造成不可逆损伤——「重伤才要紧」是误区；伤害发生后按急救线处置并就医。</div>
+
+<h3 id="full-home04">青少年居住面 · 居家心理空间 <span class="badge lv-model">模型级</span></h3>
+<div class="blk"><b>机理一句：</b>青少年的「住」不只是物理安全：居家空间的心理属性（可自主的领地、被尊重的隐私、冲突不侵占安全区）与信任关系互相塑造。</div>
+<div class="blk"><b>证据面：</b>家长知情守望（知道孩子在哪、和谁在一起）与青少年风险行为呈稳定负向关联（因果方向尚有混杂，如实标注）；隐私与自主是青少年发展的核心需求。</div>
+<div class="blk"><b>诚实边界：</b>「严管＝安全」可证伪——高压监视与隐瞒、逆行相关；此卡是整批课程里证据最薄的一张，宁弱勿编；青少年持续情绪困扰请走专业心理支持线。</div>
+
+<h3 id="full-home05">成人居住面 · 室内空气与湿环境 <span class="badge lv-fact">事实级＋模型级</span></h3>
+<div class="blk"><b>机理一句：</b>成人一天中大部分时间在室内：室内燃烧产物（二氧化氮、一氧化碳、颗粒物）与潮湿霉变，是呼吸系统症状的两个可干预居住面暴露源。</div>
+<div class="blk"><b>证据面：</b>世界卫生组织室内空气质量指南（家用燃料燃烧 2014；潮湿与霉变 2009）：清洁燃料＋排风为指南线；潮湿霉变居住与哮喘及呼吸道症状相关。</div>
+<div class="blk"><b>诚实边界：</b>「空气净化器可替代通风」没有指南支持——稀释靠通风，净化器只是局部辅助；哮喘等疾病的环境处方归医生。</div>
+
+<h3 id="full-home06">孕期居住面 · 居家暴露与胎儿环境 <span class="badge lv-fact">事实级＋近似级</span></h3>
+<div class="blk"><b>机理一句：</b>胎儿的居所就是孕妇的居所：孕期九个月的居家暴露（烟草烟雾、装修挥发物、高温）是宫内环境的直接变量——其中烟草暴露证据最强，且没有已知的安全阈值。</div>
+<div class="blk"><b>证据面：</b>孕期主动与被动吸烟暴露和低出生体重等不良结局的关联，是多个队列一致的结果（公共卫生报告层级）；高温环境与早期妊娠不良结局的关联有观察证据。</div>
+<div class="blk"><b>诚实边界：</b>「偶吸一根没事」没有证据支持——阈值未知时，保守是唯一安全向；具体暴露评估归产科医生。</div>
+
+<h3 id="full-inf01">依恋 · 生命最早的关系面 <span class="badge lv-fact">事实级＋模型级</span></h3>
+<div class="blk"><b>机理一句：</b>依恋是婴幼儿与照护者之间的联结行为系统：孩子以信号（哭、注视、跟随）发起，照护者回应的敏感性决定安全感的基座；安全型、回避型、矛盾型（后补紊乱型）的分类是发展心理学教科书事实。</div>
+<div class="blk"><b>证据面：</b>依恋理论与陌生情境范式是标准教材内容；回应敏感性与安全依恋的关联跨文化可重复。</div>
+<div class="blk"><b>诚实边界：</b>「早期依恋类型决定一生命运」的强决定论没有证据支持——远期结局受气质与环境混杂，稳定性中等且可以改变；把依恋风格当标签或占卜用，与科学概念无关。</div>
+
+<h3 id="full-mid01">围绝经期情绪 · 中年心理面 <span class="badge lv-model">模型级＋事实级</span></h3>
+<div class="blk"><b>机理一句：</b>围绝经期（绝经过渡期）是情绪症状的易损窗：激素波动叠加潮热盗汗与睡眠破坏，抑郁焦虑风险在此窗升高——它是「窗」，不是「永罚」，多数人在激素稳定后回落。</div>
+<div class="blk"><b>证据面：</b>万人级女性健康纵向研究（SWAN）显示绝经过渡期抑郁症状升高；围绝经期新发抑郁风险的队列证据方向一致。</div>
+<div class="blk"><b>诚实边界：</b>激素治疗对情绪的作用证据混杂——本卡不做任何治疗断言，治疗决定归医生。</div>
+
+<h3 id="full-mid02">三明治一代 · 中年关系面 <span class="badge lv-approx">近似级</span></h3>
+<div class="blk"><b>机理一句：</b>中年是家庭照护的拓扑中心：父母进入高龄照护需求期，子女仍在养育期——同时承担双向照护的「三明治一代」，在时间、金钱、情绪三面被挤压。</div>
+<div class="blk"><b>证据面：</b>人口学调查显示约四成的中年人同时有高龄父母与抚养中的子女（比例随代际与国度变化）；照护者负荷与健康代价在照护研究中方向一致。</div>
+<div class="blk"><b>诚实边界：</b>「中年危机＝普遍阶段」的流行叙事不被研究支持——多数人不经历危机式转折；本卡立「结构性挤压」，不立「心理危机」；最优应对方案的证据面仍薄。</div>
+
+<h3 id="full-mid04">中年意义面 · 传承与目标重估 <span class="badge lv-fact">事实级＋模型级</span></h3>
+<div class="blk"><b>机理一句：</b>中年是意义重估的密集段：发展心理学以「传承感对停滞」刻画此段的核心张力——意义感可以经由养育、教导、创造、留存等传承行为续接。</div>
+<div class="blk"><b>证据面：</b>心理社会发展阶段理论（中年段核心任务＝传承感对停滞）是教科书层框架；意义感与健康的关联在相关研究中有量（混杂如实标注）。</div>
+<div class="blk"><b>诚实边界：</b>意义波动不是普遍「阶段」；持续的意义痛苦请寻求专业心理支持。</div>
+</section>
+
+<section class="card">
+<h2>边界与诚实条款</h2>
+<ul class="bounds">
+  <li><b>健康边界：</b>本页零诊断、零处方；所有健康相关内容均为生活参考，并附就医提示——身体不适请及时就医，急症请拨打 120。</li>
+  <li><b>认识边界：</b>「使命、天赋、蓝图」属意识探索与传统智慧面，内容以 <span class="tag">传统</span><span class="tag">模型 MODEL</span><span class="tag">类比 ANALOGY</span> 标注来源与认识态；它不声称能科学预测命运，不构成测评或诊断。</li>
+  <li><b>隐私边界：</b>本页不收集任何个人信息；示例人物完全虚构，页面不出现任何真实人名。</li>
+  <li><b>内容边界：</b>页面只呈现面向生活的知识整理，不包含内部技术信息。</li>
+  <li><b>诚实边界：</b>64 格中 45 个空白格如实显示「课程正在准备中」——宁空，勿编。</li>
+</ul>
+</section>
+
+</main>
+<footer>
+星际疗愈 · 生命蓝图（内测版）<br>
+<a href="../index.html">返回首页</a> · <a href="../answers/index.html">人生高频八问</a> · <a href="../diary/index.html">健康日记</a>
+</footer>
+
+<div id="mask" role="dialog" aria-modal="true" aria-label="课程卡摘要">
+  <div id="sheet">
+    <button id="close" aria-label="关闭">×</button>
+    <h4 id="m-title"></h4>
+    <div class="pos" id="m-pos"></div>
+    <div id="m-badge"></div>
+    <div class="sum" id="m-sum"></div>
+    <p class="note">卡面为生活知识整理，不是诊断或处方；就医与治疗决定归本人与医生。</p>
+    <p><a id="m-link" href="#full">阅读这张卡的完整说明 ↓</a></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var C={
+    cloth01:{n:"衣物 · 人体微气候界面",p:"成人段 · 衣（全生命段通用）",b:"事实级＋近似级",s:"衣物是可穿脱的人体微气候界面：靠夹层静止空气隔热（clo 计量）加湿气管理来调节热交换——衣层是代价最低的体温调节器。"},
+    cloth02:{n:"照护衣物 · 易穿脱与适应性服饰",p:"临终/照护段 · 衣",b:"候选级",s:"照护场景中，套头、后扣、硬缝线会变成摩擦点与疼痛源；开背式、磁扣、宽口剪裁用设计消解照护动作里的「硬拉」。"},
+    eld01:{n:"居家防跌倒环境",p:"老年段 · 住（兼行）",b:"近似级＋事实级",s:"跌倒是老年失能级联的头号环境触发器：风险＝内因（肌力/视力/用药）＋外因（地面/照明/扶手），外因可低成本改造。"},
+    eol01:{n:"缓和医疗 · 临终全人照护",p:"临终段 · 医",b:"事实级＋模型级",s:"对生命威胁性疾病「预防与缓解痛苦」的全人路径（WHO 定义），躯体/心理/社会/灵性四维同治，与延长生命的治疗并行——不是放弃治疗。"},
+    eol02:{n:"临终心理面 · 尊严与存在痛苦",p:"临终段 · 心",b:"模型级＋事实级",s:"尊严感受损、存在性痛苦（「我成了负担」）、抑郁焦虑与谵妄是四件不同的事——分开识别，才不会漏。"},
+    eol03:{n:"临终关系面 · 预立意愿与照护者支持",p:"临终段 · 伴",b:"模型级＋事实级",s:"预立医疗计划决定末期照护能否与本人意愿一致；照护者的负荷与预期性哀伤（丧失未至、哀伤先行）可识别、可支持。"},
+    eol04:{n:"临终意义面 · 生命回顾与意义重建",p:"临终段 · 义",b:"模型级＋事实级",s:"意义工作＝生命回顾＋意义重建：把一生整合进可接受的叙事；它与遗属哀伤是同一事件的两面。"},
+    eol05:{n:"临终进食面 · 舒适喂养",p:"临终段 · 食",b:"事实级＋模型级",s:"进食的意义从营养转为舒适与关系——决策轴是「本人意愿 × 舒适」，不是「热量达标」。"},
+    eol06:{n:"临终居住面 · 离世地点与居家环境",p:"临终段 · 住",b:"事实级＋模型级",s:"多国调查一致：多数人偏好居家离世，实际实现比例显著更低——偏好与实现的落差是可支持的缺口。"},
+    eol07:{n:"临终移动面 · 体位舒适与活动维持",p:"临终段 · 行",b:"事实级＋近似级",s:"「行」的目标从移动能力转为舒适与尊严：体位变换预防压力性损伤，量力活动维持参与感。"},
+    home02:{n:"婴幼儿居住面 · 安全睡眠环境",p:"婴幼儿段 · 住",b:"事实级（强）",s:"仰卧位＋硬质床面＋无软物＋同室不同床——四要素组合是儿科最强的环境干预之一。"},
+    home03:{n:"儿童居住面 · 家居伤害预防",p:"儿童段 · 住",b:"事实级＋模型级",s:"误食、跌落、烫伤、溺水四机制占大头，且随发育阶段迁移——环境改造优先于口头看管。"},
+    home04:{n:"青少年居住面 · 居家心理空间",p:"青少年段 · 住",b:"模型级",s:"可自主的领地、被尊重的隐私、冲突不侵占安全区——居家空间的心理属性与信任关系互相塑造。"},
+    home05:{n:"成人居住面 · 室内空气与湿环境",p:"成人段 · 住",b:"事实级＋模型级",s:"室内燃烧产物与潮湿霉变是呼吸系统症状的两个可干预暴露源——稀释靠通风，净化器只是辅助。"},
+    home06:{n:"孕期居住面 · 居家暴露与胎儿环境",p:"胎儿/围产段 · 住",b:"事实级＋近似级",s:"胎儿的居所就是孕妇的居所：烟草烟雾、装修挥发物、高温是宫内环境的直接变量——烟草暴露证据最强且无已知安全阈值。"},
+    inf01:{n:"依恋 · 生命最早的关系面",p:"婴幼儿段 · 伴",b:"事实级＋模型级",s:"孩子以信号发起、照护者以敏感回应——回应的敏感性决定安全感的基座；「依恋类型决定命运」的强决定论没有证据。"},
+    mid01:{n:"围绝经期情绪 · 中年心理面",p:"中年段 · 心",b:"模型级＋事实级",s:"围绝经期是情绪症状的易损窗：激素波动叠加潮热盗汗与睡眠破坏——它是「窗」不是「永罚」，多数在激素稳定后回落。"},
+    mid02:{n:"三明治一代 · 中年关系面",p:"中年段 · 伴",b:"近似级",s:"上有高龄父母、下有抚养中的子女——中年是家庭照护的拓扑中心，在时间、金钱、情绪三面被挤压。"},
+    mid04:{n:"中年意义面 · 传承与目标重估",p:"中年段 · 义",b:"事实级＋模型级",s:"「传承感对停滞」是此段核心张力——意义感可经由养育、教导、创造、留存等传承行为续接。"}
+  };
+  var mask=document.getElementById("mask"),sheet=document.getElementById("sheet");
+  function open(k){
+    var c=C[k];if(!c)return;
+    document.getElementById("m-title").textContent=c.n;
+    document.getElementById("m-pos").textContent="位置："+c.p;
+    document.getElementById("m-badge").innerHTML='<span class="badge">'+c.b+"</span>";
+    document.getElementById("m-sum").textContent=c.s;
+    document.getElementById("m-link").setAttribute("href","#full-"+k);
+    mask.classList.add("on");
+  }
+  function hide(){mask.classList.remove("on");}
+  Array.prototype.forEach.call(document.querySelectorAll(".cell.lit"),function(el){
+    el.addEventListener("click",function(){open(el.getAttribute("data-c"));});
+  });
+  document.getElementById("close").addEventListener("click",hide);
+  mask.addEventListener("click",function(e){if(e.target===mask)hide();});
+  document.getElementById("m-link").addEventListener("click",hide);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")hide();});
+})();
+</script>
+</body>
+</html>
