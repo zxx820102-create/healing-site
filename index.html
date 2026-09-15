@@ -752,6 +752,7 @@
   };
   let cur = 'hub', lock = false;
   const plane = document.getElementById('plane');
+  const vp = document.getElementById('viewport');
   function apply() {
    const [gx, gy] = POS[cur];
    plane.style.transform = `translate(${(-100 - gx * 100).toFixed(2)}vw, ${(-100 - gy * 100).toFixed(2)}vh)`;
@@ -781,6 +782,9 @@
    const next = NEIGH[cur][e.deltaY > 0 ? 'north' : 'south'];
    if (next) {cur = next; apply();}
   }, {passive: true});
+  /* 首屏落位+hash深链：加载即定位到当前区（默认中心·今） */
+  const h0 = (location.hash || '').replace('#', '');
+  if (POS[h0]) cur = h0;
   apply();
 
   /* ── 互动闭环 ── */
