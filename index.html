@@ -3,7 +3,7 @@
 
 <head>
  <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
  <title>星际疗愈 · 今天的一片理解</title>
  <style>
   :root {
@@ -234,9 +234,6 @@
 
   .chip {
    font-size: 12.5px;
-   min-height: 44px;
-   display: inline-flex;
-   align-items: center;
    color: #c3cfe4;
    background: rgba(90, 120, 200, .1);
    border: 1px solid rgba(90, 120, 200, .3);
@@ -256,7 +253,6 @@
    display: block;
    margin: 15px auto 0;
    font-size: 12.5px;
-   min-height: 44px;
    letter-spacing: .2em;
    color: #0a0e1a;
    background: rgba(255, 232, 200, .85);
@@ -314,7 +310,7 @@
    border: 1px solid rgba(90, 120, 200, .28);
    border-radius: 10px;
    color: var(--ink);
-   font-size: 16px;
+   font-size: 13.5px;
    font-family: var(--sans);
    padding: 11px 13px;
    outline: none;
@@ -477,20 +473,20 @@
    right: 16px;
    bottom: 18px;
    z-index: 3;
-   width: 132px;
-   height: 132px;
+   width: 84px;
+   height: 84px;
    user-select: none
   }
 
   #compass button {
    position: absolute;
-   width: 44px;
-   height: 44px;
+   width: 30px;
+   height: 30px;
    border-radius: 50%;
    border: 1px solid rgba(90, 120, 200, .35);
    background: rgba(10, 14, 26, .8);
    color: var(--dim);
-   font-size: 12px;
+   font-size: 10px;
    cursor: pointer;
    backdrop-filter: blur(8px)
   }
@@ -501,28 +497,28 @@
   }
 
   #compass .n {
-   left: 44px;
+   left: 27px;
    top: 0
   }
 
   #compass .e {
    right: 0;
-   top: 44px
+   top: 27px
   }
 
   #compass .s {
-   left: 44px;
+   left: 27px;
    bottom: 0
   }
 
   #compass .w {
    left: 0;
-   top: 44px
+   top: 27px
   }
 
   #compass .c {
-   left: 44px;
-   top: 44px;
+   left: 27px;
+   top: 27px;
    border-color: rgba(255, 232, 200, .5)
   }
 
@@ -550,7 +546,6 @@
    }
   }
  </style>
- <link rel="stylesheet" href="assets/healing.css">
 <meta name="description" content="每天一片健康理解：正典书架 50+ 卷、人生高频问题答案卡、今日实时面板。生活建议级知识整理，红旗急症线齐全，诊断与用药一律归医生。">
 <meta property="og:title" content="星际疗愈 · 今天的一片理解">
 <meta property="og:description" content="每天一片健康理解：正典书架 50+ 卷、人生高频问题答案卡、今日实时面板。生活建议级知识整理，红旗急症线齐全，诊断与用药一律归医生。">
@@ -672,15 +667,15 @@
      </div>
      <!-- ◈今日一叶(自动织入·勿手改) -->
 <section class="daily">
-  <div class="h">— 今 日 一 叶 —</div>
+  <div class="h">— 今 天 的 理 解 —</div>
   <div class="leafcard" style="border-color:rgba(255,220,160,.35)">
-<div class="leaf-tag">今日一叶 · 2026-09-15 星期二</div>
+<div class="leaf-tag">今天的理解 · 2026-09-15 星期二</div>
 <h3>耳朵，是大脑的存折</h3>
 <p class="story">家里的老人电视声越开越大，不是固执，是听力在悄悄离开。研究发现一件让人意外的事：中年保护好听力，是在给老年的记忆存钱——听力下降是老年痴呆最大的、可以改变的风险因素。一副助听器，可能是最划算的脑保护。</p>
 <p class="fact">这是全球最权威的医学期刊之一《柳叶刀》2024年痴呆预防报告的核心结论之一。<br><span class="grade">证据有多硬：【FACT】顶级期刊委员会报告的正式结论</span></p>
 <p class="src">来自「听力 · 家庭」· XYZ真实探索的知识沉淀</p>
 </div>
-  <p class="more">想读往期的叶子？<a href="diary/">点这里进入疗愈日记 →</a></p>
+  <p class="more">想读更多？<a href="diary/">查看往期内容 →</a></p>
 </section>
 <!-- ◈织入结束 -->
      <div class="footer-line">你在宇宙的中心——上天、下渊、左往、右来，每个方向都有一片风景</div>
@@ -752,7 +747,6 @@
   };
   let cur = 'hub', lock = false;
   const plane = document.getElementById('plane');
-  const vp = document.getElementById('viewport');
   function apply() {
    const [gx, gy] = POS[cur];
    plane.style.transform = `translate(${(-100 - gx * 100).toFixed(2)}vw, ${(-100 - gy * 100).toFixed(2)}vh)`;
@@ -782,9 +776,6 @@
    const next = NEIGH[cur][e.deltaY > 0 ? 'north' : 'south'];
    if (next) {cur = next; apply();}
   }, {passive: true});
-  /* 首屏落位+hash深链：加载即定位到当前区（默认中心·今） */
-  const h0 = (location.hash || '').replace('#', '');
-  if (POS[h0]) cur = h0;
   apply();
 
   /* ── 互动闭环 ── */
