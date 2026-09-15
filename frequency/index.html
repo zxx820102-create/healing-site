@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>调频室 · 星际疗愈</title>
+ <style>
+  :root {
+   --bg0: #030509;
+   --bg1: #0a0f1a;
+   --ink: #e8ecf4;
+   --dim: #8a93a8;
+   --faint: #3d4556;
+   --gold: #ffe8c8;
+   --teal: #7ad8c8;
+   --rose: #e8a0a8;
+   --line: #1a2230;
+   --serif: "Songti SC", "Noto Serif CJK SC", "STSong", serif;
+   --sans: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  }
+
+  * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box
+  }
+
+  body {
+   background: var(--bg0);
+   color: var(--ink);
+   font-family: var(--sans);
+   font-size: 17px;
+   line-height: 1.75;
+   -webkit-font-smoothing: antialiased;
+   overflow-x: hidden;
+   width: 100%
+  }
+
+  .wrap {
+   max-width: 680px;
+   margin: 0 auto;
+   padding: 22px 18px 60px
+  }
+
+  a {
+   color: var(--teal);
+   text-decoration: none;
+   word-break: break-all
+  }
+
+  .flag {
+   border: 1px solid #5a3038;
+   background: #1a0d10;
+   border-radius: 12px;
+   padding: 14px 16px;
+   margin: 18px 0 8px;
+   font-size: 15.5px;
+   line-height: 1.7
+  }
+
+  .flag b {
+   color: var(--rose)
+  }
+
+  .hero {
+   text-align: center;
+   margin: 26px 0 10px
+  }
+
+  .hero .kicker {
+   font-family: var(--serif);
+   font-size: 12px;
+   letter-spacing: .5em;
+   text-indent: .5em;
+   color: var(--dim)
+  }
+
+  h1 {
+   font-family: var(--serif);
+   font-weight: 600;
+   font-size: 34px;
+   letter-spacing: .18em;
+   color: var(--gold);
+   margin: 10px 0 12px
+  }
+
+  .hero p {
+   color: var(--dim);
+   font-size: 15.5px;
+   max-width: 34em;
+   margin: 0 auto
+  }
+
+  section {
+   margin-top: 44px
+  }
+
+  h2 {
+   font-family: var(--serif);
+   font-size: 21px;
+   font-weight: 600;
+   letter-spacing: .12em;
+   color: var(--ink);
+   padding-bottom: 10px;
+   border-bottom: 1px solid var(--line);
+   margin-bottom: 16px
+  }
+
+  h2 .no {
+   color: var(--faint);
+   font-size: 13px;
+   margin-right: 10px
+  }
+
+  .note {
+   color: var(--dim);
+   font-size: 14.5px;
+   margin: 10px 0 16px
+  }
+
+  .tag {
+   display: inline-block;
+   font-size: 11.5px;
+   color: var(--teal);
+   border: 1px solid var(--line);
+   border-radius: 999px;
+   padding: 1px 10px;
+   margin-right: 6px;
+   vertical-align: 2px
+  }
+
+  /* ── ① 呼吸引导器 ── */
+  .modes {
+   display: flex;
+   gap: 10px;
+   justify-content: center;
+   flex-wrap: wrap;
+   margin-bottom: 22px
+  }
+
+  .modes button {
+   font-family: var(--sans);
+   font-size: 15px;
+   color: var(--dim);
+   background: var(--bg1);
+   border: 1px solid var(--line);
+   border-radius: 999px;
+   padding: 10px 18px;
+   cursor: pointer
+  }
+
+  .modes button.on {
+   color: var(--gold);
+   border-color: #6a5a3a;
+   background: #141008
+  }
+
+  .breath-stage {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 26px 0 10px
+  }
+
+  .breath-orbit {
+   position: relative;
+   width: min(72vw, 280px);
+   height: min(72vw, 280px);
+   display: flex;
+   align-items: center;
+   justify-content: center
+  }
+
+  .breath-ring {
+   position: absolute;
+   inset: 0;
+   border-radius: 50%;
+   border: 1px dashed var(--faint)
+  }
+
+  #breathCircle {
+   width: 100%;
+   height: 100%;
+   border-radius: 50%;
+   background: radial-gradient(circle at 38% 32%, #3a4a66 0%, #1c2740 55%, #101828 100%);
+   box-shadow: 0 0 60px #2a3a5a55, inset 0 0 40px #4a6a9a33;
+   transform: scale(.55);
+   transition: transform 4s cubic-bezier(.45, 0, .55, 1);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   will-change: transform
+  }
+
+  #breathLabel {
+   font-family: var(--serif);
+   font-size: 24px;
+   letter-spacing: .3em;
+   text-indent: .3em;
+   color: var(--gold)
+  }
+
+  #breathCount {
+   font-size: 30px;
+   color: var(--ink);
+   margin-top: 2px;
+   font-variant-numeric: tabular-nums
+  }
+
+  .breath-ctl {
+   display: flex;
+   gap: 12px;
+   align-items: center;
+   margin-top: 22px;
+   flex-wrap: wrap;
+   justify-content: center
+  }
+
+  .breath-ctl .go {
+   font-size: 16px;
+   color: var(--bg0);
+   background: var(--gold);
+   border: none;
+   border-radius: 999px;
+   padding: 12px 34px;
+   cursor: pointer
+  }
+
+  .breath-ctl .snd {
+   font-size: 14px;
+   color: var(--dim);
+   background: none;
+   border: 1px solid var(--line);
+   border-radius: 999px;
+   padding: 10px 16px;
+   cursor: pointer
+  }
+
+  .breath-ctl .snd.on {
+   color: var(--teal);
+   border-color: #2a5a50
+  }
+
+  /* ── ② 音乐角 ── */
+  .track {
+   border: 1px solid var(--line);
+   border-radius: 12px;
+   background: var(--bg1);
+   padding: 14px 16px;
+   margin-bottom: 12px
+  }
+
+  .track .t {
+   font-size: 16.5px;
+   color: var(--ink)
+  }
+
+  .track .m {
+   font-size: 13.5px;
+   color: var(--dim);
+   margin-top: 4px;
+   line-height: 1.65
+  }
+
+  .track .lic {
+   display: inline-block;
+   font-size: 11.5px;
+   color: var(--teal);
+   border: 1px solid #223a34;
+   border-radius: 999px;
+   padding: 0 8px;
+   margin-left: 8px;
+   vertical-align: 1px
+  }
+
+  /* ── ③ 视觉调频 ── */
+  #holoCanvas {
+   display: block;
+   width: 100%;
+   border-radius: 14px;
+   border: 1px solid var(--line);
+   background: radial-gradient(ellipse at 50% 60%, #0c1322 0%, #05070d 70%, #030509 100%)
+  }
+
+  /* ── ④ 见证 ── */
+  .witness {
+   border-left: 2px solid #4a3a2a;
+   padding: 4px 0 4px 16px;
+   margin: 18px 0
+  }
+
+  .witness p {
+   color: var(--ink);
+   font-size: 15.5px
+  }
+
+  .witness .src {
+   color: var(--faint);
+   font-size: 13px;
+   margin-top: 6px
+  }
+
+  footer {
+   margin-top: 56px;
+   border-top: 1px solid var(--line);
+   padding-top: 18px;
+   font-size: 13.5px;
+   color: var(--dim);
+   line-height: 1.9
+  }
+
+  footer b {
+   color: var(--dim)
+  }
+
+  .back {
+   display: inline-block;
+   margin-top: 26px;
+   font-size: 14.5px
+  }
+ </style>
+</head>
+
+<body>
+ <div class="wrap">
+  <div class="flag"><b>先看这一行（就医红旗）</b>：疼痛持续或加重、胸痛、呼吸困难、高热不退、拒食、有伤害自己的念头——第一动作永远是去医院／拨打急救电话。本页不提供诊断、处方或剂量，不替代任何医疗照护。</div>
+
+  <header class="hero">
+   <div class="kicker">星际疗愈 · 内测体验</div>
+   <h1>调频室</h1>
+   <p>「调频」是一个类比【ANALOGY】：像拨动收音机的旋钮，把注意力从紧绷的一档，轻轻拨到放松的一档。用呼吸、声音与光，陪身体回到此刻。</p>
+  </header>
+
+  <!-- ① 呼吸引导器 -->
+  <section id="s-breath">
+   <h2><span class="no">①</span>呼吸引导器</h2>
+   <p class="note">放慢的呼气可能辅助放松、缓解紧张【MODEL】。跟着圆圈胀缩的节奏走即可，不必用力；头晕或不舒服就随时停下，恢复自然呼吸。</p>
+   <div class="modes">
+    <button type="button" id="modeBox" class="on">盒式呼吸 4·4·4·4</button>
+    <button type="button" id="mode478">放松呼吸 4·7·8</button>
+   </div>
+   <div class="breath-stage">
+    <div class="breath-orbit">
+     <div class="breath-ring"></div>
+     <div id="breathCircle">
+      <div id="breathLabel">准备</div>
+      <div id="breathCount">·</div>
+     </div>
+    </div>
+    <div class="breath-ctl">
+     <button type="button" class="go" id="breathGo">开始</button>
+     <button type="button" class="snd" id="breathSnd">提示音 · 关</button>
+    </div>
+   </div>
+  </section>
+
+  <!-- ② 频率音乐角 -->
+  <section id="s-music">
+   <h2><span class="no">②</span>频率音乐角</h2>
+   <p class="note">聆听舒缓音乐可能辅助放松与情绪调节（有 meta 分析支持）【MODEL】。以下曲目均为可自由分享的授权音乐，点击前往原站试听或下载。</p>
+   <div class="track">
+    <div class="t">HoliznaCC0 ·《Space - Sleep - Meditation》专辑<span class="lic">CC0 1.0</span></div>
+    <div class="m">长篇太空氛围音，为冥想与睡前而作；共 16 条 20-45 分钟长音。出处：Free Music Archive。<br>授权：CC0 1.0 Universal（作者已放弃版权·自由使用）· <a href="https://freemusicarchive.org/music/holiznacc0/space-sleep-meditation" target="_blank" rel="noopener">前往收听</a></div>
+   </div>
+   <div class="track">
+    <div class="t">Kevin MacLeod ·《Calming》专辑<span class="lic">CC BY 3.0</span></div>
+    <div class="m">23 条安静器乐小品，适合午后小憩与放空。出处：Free Music Archive（作者页与授权页：incompetech.com）。<br>授权：署名 3.0（CC BY 3.0·使用需署名作者）· <a href="https://freemusicarchive.org/music/Kevin_MacLeod/Calming" target="_blank" rel="noopener">前往收听</a></div>
+   </div>
+   <div class="track">
+    <div class="t">Scott Holmes Music ·《Ambient Meditation》单曲<span class="lic">CC BY-NC 4.0</span></div>
+    <div class="m">舒缓冥想氛围曲（约 5 分钟），官方描述适合睡前与放松场景。出处：Free Music Archive。<br>授权：署名-非商业性 4.0（个人聆听无碍·商用需另行授权）· <a href="https://freemusicarchive.org/music/Scott_Holmes/media-music-mix/ambient-meditation/" target="_blank" rel="noopener">前往收听</a></div>
+   </div>
+   <div class="track">
+    <div class="t">Kevin MacLeod ·《Meditation Impromptu 01 / 02 / 03》<span class="lic">CC BY 4.0</span></div>
+    <div class="m">降 D 大调钢琴即兴，作者自述为冥想聆听而写、拆成三段便于下载。出处：incompetech.com。<br>授权：署名 4.0（曲目列于作者授权页·使用需署名作者）· <a href="https://incompetech.com/music/royalty-free/licenses/" target="_blank" rel="noopener">授权页</a></div>
+   </div>
+  </section>
+
+  <!-- ③ 视觉调频 -->
+  <section id="s-visual">
+   <h2><span class="no">③</span>视觉调频 · 全息呼吸星环</h2>
+   <p class="note">专注观察 60 秒，让注意力回到当下。光的节律是古老的安抚传统【传统】；安静注视缓慢变化的光点，可能帮助注意力从烦绪回到眼前【MODEL】。</p>
+   <canvas id="holoCanvas" width="640" height="380" aria-label="缓缓脉动的星环动画"></canvas>
+  </section>
+
+  <!-- ④ 疗愈见证 -->
+  <section id="s-witness">
+   <h2><span class="no">④</span>疗愈见证</h2>
+   <p class="note">以下均为真实个案的代称重述【INFERENCE】；代称与任何真实个体零映射，摘自分享包三讲。</p>
+   <div class="witness">
+    <p>有一位阿姨（代称「安姨」），几十年前一个极度惊恐的夜晚之后，睡眠再没有真正回来。四十年里，她的大脑像一名换不下岗的哨兵——不是她想不开，是保护机制卡在了「开」。而转机，恰恰从第一次被完整听见开始。</p>
+    <div class="src">—— 分享包第一讲《病是什么》</div>
+   </div>
+   <div class="witness">
+    <p>一只三花猫（代称「阿花」）在慢性口炎的疗愈中，家里做的最重要的事之一，是每天多一分钟的蹲留陪伴：不伸手，等她靠近。进度不以「治愈」计，以「今天她多靠近了一步」计。</p>
+    <div class="src">—— 分享包第三讲《疗愈为什么跨物种》</div>
+   </div>
+   <div class="witness">
+    <p>一位远方朋友（代称「小远」）的健康伴行档案呈现出这样的形状：体力、呼吸、睡眠、情绪、关系五条线始终共振——单一症状从来不是单一问题。人不会因为会说话而例外。</p>
+    <div class="src">—— 分享包第三讲《疗愈为什么跨物种》</div>
+   </div>
+  </section>
+
+  <footer>
+   <b>边界与说明</b><br>
+   ① 本页零诊断、零处方、零剂量；不能替代医疗照护。疼痛持续或加重＝就医信号，请优先就医。<br>
+   ② 全部效果表述仅为「可能辅助放松、缓解紧张」级别，不承诺任何医疗效果。<br>
+   ③ 灵性与文化表述已标注：【传统】＝文化传统视角 ·【MODEL】＝模型级表述（有证据支持、可被修正）·【ANALOGY】＝类比 ·【INFERENCE】＝个案推断。<br>
+   ④ 音乐条目均附出处与授权说明，以各原站页面标注为准。<br>
+   ⑤ <a href="../index.html">← 返回星际疗愈首页</a>
+  </footer>
+ </div>
+
+ <script>
+  /* ── ① 呼吸引导器（纯前端·零外部依赖） ── */
+  (function () {
+   var MODES = {
+    box: [
+     { label: '吸气', secs: 4, scale: 1 },
+     { label: '屏息', secs: 4, scale: 1 },
+     { label: '呼气', secs: 4, scale: 0.55 },
+     { label: '停顿', secs: 4, scale: 0.55 }
+    ],
+    r478: [
+     { label: '吸气', secs: 4, scale: 1 },
+     { label: '屏息', secs: 7, scale: 1 },
+     { label: '呼气', secs: 8, scale: 0.55 }
+    ]
+   };
+   var circle = document.getElementById('breathCircle');
+   var labelEl = document.getElementById('breathLabel');
+   var countEl = document.getElementById('breathCount');
+   var goBtn = document.getElementById('breathGo');
+   var sndBtn = document.getElementById('breathSnd');
+   var modeBoxBtn = document.getElementById('modeBox');
+   var mode478Btn = document.getElementById('mode478');
+   var modeKey = 'box';
+   var running = false;
+   var timer = null;
+   var phaseIdx = 0;
+   var remaining = 0;
+   var soundOn = false;
+   var audioCtx = null;
+
+   function tick() {
+    if (!soundOn) return;
+    try {
+     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+     if (audioCtx.state === 'suspended') audioCtx.resume();
+     var osc = audioCtx.createOscillator();
+     var gain = audioCtx.createGain();
+     var now = audioCtx.currentTime;
+     var low = MODES[modeKey][phaseIdx].label === '呼气';
+     osc.type = 'sine';
+     osc.frequency.value = low ? 392 : 587;
+     gain.gain.setValueAtTime(0.0001, now);
+     gain.gain.exponentialRampToValueAtTime(0.12, now + 0.02);
+     gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.35);
+     osc.connect(gain);
+     gain.connect(audioCtx.destination);
+     osc.start(now);
+     osc.stop(now + 0.4);
+    } catch (err) { /* 静音环境失败不阻塞 */ }
+   }
+
+   function applyPhase(first) {
+    var ph = MODES[modeKey][phaseIdx];
+    remaining = ph.secs;
+    labelEl.textContent = ph.label;
+    countEl.textContent = remaining;
+    if (!first) tick();
+    if (circle.style.transform && circle.style.transform !== '') {
+     /* 已有形态：仅切换时长 */
+    }
+    circle.style.transitionDuration = ph.secs + 's';
+    circle.style.transform = 'scale(' + ph.scale + ')';
+   }
+
+   function step() {
+    remaining -= 1;
+    if (remaining <= 0) {
+     phaseIdx = (phaseIdx + 1) % MODES[modeKey].length;
+     applyPhase(false);
+    } else {
+     countEl.textContent = remaining;
+    }
+   }
+
+   function stop() {
+    running = false;
+    if (timer) { clearInterval(timer); timer = null; }
+    goBtn.textContent = '开始';
+    labelEl.textContent = '准备';
+    countEl.textContent = '·';
+    circle.style.transitionDuration = '2s';
+    circle.style.transform = 'scale(.55)';
+   }
+
+   goBtn.addEventListener('click', function () {
+    if (running) { stop(); return; }
+    running = true;
+    phaseIdx = 0;
+    goBtn.textContent = '暂停';
+    if (soundOn) {
+     try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+     } catch (err) { /* 忽略 */ }
+    }
+    applyPhase(true);
+    timer = setInterval(step, 1000);
+   });
+
+   function setMode(key) {
+    modeKey = key;
+    modeBoxBtn.classList.toggle('on', key === 'box');
+    mode478Btn.classList.toggle('on', key === 'r478');
+    stop();
+   }
+   modeBoxBtn.addEventListener('click', function () { setMode('box'); });
+   mode478Btn.addEventListener('click', function () { setMode('r478'); });
+
+   sndBtn.addEventListener('click', function () {
+    soundOn = !soundOn;
+    sndBtn.classList.toggle('on', soundOn);
+    sndBtn.textContent = soundOn ? '提示音 · 开' : '提示音 · 关';
+    if (soundOn) {
+     try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      tick();
+     } catch (err) { /* 忽略 */ }
+    }
+   });
+  })();
+
+  /* ── ③ 视觉调频 · 全息呼吸星环（canvas 内联重写·零外部依赖） ── */
+  (function () {
+   var canvas = document.getElementById('holoCanvas');
+   var ctx = canvas.getContext('2d');
+   var reduceMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+   var visible = true;
+
+   function fit() {
+    var ratio = window.devicePixelRatio || 1;
+    var side = canvas.clientWidth;
+    var tall = Math.max(300, Math.min(420, Math.round(side * 0.6)));
+    canvas.style.height = tall + 'px';
+    canvas.width = Math.round(side * ratio);
+    canvas.height = Math.round(tall * ratio);
+   }
+   fit();
+   window.addEventListener('resize', fit);
+
+   function draw(t) {
+    var width = canvas.width, height = canvas.height;
+    var cx = width / 2, cy = height * 0.52;
+    var base = Math.min(width, height);
+    ctx.clearRect(0, 0, width, height);
+    /* 呼吸主星：缓慢胀缩的光核 */
+    var breath = 0.5 + 0.5 * Math.sin(t / 3200);
+    var coreR = base * (0.10 + 0.045 * breath);
+    var glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreR * 3.2);
+    glow.addColorStop(0, 'rgba(255,232,200,' + (0.55 + 0.25 * breath) + ')');
+    glow.addColorStop(0.35, 'rgba(122,216,200,' + (0.16 + 0.10 * breath) + ')');
+    glow.addColorStop(1, 'rgba(122,216,200,0)');
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(cx, cy, coreR * 3.2, 0, Math.PI * 2);
+    ctx.fill();
+    /* 光核本体 */
+    ctx.fillStyle = 'rgba(255,244,224,0.95)';
+    ctx.beginPath();
+    ctx.arc(cx, cy, coreR * 0.42, 0, Math.PI * 2);
+    ctx.fill();
+    /* 外扩涟漪：一圈圈荡出去 */
+    var i;
+    for (i = 0; i < 3; i++) {
+     var ph = ((t / 6400) + i / 3) % 1;
+     var rr = base * (0.14 + ph * 0.34);
+     ctx.strokeStyle = 'rgba(122,216,200,' + (0.20 * (1 - ph)) + ')';
+     ctx.lineWidth = Math.max(1, base * 0.004);
+     ctx.beginPath();
+     ctx.arc(cx, cy, rr, 0, Math.PI * 2);
+     ctx.stroke();
+    }
+    /* 两道星环：轨道上缓缓移动的光点 */
+    var rings = [0.30, 0.42];
+    for (i = 0; i < rings.length; i++) {
+     var radius = base * rings[i];
+     ctx.strokeStyle = 'rgba(138,147,168,0.28)';
+     ctx.lineWidth = Math.max(1, base * 0.003);
+     ctx.beginPath();
+     ctx.ellipse(cx, cy, radius, radius * 0.36, -0.35, 0, Math.PI * 2);
+     ctx.stroke();
+     var speed = i === 0 ? 1 : -0.62;
+     var angle = t / (4200 / Math.abs(speed)) * (speed > 0 ? 1 : -1) + i * 2.1;
+     var px = cx + Math.cos(angle) * radius;
+     var py = cy + Math.sin(angle) * radius * 0.36 - Math.sin(-0.35) * 0;
+     var py2 = cy - radius * 0.36 * Math.sin(-0.35) + Math.sin(angle) * radius * 0.36;
+     py = py2;
+     var dotGlow = ctx.createRadialGradient(px, py, 0, px, py, base * 0.05);
+     dotGlow.addColorStop(0, 'rgba(255,232,200,0.9)');
+     dotGlow.addColorStop(1, 'rgba(255,232,200,0)');
+     ctx.fillStyle = dotGlow;
+     ctx.beginPath();
+     ctx.arc(px, py, base * 0.05, 0, Math.PI * 2);
+     ctx.fill();
+     ctx.fillStyle = 'rgba(255,244,224,0.95)';
+     ctx.beginPath();
+     ctx.arc(px, py, base * 0.008, 0, Math.PI * 2);
+     ctx.fill();
+    }
+   }
+
+   function loop(t) {
+    if (visible) draw(t || 0);
+    if (!reduceMotion) requestAnimationFrame(loop);
+   }
+
+   if (reduceMotion) {
+    draw(0);
+   } else {
+    if ('IntersectionObserver' in window) {
+     new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+     }, { threshold: 0.05 }).observe(canvas);
+    }
+    requestAnimationFrame(loop);
+   }
+  })();
+ </script>
+</body>
+
+</html>
