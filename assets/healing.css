@@ -1,0 +1,315 @@
+/* ============================================================
+   healing.css — 星际疗愈 · 全站统一设计系统 v1（2026-09-15）
+   ------------------------------------------------------------
+   设计锚：Apple HIG（触控≥44px·流式字阶·focus 可达）
+           NHS Service Manual（红旗=醒目 warning callout·短句易读）
+           Dieter Rams「Less, but better」（每页一个主行动·删到不能再删）
+   用法（三档接入，互不冲突）：
+     ① 全局层：任何页 <link> 本文件即得 令牌+focus-visible+减动效，
+        不改该页任何已有样式（组件一律 :where() 零特异性或独立类名）。
+     ② 组件层：按需挂 .callout-warn / .callout-note / .card /
+        .grid-auto / .btn .btn-primary .btn-ghost / .pill-nav。
+     ③ 文档壳层：<body class="hl-doc"> 整页接入统一文档壳
+        （暖纸底·流式字阶·44px 导航·统一卡片/红旗/页脚）。
+   ============================================================ */
+
+/* ---------- 1. 设计令牌 ---------- */
+:root {
+  /* 色板 · 疗愈暖纸（浅色文档族） */
+  --hl-paper: #faf9f6;
+  --hl-surface: #ffffff;
+  --hl-ink: #2c2a26;          /* 一级文字 */
+  --hl-ink-2: #5c564a;        /* 二级文字 */
+  --hl-ink-3: #8a8474;        /* 三级文字/页脚 */
+  --hl-line: #e2ddd2;
+  --hl-line-soft: #eef0f5;
+  --hl-primary: #3d4b6e;      /* 主色 · 靛蓝（站内既有品牌色） */
+  --hl-primary-2: #5a6b96;
+  --hl-primary-soft: #f2f5fb;
+  --hl-warm-bg: #fff6e6;      /* 免责声明 · 琥珀 */
+  --hl-warm-line: #e8d5a8;
+  --hl-warm-ink: #6b5a2e;
+  --hl-danger: #b3362e;       /* 红旗红（NHS warning 系） */
+  --hl-danger-ink: #8c2f2b;
+  --hl-danger-bg: #fdf0ef;
+  --hl-danger-line: #e6b3ac;
+  /* 暗色族（星空/调频/书架页引用） */
+  --hl-dark-bg: #030509;
+  --hl-dark-panel: #0a0f1a;
+  --hl-dark-ink: #e8ecf4;
+  --hl-dark-dim: #8a93a8;
+  --hl-dark-line: #1a2230;
+  --hl-gold: #ffe8c8;
+  --hl-teal: #7ad8c8;
+  /* 字体 */
+  --hl-font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  --hl-font-serif: "Songti SC", "Noto Serif CJK SC", "STSong", serif;
+  /* 流式字阶（320px → 1440px 连续缩放） */
+  --hl-fs-display: clamp(1.55rem, 1.2rem + 1.6vw, 2.05rem);
+  --hl-fs-h1: clamp(1.28rem, 1.12rem + 0.8vw, 1.62rem);
+  --hl-fs-h2: clamp(1.1rem, 1.02rem + 0.4vw, 1.28rem);
+  --hl-fs-h3: clamp(0.98rem, 0.94rem + 0.2vw, 1.06rem);
+  --hl-fs-body: clamp(0.98rem, 0.94rem + 0.2vw, 1.06rem);
+  --hl-fs-small: clamp(0.84rem, 0.82rem + 0.1vw, 0.9rem);
+  --hl-fs-caption: 0.8rem;
+  /* 间距 · 4px 基数 */
+  --hl-s1: 4px;  --hl-s2: 8px;  --hl-s3: 12px; --hl-s4: 16px;
+  --hl-s5: 24px; --hl-s6: 32px; --hl-s7: 48px; --hl-s8: 64px;
+  /* 形状与触控 */
+  --hl-radius-s: 8px;
+  --hl-radius-m: 12px;
+  --hl-radius-l: 18px;
+  --hl-radius-pill: 999px;
+  --hl-touch: 44px;           /* Apple HIG 最小触控目标 */
+  --hl-measure: 820px;        /* 最佳行长容器 */
+  --hl-shadow-1: 0 1px 3px rgba(60, 50, 30, 0.06);
+  --hl-shadow-2: 0 4px 16px rgba(40, 40, 60, 0.10);
+  --hl-focus: #5a6b96;
+}
+
+/* ---------- 2. 全局可达层（接入即生效·零侵入） ---------- */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+:focus-visible {
+  outline: 3px solid var(--hl-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- 3. 组件层 ---------- */
+/* 3.1 红旗呼叫组件（NHS warning callout：红边+浅红底+平语） */
+.callout-warn {
+  background: var(--hl-danger-bg);
+  border: 1px solid var(--hl-danger-line);
+  border-left: 6px solid var(--hl-danger);
+  border-radius: var(--hl-radius-s);
+  padding: var(--hl-s3) var(--hl-s4);
+  margin: var(--hl-s3) 0;
+}
+.callout-warn > :first-child { margin-top: 0; }
+.callout-warn > :last-child { margin-bottom: 0; }
+.callout-warn li {
+  color: var(--hl-danger-ink);
+  font-weight: 600;
+}
+
+/* 3.2 提示呼叫组件（琥珀·免责/边界说明） */
+.callout-note {
+  background: var(--hl-warm-bg);
+  border: 1px solid var(--hl-warm-line);
+  border-radius: var(--hl-radius-s);
+  padding: var(--hl-s3) var(--hl-s4);
+  margin: var(--hl-s3) auto;
+  font-size: var(--hl-fs-small);
+  color: var(--hl-warm-ink);
+}
+.callout-note > :first-child { margin-top: 0; }
+.callout-note > :last-child { margin-bottom: 0; }
+
+/* 3.3 卡片（:where 零特异性——页面本地 .card 定义优先，零侵入） */
+:where(.card) {
+  background: var(--hl-surface);
+  border: 1px solid var(--hl-line);
+  border-radius: var(--hl-radius-m);
+  padding: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+  margin: var(--hl-s5) 0;
+  box-shadow: var(--hl-shadow-1);
+}
+
+/* 3.4 自适应网格（320px 起单列·自动回流） */
+:where(.grid-auto) {
+  display: grid;
+  gap: var(--hl-s4);
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+}
+
+/* 3.5 按钮（主/次 · 触控≥44px） */
+:where(.btn) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--hl-touch);
+  padding: var(--hl-s2) var(--hl-s5);
+  border-radius: var(--hl-radius-pill);
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-size: var(--hl-fs-small);
+  line-height: 1.4;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+:where(.btn-primary) {
+  background: var(--hl-primary);
+  color: #fff;
+}
+:where(.btn-ghost) {
+  background: transparent;
+  border-color: var(--hl-line);
+  color: var(--hl-primary);
+}
+
+/* 3.6 胶囊导航（触控≥44px） */
+:where(.pill-nav) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--hl-s2);
+  justify-content: center;
+}
+:where(.pill-nav a) {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--hl-touch);
+  padding: 0 var(--hl-s4);
+  background: var(--hl-surface);
+  border: 1px solid var(--hl-line);
+  border-radius: var(--hl-radius-pill);
+  font-size: var(--hl-fs-small);
+  color: var(--hl-primary);
+  text-decoration: none;
+}
+
+/* ---------- 4. 文档壳层（<body class="hl-doc"> 整页接入） ---------- */
+body.hl-doc {
+  margin: 0;
+  background: var(--hl-paper);
+  color: var(--hl-ink);
+  font-family: var(--hl-font-sans);
+  font-size: var(--hl-fs-body);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+body.hl-doc header {
+  background: linear-gradient(135deg, var(--hl-primary), var(--hl-primary-2));
+  color: #fff;
+  padding: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem) var(--hl-s4) clamp(1.2rem, 1rem + 1vw, 1.8rem);
+  text-align: center;
+}
+body.hl-doc header h1 {
+  margin: 0.2rem 0;
+  font-size: var(--hl-fs-h1);
+  letter-spacing: 0.02em;
+}
+body.hl-doc header p {
+  margin: 0.3rem 0;
+  opacity: 0.92;
+  font-size: var(--hl-fs-small);
+}
+body.hl-doc .disc {
+  background: var(--hl-warm-bg);
+  border: 1px solid var(--hl-warm-line);
+  border-radius: var(--hl-radius-s);
+  max-width: var(--hl-measure);
+  margin: var(--hl-s3) auto;
+  padding: var(--hl-s3) var(--hl-s4);
+  font-size: var(--hl-fs-small);
+  color: var(--hl-warm-ink);
+}
+body.hl-doc nav {
+  max-width: var(--hl-measure);
+  margin: var(--hl-s3) auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--hl-s2);
+  justify-content: center;
+  padding: 0 var(--hl-s3);
+}
+body.hl-doc nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--hl-touch);
+  padding: var(--hl-s1) var(--hl-s4);
+  background: var(--hl-surface);
+  border: 1px solid var(--hl-line);
+  border-radius: var(--hl-radius-pill);
+  font-size: var(--hl-fs-small);
+  color: var(--hl-primary);
+  text-decoration: none;
+}
+body.hl-doc main {
+  max-width: var(--hl-measure);
+  margin: 0 auto;
+  padding: 0 var(--hl-s3) var(--hl-s7);
+}
+body.hl-doc section.card {
+  background: var(--hl-surface);
+  border: 1px solid var(--hl-line);
+  border-radius: var(--hl-radius-m);
+  padding: clamp(1rem, 0.9rem + 0.5vw, 1.45rem) clamp(1rem, 0.85rem + 0.6vw, 1.45rem);
+  margin: var(--hl-s5) 0;
+  box-shadow: var(--hl-shadow-1);
+}
+body.hl-doc section.card h2 {
+  margin: 0.1rem 0 0.6rem;
+  font-size: var(--hl-fs-h2);
+  color: var(--hl-primary);
+  border-bottom: 2px solid var(--hl-line-soft);
+  padding-bottom: 0.4rem;
+}
+body.hl-doc h3 {
+  font-size: var(--hl-fs-h3);
+  margin: 1rem 0 0.3rem;
+  color: var(--hl-ink-2);
+}
+body.hl-doc ol { margin: 0.4rem 0; padding-left: 1.3rem; }
+body.hl-doc li { margin: 0.35rem 0; }
+body.hl-doc .one {
+  background: var(--hl-primary-soft);
+  border-left: 4px solid var(--hl-primary-2);
+  padding: 0.55rem 0.8rem;
+  border-radius: 0 var(--hl-radius-s) var(--hl-radius-s) 0;
+  margin: 0.6rem 0;
+}
+body.hl-doc .redflags {
+  background: var(--hl-danger-bg);
+  border: 1px solid var(--hl-danger-line);
+  border-left: 6px solid var(--hl-danger);
+  border-radius: var(--hl-radius-s);
+  padding: 0.6rem 0.9rem;
+  margin: 0.6rem 0;
+  list-style-position: inside;
+}
+body.hl-doc .redflags li {
+  color: var(--hl-danger-ink);
+  font-weight: 600;
+}
+body.hl-doc .bounds {
+  font-size: var(--hl-fs-small);
+  color: var(--hl-ink-2);
+  background: #f7f5f0;
+  border-radius: var(--hl-radius-s);
+  padding: 0.55rem 0.8rem;
+  margin-top: 0.7rem;
+}
+body.hl-doc footer {
+  text-align: center;
+  font-size: var(--hl-fs-small);
+  color: var(--hl-ink-3);
+  padding: var(--hl-s5) var(--hl-s3);
+  line-height: 1.9;
+}
+body.hl-doc footer a { color: var(--hl-primary); }
+
+/* ---------- 5. 移动端细调（≤480px） ---------- */
+@media (max-width: 480px) {
+  body.hl-doc main { padding: 0 var(--hl-s2) var(--hl-s6); }
+  body.hl-doc section.card {
+    padding: 1rem 0.95rem;
+    border-radius: var(--hl-radius-s);
+  }
+  body.hl-doc nav { padding: 0 var(--hl-s2); }
+  body.hl-doc nav a { padding: var(--hl-s1) var(--hl-s3); }
+  .callout-warn, body.hl-doc .redflags { padding: 0.65rem 0.8rem; }
+  .callout-note, body.hl-doc .disc { padding: 0.65rem 0.8rem; }
+}
