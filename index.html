@@ -467,45 +467,6 @@
    color: var(--faint)
   }
 
-  /* 此刻 · 宇宙电台（今日一句+纯聚合计数·today.json 同源拉取） */
-  #nowcast {
-   position: fixed;
-   left: 16px;
-   bottom: 18px;
-   z-index: 3;
-   max-width: min(46vw, 420px);
-   font-size: 12px;
-   line-height: 1.7;
-   color: var(--dim);
-   background: rgba(3, 5, 9, .55);
-   border: 1px solid var(--faint);
-   border-radius: 10px;
-   padding: 10px 14px;
-   backdrop-filter: blur(6px);
-   -webkit-backdrop-filter: blur(6px)
-  }
-
-  #nowcast .nc-label {
-   color: var(--gold);
-   font-size: 11px;
-   letter-spacing: .18em;
-   margin-bottom: 4px
-  }
-
-  #nowcast .nc-msg { color: var(--ink) }
-
-  #nowcast .nc-num {
-   font-size: 11px;
-   margin-top: 4px
-  }
-
-  @media (max-width: 640px) {
-   #nowcast {
-    max-width: calc(100vw - 32px);
-    font-size: 11px
-   }
-  }
-
   /* 罗盘导航 */
   #compass {
    position: fixed;
@@ -765,42 +726,6 @@
 
   </div>
  </div>
-
- <div id="nowcast" hidden>
-  <div class="nc-label">此 刻 · 宇 宙 电 台</div>
-  <div class="nc-msg" id="ncMsg"></div>
-  <div class="nc-num" id="ncNum"></div>
- </div>
-
- <script>
-  /* ── 此刻 · 宇宙电台：同源静态拉取 today.json，取不到就安静地不在 ── */
-  (function () {
-   var box = document.getElementById('nowcast');
-   function fmt(n) {
-    if (n == null || isNaN(n)) return null;
-    if (n >= 1e8) return (n / 1e8).toFixed(2) + ' 亿';
-    if (n >= 1e4) return (n / 1e4).toFixed(1) + ' 万';
-    return String(n);
-   }
-   fetch('today.json', {cache: 'no-store'}).then(function (r) {
-    return r.ok ? r.json() : null;
-   }).then(function (d) {
-    if (!d || !d.message || d.message.censored || !d.message.text) return;
-    document.getElementById('ncMsg').textContent = d.message.text;
-    var c = d.counters, parts = [];
-    if (c && !c.censored) {
-     var m = [['nodes', '节点'], ['edges', '连接'],
-              ['healing_cards', '张理解'], ['edges_today', '今日新连']];
-     for (var i = 0; i < m.length; i++) {
-      var v = fmt(c[m[i][0]]);
-      if (v !== null) parts.push(v + ' ' + m[i][1]);
-     }
-    }
-    if (parts.length) document.getElementById('ncNum').textContent = parts.join(' · ');
-    box.hidden = false;
-   }).catch(function () {});
-  })();
- </script>
 
  <div id="compass">
   <button class="n" data-go="north" title="天 · 抬头看见的">天</button>
