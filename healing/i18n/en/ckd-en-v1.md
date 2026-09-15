@@ -276,3 +276,12 @@ stage:done
 ---
 
 *This volume translated 2026-09-13 by the night-window i18n lanes from `docs/healing/ckd-canon-v1-20260912.md`. Epistemic labels throughout; counter-example history never deleted; prefer an empty cell to an invented one. Transcription, not authorship — this volume is not medical advice; discuss with your doctor.*
+
+---
+
+## receipt-path erratum（2026-09-06 新律 ·  · append-only）
+
+09-06 新律（收据禁引轮转路径·探针 scripts/xyz-law-receipt-path-probe-v1.py）补记：下列引用原指向轮转路径，原文保留不删，逐处补记持久替代或 UNKNOWN：
+- L29 `latest-verified` → UNKNOWN（快照本体不存在·未找到带日期版（历史断链如实记））
+依据收据: docs/xyz/receipt-path-rewrite-20260906.md
+<!-- receipt-path-erratum-20260906 -->
