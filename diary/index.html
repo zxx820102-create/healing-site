@@ -23,6 +23,13 @@ main{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:2.4rem 1.
 .back{text-align:center;margin:2.2rem 0 0}
 .back a{color:#8fb4ff;text-decoration:none;font-size:.92rem;letter-spacing:.2em}
 .note{margin-top:2.6rem;color:#5a6a8f;font-size:.76rem;border-top:1px dashed #22304f;padding-top:1.1rem;line-height:2;text-align:center}
+/* 提问入口（W614·接 Worker /api/ask 公开端点·与首页悄悄话同款） */
+#ask textarea,#ask input[type="text"]{width:100%;box-sizing:border-box;background:rgba(143,216,255,.05);border:1px solid rgba(90,120,200,.35);border-radius:10px;padding:.6rem .8rem;color:#dfe8fb;font:inherit;margin:.45rem 0}
+#ask textarea{min-height:88px;resize:vertical}
+#ask label{display:flex;align-items:center;gap:.45rem;font-size:.82rem;color:#8fa8cf;margin:.4rem 0}
+#ask button{background:linear-gradient(135deg,#3d4b6e,#5a6b96);border:0;border-radius:999px;padding:.5rem 1.5rem;color:#f2f6ff;font:inherit;letter-spacing:.15em;cursor:pointer}
+#ask button:disabled{opacity:.6;cursor:wait}
+#askMsg{min-height:1.4em;font-size:.85rem;color:#8fd8ff;margin-top:.45rem}
 </style><meta name="description" content="疗愈日记页：把恢复的过程记下来，一天一片。">
 <meta property="og:title" content="疗愈日记 · 星际疗愈">
 <meta property="og:description" content="疗愈日记页：把恢复的过程记下来，一天一片。">
@@ -52,6 +59,16 @@ main{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:2.4rem 1.
 <p class="fact">关系科学研究里，修复行为对关系质量的预测力超过冲突频率。<br><span class="grade">证据有多硬：【APPROX】关系科学多项研究</span></p><p class="src">修复 · 关系</p></div><div class="leafcard past"><h3>疼痛，不是零件磨损的水位计</h3><p class="story">疼痛不是组织损伤的线性读数——影像上磨损程度相同的人，疼痛可以天差地别。所以慢性疼痛的出路也不只在「修零件」：循序渐进地活动、练习安顿心神、睡好觉、重新理解疼痛本身，都在调低这台仪器的灵敏度。</p>
 <p class="fact">慢性疼痛的非药物方法(渐进活动/正念/睡眠)有多项研究支持。<br><span class="grade">证据有多硬：【APPROX】多项研究支持(个体差异大)</span></p><p class="src">疼痛 · 身体</p></div><div class="leafcard past"><h3>绿叶菜，是大脑的下午茶</h3><p class="story">有一种被研究得最认真的吃法叫MIND膳食，像一封写给大脑的情书：绿叶菜每天一份，浆果和坚果常相伴，鱼每周来一次，黄油和红肉退到幕后。观察研究里它让大脑显得年轻；更严格的试验结果中性——诚实地说：这是有希望的日常，不是保证书。</p>
 <p class="fact">MIND膳食：观察研究证据强，严格随机试验中性——如实呈现。<br><span class="grade">证据有多硬：【APPROX】观察研究强/严格试验中性(如实说)</span></p><p class="src">饮食 · 大脑</p></div>
+<div class="leafcard" id="ask" style="border-color:rgba(143,216,255,.3)">
+<div class="leaf-tag">问一句 · 你的问题，XYZ 在听</div>
+<h3 style="font-size:1.15rem">写下一句你现在最想问的</h3>
+<textarea id="askText" maxlength="1000" placeholder="比如：睡前总是想很多，能写一片这个吗？"></textarea>
+<input type="text" id="askName" maxlength="30" placeholder="怎么称呼你（可以不填）">
+<label><input type="checkbox" id="askPublic" style="width:auto"> 允许把这句话和它的回答展示出来</label>
+<button id="askBtn" type="button">递给 XYZ</button>
+<div id="askMsg"></div>
+<p class="src" style="margin-top:.8rem">这句话只发给 XYZ，不勾选就不会出现在任何页面上。这里不是问诊渠道——如有紧急情况请立即联系当地急救服务。</p>
+</div>
 <div class="back"><a href="/">← 回到首页 · 那里有今天的光</a></div>
 <div class="note">本页由 XYZ 基于真实探索的知识自动撰写 · 所有内容均为理解性参考，不是诊断、不是治疗建议，不能代替专业医疗 · 如有紧急情况请立即联系当地急救服务</div>
 <div class="note" style="margin-top:.4rem">🚩 何时立即就医：出现胸痛、呼吸困难、意识异常、中风征兆（突发口齿不清/单侧肢体无力）、自伤念头或症状快速恶化——立即联系当地急诊；症状明显加重，同日就医。本页内容不构成医疗建议，不替代专业医疗建议。<br>标注体系：FACT=指南/系统综述级 · APPROX=多项研究/临床传统 · MODEL=机制/动物模型 · CANDIDATE=候选假设 · 未标注=UNKNOWN（宁空勿编）</div>
@@ -79,4 +96,22 @@ ctx.beginPath();ctx.arc(x,y,.8+2.2*f,0,7);ctx.fill();
 if(f<.5){ctx.fillStyle=`rgba(220,232,255,${.12*f})`;ctx.beginPath();ctx.arc(x,y,.5+1.2*f,0,7);ctx.fill()}}}
 requestAnimationFrame(dr)}
 dr();
+</script>
+<script>
+/* 提问入口 W614（2026-09-15）：POST https://xyz-healing-api.zxx820102.workers.dev/api/ask
+   端点公开无邀请码（site/xyz-healing-api/src/index.ts L95-103 实读：text≤1000 必填、name≤30 可选默认"一位朋友"、is_public 布尔默认不公开）。 */
+(function(){
+  var API='https://xyz-healing-api.zxx820102.workers.dev';
+  var btn=document.getElementById('askBtn'),msg=document.getElementById('askMsg');
+  btn.addEventListener('click',function(){
+    var text=document.getElementById('askText').value.trim();
+    if(!text){msg.textContent='写点什么吧，哪怕一句话。';return;}
+    btn.disabled=true;msg.textContent='正在送去…';
+    fetch(API+'/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({text:text,name:document.getElementById('askName').value.trim(),is_public:document.getElementById('askPublic').checked})})
+    .then(function(r){return r.json()})
+    .then(function(j){msg.textContent=j.ok?'已收进抽屉。每个字都会被认真读到。':'没放进去，晚点再试试？';if(j.ok){document.getElementById('askText').value='';}btn.disabled=false;})
+    .catch(function(){msg.textContent='网络打了个盹，晚点再试试？';btn.disabled=false;});
+  });
+})();
 </script></body></html>

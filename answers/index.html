@@ -24,6 +24,13 @@
   .bounds{font-size:.86rem;color:#6d675c;background:#f7f5f0;border-radius:8px;padding:.55rem .8rem;margin-top:.7rem}
   footer{text-align:center;font-size:.85rem;color:#8a8474;padding:1.2rem}
   footer a{color:#3d4b6e}
+  /* 提问入口（W614·接 Worker /api/ask 公开端点·与首页悄悄话同款） */
+  #ask textarea,#ask input[type="text"]{width:100%;box-sizing:border-box;border:1px solid #d8d3c8;border-radius:8px;padding:.55rem .7rem;font:inherit;background:#fffdf8;color:#2c2a26;margin:.4rem 0}
+  #ask textarea{min-height:88px;resize:vertical}
+  #ask label{display:flex;align-items:center;gap:.45rem;font-size:.86rem;color:#6d675c;margin:.4rem 0}
+  #ask button{background:linear-gradient(135deg,#3d4b6e,#5a6b96);color:#fff;border:0;border-radius:999px;padding:.5rem 1.5rem;font:inherit;cursor:pointer}
+  #ask button:disabled{opacity:.6;cursor:wait}
+  #askMsg{min-height:1.4em;font-size:.88rem;color:#5a6b96;margin-top:.45rem}
 </style>
 <link rel="stylesheet" href="../assets/healing.css">
 <meta name="description" content="胃疼、疲劳、失眠、焦虑、胆固醇、减重、血压、爱与关系——人生高频八问的生活建议级答案卡，红旗线齐全，诊疗归医生。">
@@ -188,10 +195,39 @@
 <p class="bounds"><b>依据与边界</b>：多为观察性模型级（个别为事实级观察/生理）；伴侣治疗、创伤与暴力情境一律归专业面。</p>
 </section>
 
+<section class="card" id="ask">
+<h2>⑨ 没找到你的问题？</h2>
+<div class="one"><b>你的问题，XYZ 在听</b>——写下一句你现在最想问的，它会进到抽屉里。</div>
+<textarea id="askText" maxlength="1000" placeholder="比如：睡前总是想很多，能写一片这个吗？"></textarea>
+<input type="text" id="askName" maxlength="30" placeholder="怎么称呼你（可以不填）">
+<label><input type="checkbox" id="askPublic" style="width:auto"> 允许把这句话和它的回答展示出来</label>
+<button id="askBtn" type="button">递给 XYZ</button>
+<div id="askMsg"></div>
+<p class="bounds">这句话只发给 XYZ，不勾选就不会出现在任何页面上。这里不是问诊渠道——身体的事请看上面各卡的红旗线，急症立即拨打 120。</p>
+</section>
+
 </main>
 <footer>
 <p><a href="../index.html">← 返回 星际疗愈 · 今天的一片理解</a> · <a href="../canon-index.html">正典书架</a></p>
 <p>第一批 8 问 · 2026-09-14 · 内容分层标注：事实/模型/候选如实区分</p>
 </footer>
+<script>
+/* 提问入口 W614（2026-09-15）：POST https://xyz-healing-api.zxx820102.workers.dev/api/ask
+   端点公开无邀请码（site/xyz-healing-api/src/index.ts L95-103 实读：text≤1000 必填、name≤30 可选默认"一位朋友"、is_public 布尔默认不公开）。 */
+(function(){
+  var API='https://xyz-healing-api.zxx820102.workers.dev';
+  var btn=document.getElementById('askBtn'),msg=document.getElementById('askMsg');
+  btn.addEventListener('click',function(){
+    var text=document.getElementById('askText').value.trim();
+    if(!text){msg.textContent='写点什么吧，哪怕一句话。';return;}
+    btn.disabled=true;msg.textContent='正在送去…';
+    fetch(API+'/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({text:text,name:document.getElementById('askName').value.trim(),is_public:document.getElementById('askPublic').checked})})
+    .then(function(r){return r.json()})
+    .then(function(j){msg.textContent=j.ok?'已收进抽屉。每个字都会被认真读到。':'没放进去，晚点再试试？';if(j.ok){document.getElementById('askText').value='';}btn.disabled=false;})
+    .catch(function(){msg.textContent='网络打了个盹，晚点再试试？';btn.disabled=false;});
+  });
+})();
+</script>
 </body>
 </html>
