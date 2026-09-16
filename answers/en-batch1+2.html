@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Answers · 18 Cards — Healing Canon</title>
+<!--  discoverability: Open Graph tags (head-only insert; body untouched) -->
+<meta property="og:title" content="English Answers · 18 Cards — Healing Canon">
+<meta property="og:description" content="18 answers · public health and life-knowledge education, not medical advice. Emergency red-flag signs: call your local emergency number. Diagnosis, medication, and stopping medication belong to doctors.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<!--
+  Published copy (owner 2026-09-16 AskUserQuestion「全部发布（推荐）」): English answers page, 18 cards assembled verbatim by
+  scripts/xyz-healing-en-answers-assemble-v1.py ( lane, parent zcode-4c74) from:
+    wave1  docs/healing/en-answers-wave1-draft--20260916.md  (EN-1..EN-6, prose,
+            gate-red face already fixed to "An infant under 3 months" in source, erratum appended there)
+    wave2  docs/healing/en-answers-wave2-draft--20260916.md  (EN-B3-1..6 / EN-B4-1..6,
+           each with id/title/body_md/evidence/red_flags JSON block)
+  Assembly changes zero answer characters (html.escape excepted). Four gates:
+    (1) nine-privacy-word scan rc=0 on the output page (hard requirement of this lane);
+    (2) verbatim: wave2 md prose (minus the Chinese-source italic line) == JSON body_md at
+        parse time + HTML re-extraction (.one == body_md, .redflags lines == red_flags);
+        wave1 has no JSON blocks, so gate = .one re-extraction == source prose + escape round-trip;
+        plus tag balance and wave2 evidence-row closure against evidence arrays;
+    (3) medical red-line assertions: zero drug-dosage faces (the six EN-6 food-composition mg
+        values are FACT data, allowlisted with the "per 100 g of food" context anchor);
+        wave2 red-flag rows 12/12; wave1 inline when-to-see-a-doctor lines 6/6; EN
+        doctor-decision phrases; crisis / domestic-violence / emergency lines present;
+         face zero-occurrence recheck after the source fix;
+    (4) zero absolute user paths and zero file-URL scheme (relative docs/ pointers inside evidence sources
+        are carried verbatim and counted — owner publish-gate review item, not blocked here).
+  Published by owner decision 2026-09-16 (AskUserQuestion「全部发布（推荐）」): not in docs/healing-site/, not in
+  data/repos/healing-site/, no nav entry, no sitemap line, no git commit, no PG write.
+  Publish path (all gates green): owner gate first — only then copy to the site and wire nav/sitemap.
+-->
+<style>
+  body{font-family:-apple-system,"Segoe UI","PingFang SC",sans-serif;margin:0;background:#faf9f6;color:#2c2a26;line-height:1.75}
+  header{background:linear-gradient(135deg,#3d4b6e,#5a6b96);color:#fff;padding:2.2rem 1.2rem 1.6rem;text-align:center}
+  header h1{margin:.2rem 0;font-size:1.5rem}
+  header p{margin:.3rem 0;opacity:.92;font-size:.92rem}
+  .disc{background:#fff6e6;border:1px solid #e8d5a8;border-radius:8px;max-width:820px;margin:1rem auto;padding:.7rem 1rem;font-size:.85rem;color:#6b5a2e}
+  nav{max-width:820px;margin:1rem auto;display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;padding:0 .8rem}
+  nav a{background:#fff;border:1px solid #d8d3c8;border-radius:999px;padding:.28rem .8rem;font-size:.85rem;color:#3d4b6e;text-decoration:none}
+  main{max-width:820px;margin:0 auto;padding:0 .8rem 3rem}
+  section.card{background:#fff;border:1px solid #e2ddd2;border-radius:12px;padding:1.2rem 1.4rem;margin:1.4rem 0;box-shadow:0 1px 3px rgba(60,50,30,.06)}
+  section.card h2{margin:.1rem 0 .6rem;font-size:1.18rem;color:#3d4b6e;border-bottom:2px solid #eef; padding-bottom:.4rem}
+  .one{background:#f2f5fb;border-left:4px solid #5a6b96;padding:.55rem .8rem;border-radius:0 8px 8px 0;margin:.6rem 0}
+  .redflags{background:#fdf0ef;border:1px solid #eccfcc;border-radius:8px;padding:.6rem .9rem;margin:.6rem 0}
+  .redflags p{margin:.2rem 0;color:#8c2f2b;font-weight:600}
+  .evid{font-size:.86rem;color:#4a5568;background:#eef2f9;border-radius:8px;padding:.55rem .8rem;margin:.6rem 0}
+  footer{text-align:center;font-size:.85rem;color:#8a8474;padding:1.2rem}
+</style>
+</head>
+<body class="hl-doc">
+<header>
+  <h1>Your Questions, Answered — English Edition</h1>
+  <p>18 answers · Wave 1: fever · diarrhea · low mood · aging memory · alcohol · iron — Wave 2: low mood · memory · fever · diarrhea · alcohol · checkup · time · entertainment · meaning · tired · sleep · relationships</p>
+</header>
+<div class="disc">⚠️ Public health and life-knowledge education — <b>not medical advice</b>. If emergency red-flag signs appear, <b>call your local emergency number</b> (in mainland China: 120) or go to the nearest emergency department. Diagnosis, medication, and stopping medication belong to doctors. Crisis lines: <b>988</b> (US) or your local crisis line; in mainland China 12356 (24 hours). Domestic violence: <b>800-799-7233</b> (US); in mainland China police 110, women's hotline 12338.</div>
+<nav>
+<a href="#en1-fever">What to do about a fever</a><a href="#en2-diarrhea">What to do about diarrhea</a><a href="#en3-low-mood">When low mood doesn't lift</a><a href="#en4-forgetting">Mom and Dad keep forgetting — is it normal?</a><a href="#en5-alcohol">"A little alcohol protects the liver" — true?</a><a href="#en6-iron-table">Iron-deficiency anemia: the food-first table</a><a href="#en_b3c1">When low mood doesn't lift</a><a href="#en_b3c2">Mom and Dad keep forgetting — is it normal?</a><a href="#en_b3c3">What to do about a fever</a><a href="#en_b3c4">What to do about diarrhea</a><a href="#en_b3c5">"A little alcohol protects the liver" — true?</a><a href="#en_b3c6">A checkup report full of arrows and "nodules" — panic?</a><a href="#en_b4q1">What is time — and why does it keep feeling scarcer?</a><a href="#en_b4q2">More entertainment than ever — so why do people feel emptier?</a><a href="#en_b4q3">What is my life actually for?</a><a href="#en_b4q4">Always exhausted, and the tests say nothing's wrong</a><a href="#en_b4q5">Too anxious to sleep — the mind won't shut up</a><a href="#en_b4q6">This relationship hurts — do I stay, or do I leave?</a>
+</nav>
+<main>
+
+<section class="card" id="en1-fever">
+<h2>EN-1 · What to do about a fever</h2>
+<div class="one">**One-sentence answer.** A fever is a sign your immune system is working — the fever itself is not the enemy. What you treat is the discomfort and the dehydration, not the number on the thermometer.
+
+**What to do for an ordinary fever.** Drink plenty of fluids — water or clear broth. Wear a single layer of light clothing. Rest. If you feel chilled, a thin blanket for comfort is fine — but do **not** bundle up to "sweat it out." For children that is strictly dangerous, not just unhelpful.
+
+**Don't push through.** Get medical care if a fever comes with: severe headache or a stiff neck; a rash; chest pain or trouble breathing; pain when urinating or pain in the lower back; or a fever that lasts more than three days.
+
+**Some people should not wait.** Older adults, pregnant women, people with chronic conditions, and babies — keep the bar for seeing a doctor low.
+
+**One thing worth its weight in gold: influenza is not "a bad cold."** Sudden high fever, body-wide aches, and exhaustion that outweigh a stuffy nose — that is its shape. Influenza kills hundreds of thousands of people around the world each year (WHO: roughly 1 billion cases and 290,000–650,000 respiratory deaths annually). For older adults, pregnant women, young children, and people with chronic disease, antiviral treatment has a **48-hour window** — the earlier you are seen, the more room there is to act. Whether to use an antiviral, and which one, is the doctor's call.
+
+**Children have their own red lines.** An infant under 3 months with any fever; fast or labored breathing; a seizure; a child you cannot wake; a rash that does not fade when pressed — seek care immediately. Not in an hour. Now.
+
+**Evidence line.** FACT: comfort-target fever care (NICE/AAP, carried verbatim from source); the "no bundling-up" taboo; WHO influenza figures read from the WHO live fact sheet; 48-hour antiviral window (PMID 31929434). MODEL: how low each group's "see a doctor" bar should sit (translation of clinical reasoning). UNKNOWN: none claimed about cause.
+
+**When to see a doctor (one line).** High fever + severe headache / stiff neck / rash / chest pain / urinary pain / fever over 3 days → see a doctor; any red-line sign in a child → immediately.</div>
+</section>
+
+<section class="card" id="en2-diarrhea">
+<h2>EN-2 · What to do about diarrhea</h2>
+<div class="one">**One-sentence answer.** With acute diarrhea, the biggest danger is usually not the diarrhea — it is dehydration. So the first task is not to stop it, but to put water and salts back.
+
+**The tool medicine built for exactly this.** Oral rehydration salts (ORS) — sold at pharmacies. Sip small amounts, often. That works better than gulping one big glass of water.
+
+**Eating.** Start bland, add foods back gradually, don't force greasy meals. Most acute diarrhea settles on its own within a few days.
+
+**See a doctor if:** the diarrhea runs several days without improving; there is a high fever; blood in the stool; severe abdominal pain; or signs of dehydration — much less urine, a dry mouth, sunken eyes, skin that stays tented when pinched. Older adults and babies tolerate dehydration worst of all and can worsen within hours — being seen early is the safe side.
+
+**Two myths, cleared while we're here.** First, "you must shut it down fast": much of the time, diarrhea is the body clearing a pathogen out. Whether to use an anti-diarrheal medicine, and when, is the doctor's judgment. Second, "flush out the toxins" / fasting colon-cleanses: no evidence. Don't pay for them.
+
+**Evidence line.** FACT: WHO definition of diarrhea and ORS as first-line treatment (verbatim from source); dehydration red flags (infection canon, face 6). MODEL: holding anti-diarrheal timing for the doctor = translation of clinical reasoning. UNKNOWN: pathogen layer deliberately not covered.
+
+**When to see a doctor (one line).** Blood in stool + high fever + severe abdominal pain together → seek care immediately; palpitations, shakiness, or feeling faint after a bout of diarrhea → get seen promptly.</div>
+</section>
+
+<section class="card" id="en3-low-mood">
+<h2>EN-3 · When low mood doesn't lift</h2>
+<div class="one">**One-sentence answer.** Feeling down is not automatically an illness — sadness is weather, and everyone gets weather. But when almost every day is joyless, when things you loved no longer move you, and this has lasted more than two weeks while sleep, appetite, and focus changed too — medicine takes it seriously.
+
+**It has a name, and it is not your fault.** This state has effective treatments, confirmed over and over — it is not something "thinking positive" fixes, and it is nothing to be ashamed of. Many people don't know it often shows up in the body first: sleep that won't come or won't end, drained energy, aches here and there — and the tests come back fine. "The tests found nothing" is itself a clue, not a dismissal.
+
+**Small things you can do today.** Get outside for a ten-to-fifteen-minute walk every day — large studies list exercise among the effective options, on the same order as talking therapy (it is a real lever, not a miracle cure). Don't wait until you "feel like it" — do one small thing first, the feeling follows. And tell the truth to one person you trust.
+
+**Get help now — today, not later — if** any thought appears like "life is pointless" or "I want to disappear." In mainland China call the psychological-assistance hotline **12356 (24 hours)** or go to the nearest emergency department. *Translator calibration: readers elsewhere — call your local crisis line or emergency number.* A thought like this is a symptom, not a destiny. Stay the night. Tomorrow can be different.
+
+**Evidence line.** FACT: WHO adult-prevalence figure (5.7%) and the three clinical criteria (duration + loss of interest + functional impact), per source. MODEL: exercise and talking therapy as evidence-based options (BMJ 2024;384:q1024 · PMID 38806193). Hotline and "asking about suicide does not plant it" safety: 12356; Dazzi 2014, PMID 24998511. UNKNOWN: individual causes not covered.
+
+**When to see a doctor (one line).** Low mood or lost interest nearly every day for over two weeks with sleep/appetite/focus changes → see a doctor; any thought of self-harm or suicide → crisis line or emergency department now.</div>
+</section>
+
+<section class="card" id="en4-forgetting">
+<h2>EN-4 · Mom and Dad keep forgetting — is it normal?</h2>
+<div class="one">**One-sentence answer.** A growing forgetfulness is not the same as dementia — most "senior moments" are not disease. Don't panic first. And here is the more important fact: the *Lancet*'s 2024 report says about **45% of dementia is linked to 14 modifiable factors** — a substantial share can be prevented or delayed.
+
+**Three things that beat any supplement.**
+
+1. **Ears.** Don't sit on hearing loss — hearing aids when they're indicated. This is the most underrated item on the whole list (the ACHIEVE trial backs hearing as a target).
+2. **Legs and muscle.** Resistance exercise starting at twice a week, and enough protein. "Old people should eat light and vegetarian" is one of the most popular *and most harmful* myths — muscle is an older person's health capital.
+3. **People.** Regular real conversation with old friends. Loneliness itself is a risk factor.
+
+**For the record:** ginkgo, DHA, and the various "brain-boosting" tonics — not one has entered authoritative prevention recommendations. Spend the supplement money on the three things above.
+
+**When to get an evaluation.** Asking the same question again and again; trouble with simple calculations; getting lost in familiar places; or a clear change in personality — go to a memory clinic or neurology for a **baseline** assessment. The purpose is not "a dementia diagnosis." It is to rule out the treatable causes first — nutrition, thyroid, mood, and medication side effects can all steal memory.
+
+**Evidence line.** FACT: Lancet 2024, 45% / 14 modifiable factors (DOI 10.1016/S0140-6736(24)01296-0); ACHIEVE trial (hearing); unintentional weight loss &gt;5% in 6 months = standard geriatric red-flag framing. MODEL: the action translation layer (what families actually do). UNKNOWN: an individual's cognitive decline requires clinical evaluation — no remote claims.
+
+**When to see a doctor (one line).** Unintentional weight loss of more than 5% within six months is not "getting pleasantly lighter" — it is a must-see-the-doctor warning; the memory signs above → memory clinic / neurology baseline evaluation.</div>
+</section>
+
+<section class="card" id="en5-alcohol">
+<h2>EN-5 · "A little alcohol protects the liver" — true?</h2>
+<div class="one">**One-sentence answer.** No — it is not true. The largest evidence base to date (**83 prospective studies, about 600,000 people**) gives a plain conclusion: the group with the lowest health risk is the one that doesn't drink, or drinks very little.
+
+**The old curve that promised benefit from light drinking largely collapses once study biases are corrected.** Drinking "to protect the liver" has no medical footing.
+
+**The most widespread myth of all: "a red face when drinking means a good metabolism — a good capacity for it."** The opposite is true. Facial flushing is a signal that acetaldehyde is piling up in the body. Three to five in ten people of East Asian descent carry this metabolic variant, and acetaldehyde is a recognized carcinogen. People with this variant who also drink have a clearly higher risk of esophageal cancer (PMID 37795758). A red face is not a badge of tolerance — it is a red warning light.
+
+**The good news.** Simple fatty liver mostly reverses, measurably, within weeks to months of stopping. Even fibrosis and cirrhosis — quitting clearly blocks the road to worse. The earlier you cut back, the more your body thanks you.
+
+**Two small starters if you want to cut down.** Fix two alcohol-free days every week. And pour one drink less than usual each time.
+
+**One caution that matters.** If you have been drinking heavily for a long time, do **not** stop dead — withdrawal can be dangerous. Ask a doctor first, and reduce on a plan.
+
+**Evidence line.** FACT: Lancet 2018 risk-threshold analysis, 83 prospective studies / ~600,000 participants (PMID 30496095); ALDH2 variant × esophageal cancer (PMID 37795758); the reversible/irreversible boundary = clinical-consensus direction. MODEL: "flushing = a warning light" is a translation line from the liver canon. Boundary: this is knowledge, not a prescription; withdrawal assessment belongs to a doctor (stated in text).
+
+**When to see a doctor (one line).** Long-term heavy drinking → talk to a doctor *before* stopping; any signs of liver trouble (persistent fatigue, abdominal swelling, yellowing of eyes/skin) → medical assessment, don't self-manage.</div>
+</section>
+
+<section class="card" id="en6-iron-table">
+<h2>EN-6 · Iron-deficiency anemia: the food-first table</h2>
+<div class="one">**One-sentence answer.** Think of your blood as a delivery fleet: red cells carry hemoglobin, and hemoglobin delivers oxygen to every cell. Iron is the fleet's key building material. When iron runs short, delivery slows — and you feel tired, dizzy, and look pale.
+
+**This is a nearby thing, not a strange disease.** Roughly **one in four people worldwide** has anemia, and the most common cause is iron deficiency. More likely to run short: women with monthly periods (iron leaves with the blood); pregnancy and breastfeeding (one body supplies two); people on plant-based diets (plant iron absorbs poorly, and active B12 is easy to miss); people with chronic illness or long-standing infection; and older adults, whose absorption gets "sluggish." And one pattern worth knowing for an older parent: eating meat and meals just fine, still anemic on the test, plus numbness or tingling in hands and feet — that can be an **absorption** problem (B12), a different road that needs a different fix. Same first step: test and classify, don't buy supplements.
+
+**The cheapest three steps for an iron-friendly table.**
+
+1. A handful of beans or a spoonful of sesame seeds in every meal.
+2. Pair the same meal with something tart or rich in vitamin C — red bell pepper, fresh jujubes (Chinese dates), bok choy all work; oranges and berries count too.
+3. Keep tea and coffee away from meals — give them an hour or two of separation.
+
+**Liver and blood curd** are highly efficient iron sources — a small serving once a week is enough; no need for every day.
+
+**What the numbers say** (per 100 g of food; local food-composition table, FACT rows): pork liver 23.3 mg iron; sesame 14.55 mg; black soybeans 8.7 mg; mung beans 6.74 mg; spinach 2.71 mg; beef 1.834 mg.
+
+**You don't need to buy anything.** Changing the pairing is free — money spent on the wrong "blood-nourishing" products (the classic ones are donkey-hide gelatin, red dates, brown sugar) is a double loss: the money is gone and the iron never came.
+
+**The first step is a test, not a purchase.** Tired all the time, dizzy, pale — a complete blood count is cheap, fast, and clear. Symptoms are not a diagnosis: the same tiredness could be iron, could be B12, could be sleep, could be none of these. Test first, classify second, decide third. If the tests all come back normal and the symptoms stay, that matters too — it moves the search to other doors (hematology, endocrine, ENT for spinning dizziness), and that falsifiability is a feature, not a failure.
+
+**Boundaries (kept from source, verbatim in spirit and number).** Food composition ≠ what you absorb — absorption varies by person and by pairing (MODEL). In pregnancy, animal liver carries a weekly cap because it concentrates vitamin A (**less than 100 g per week**). Before anemia is confirmed, do not take iron supplements on your own — for carriers of thalassemia genes, casual iron is harmful. Whether you need a supplement is for a doctor to assess — this answer covers the table, not the pill bottle.
+
+**Evidence line.** FACT: WHO — about a quarter of humanity anemic; iron deficiency the most common cause of anemia; food iron values per 100 g from `xyz_food_element_matrix_v1` (16/164 rows FACT, remainder CANDIDATE — proportions reported as-is). MODEL: vitamin-C pairing aids plant-iron absorption; tea/coffee with meals inhibits plant iron (inhibition itself is FACT-level in the blood canon; magnitude and the 1–2 hour spacing are MODEL); the symptom→nutrient→food chains (`nutrition_symptom_nutrient_map_v1` rows 1/73/80). UNKNOWN: blood curd / duck blood absent from the local food table — no numbers invented.
+
+**When to see a doctor (one line).** Persistent fatigue, dizziness, or pallor → see a doctor for a blood test before buying anything; black/tarry stools or vomiting blood, or palpitations/breathlessness at rest → seek care directly; noticeably heavier periods than usual → tell your doctor (a treatable source of blood loss).</div>
+</section>
+
+<section class="card" id="en_b3c1">
+<h2>EN-B3-1 · When low mood doesn't lift</h2>
+<div class="one">**One-sentence answer.** Feeling low is not automatically an illness — sadness is weather, and everyone gets weather. But when nearly every day brings no energy, when even the things you used to love no longer move you, and this has lasted more than two weeks while sleep, appetite, and concentration changed too — medicine takes it seriously. The state has a name, and it has treatments whose effectiveness has been confirmed again and again. It is not something "thinking positive" can fix, and it is nothing to be ashamed of.
+
+Many people never hear this part: the state often shows up in the body first. Sleep that won't come, or sleep that won't end; energy drained from head to toe; aches drifting from one place to another — and the checkups come back fine. "The tests found nothing" is itself a clue, not a dismissal.
+
+**Small things you can start today.** Get outside for a ten-to-fifteen-minute walk every day — large studies list exercise among the effective options, on the same order as talking therapy (a real lever, not a miracle cure). Don't wait until you "feel like it": do one small thing first, and the feeling follows. And tell the truth to one person you trust.
+
+**If a thought appears like "life is pointless" or "I want to disappear" — that is a today problem, not a someday problem.** In the US, call or text the **988 Suicide &amp; Crisis Lifeline**; anywhere else, call your local crisis line or go to the nearest emergency department (in mainland China: 12356, 24 hours). A thought like this is a symptom, not a destiny. Stay the night. Tomorrow can be different.
+
+**Evidence &amp; boundary.** FACT: the WHO adult-prevalence figure (5.7%) and the three clinical criteria (duration + loss of interest + functional impact) = clinical-consensus-grade facts, carried from the source. MODEL: exercise and talking therapy translated as evidence-based options. UNKNOWN: individual causes deliberately not covered. Life-knowledge level, not a diagnosis; judgment and treatment plans (talking therapy / medication) belong to psychiatry and clinical-psychology physicians.
+
+**When to see a doctor (one line).** Low mood or lost interest nearly every day for over two weeks, with sleep/appetite/focus changed → see a doctor; any thought of self-harm or suicide → crisis line or emergency department now.</div>
+<div class="redflags">
+<p>thoughts like "life is pointless" / "I want to disappear" → 988 (US) or local crisis line / emergency department now; in mainland China: 12356 (24 hours)</p>
+<p>thought is a symptom, not a destiny — stay the night</p>
+<p>zero diagnosis in this answer; treatment decisions belong to doctors</p>
+</div>
+<p class="evid"><b>FACT</b>: WHO adult prevalence 5.7% and the three clinical criteria (duration + loss of interest + functional impact) are clinical-consensus-grade facts · Source: WHO figures and clinical consensus, carried verbatim from batch3 card c1</p>
+<p class="evid"><b>MODEL</b>: exercise and talking therapy are among the evidence-based options (translation layer) · Source: batch3 card c1 evidence grading</p>
+<p class="evid"><b>UNKNOWN</b>: individual causes layer deliberately not covered · Source: batch3 card c1 evidence grading</p>
+</section>
+
+<section class="card" id="en_b3c2">
+<h2>EN-B3-2 · Mom and Dad keep forgetting — is it normal?</h2>
+<div class="one">**One-sentence answer.** A growing forgetfulness is not the same as dementia — most "senior moments" are not disease, so don't panic first. And here is the more important fact: the *Lancet*'s 2024 report says about **45% of dementia is linked to 14 modifiable factors** — a substantial share can be prevented or delayed.
+
+**Three things that beat any supplement.**
+
+1. **Ears.** Don't sit on hearing loss — get hearing aids when they're indicated. This is the most underrated item on the whole list.
+2. **Legs and muscle.** Resistance exercise starting at twice a week, and enough protein. "Old people should eat light and vegetarian" is one of the most popular *and most harmful* myths — muscle is an older person's health capital.
+3. **People.** Regular real conversation with old friends. Loneliness itself is a risk factor.
+
+**For the record:** ginkgo, DHA, and the various "brain-boosting" tonics — not one has entered authoritative prevention recommendations. Spend the supplement money on the three things above.
+
+**When to get an evaluation.** Asking the same question again and again; trouble with simple calculations; getting lost in familiar places; or a clear change in personality — go to a memory clinic or neurology for a **baseline** assessment. The purpose is not "a dementia diagnosis." It is to rule out the treatable causes first — nutrition, thyroid, mood, and medication side effects can all steal memory.
+
+**Evidence &amp; boundary.** FACT: Lancet 2024, 45% / 14 modifiable factors (DOI 10.1016/S0140-6736(24)01296-0); the ACHIEVE trial (hearing); unintentional weight loss &gt;5% in 6 months = standard geriatric red-flag framing. MODEL: the action translation layer (what families actually do). UNKNOWN: an individual's cognitive decline requires clinical evaluation — no remote claims. Care-knowledge level; evaluation workflow and diagnosis belong to memory clinics and neurology; the supplement statement is a zero-evidence statement exactly as the canon words it ("not one has entered authoritative recommendations").
+
+**When to see a doctor (one line).** Unintentional weight loss of more than 5% within six months is not "getting pleasantly lighter" — it is a must-see-the-doctor warning; the memory signs above → memory clinic / neurology baseline evaluation.</div>
+<div class="redflags">
+<p>unintentional weight loss &gt;5% within 6 months → must see a doctor</p>
+<p>repeated questions / failing simple calculations / getting lost in familiar places / clear personality change → memory clinic or neurology baseline evaluation</p>
+<p>zero diagnosis in this answer; evaluation and diagnosis belong to specialists</p>
+</div>
+<p class="evid"><b>FACT</b>: Lancet 2024: about 45% of dementia linked to 14 modifiable factors · Source: DOI 10.1016/S0140-6736(24)01296-0</p>
+<p class="evid"><b>FACT</b>: hearing loss as a modifiable dementia risk factor · Source: ACHIEVE trial (carried from batch3 card c2)</p>
+<p class="evid"><b>FACT</b>: unintentional weight loss &gt;5% in 6 months = geriatric red flag · Source: standard geriatric framing, carried from source</p>
+<p class="evid"><b>MODEL</b>: the action translation layer (what families actually do) · Source: batch3 card c2 evidence grading</p>
+<p class="evid"><b>UNKNOWN</b>: cause of an individual's cognitive decline requires clinical evaluation · Source: batch3 card c2 evidence grading</p>
+</section>
+
+<section class="card" id="en_b3c3">
+<h2>EN-B3-3 · What to do about a fever</h2>
+<div class="one">**One-sentence answer.** A fever is a sign your immune system is working — the fever itself is not the enemy. What you treat is the discomfort and the dehydration, not the number on the thermometer.
+
+**For an ordinary fever.** Drink plenty of fluids — water or clear broth. Wear a single layer of light, breathable clothing. Rest. If you feel chilled, a thin blanket for comfort is fine — but do **not** bundle up to "sweat it out." For children that is strictly dangerous, not just unhelpful.
+
+**Don't push through.** Get medical care if a fever comes with: severe headache or a stiff neck; a rash; chest pain or trouble breathing; pain when urinating or pain in the lower back; or a fever that lasts more than three days. Older adults, pregnant women, people with chronic conditions, and infants — keep the bar for being seen low, and don't wait.
+
+**One thing worth its weight in gold: influenza is not "a bad cold."** Sudden high fever, body-wide aches, and exhaustion that outweigh a stuffy nose — that is its shape. Influenza kills hundreds of thousands of people around the world each year (WHO: roughly 1 billion cases and 290,000–650,000 respiratory deaths annually). For older adults, pregnant women, young children, and people with chronic disease, antiviral treatment has a **48-hour window** — the earlier you are seen, the more room there is to act. Whether to use an antiviral, and which one, is the doctor's call.
+
+**Children have their own red lines.** An infant under 3 months with any fever; fast or labored breathing; a seizure; a child you cannot wake; a rash that does not fade when pressed — seek care immediately. Not in an hour. Now. Call your local emergency number if the child can't be roused or is struggling to breathe (in mainland China: 120).
+
+**Evidence &amp; boundary.** FACT: WHO influenza figures (about 1 billion cases / 290,000–650,000 respiratory deaths, read from the WHO live fact sheet); the 48-hour antiviral window (PMID 31929434); comfort-target fever care (NICE/AAP, carried verbatim); the "no bundling-up" taboo. MODEL: how low each group's "see a doctor" bar should sit (translation of clinical reasoning). Home-care knowledge level; fever-medicine ingredients and doses are deliberately not covered — details belong to doctors and pharmacists; antiviral decisions for high-risk groups belong to doctors.
+
+**When to see a doctor (one line).** High fever + severe headache / stiff neck / rash / chest pain / urinary pain / fever over 3 days → see a doctor; any red-line sign in a child → immediately.</div>
+<div class="redflags">
+<p>high fever + severe headache / stiff neck / rash / chest pain / painful urination / fever &gt;3 days → see a doctor</p>
+<p>infant under 3 months with any fever; fast or labored breathing; seizure; cannot be woken; rash that does not fade when pressed → immediately</p>
+<p>call your local emergency number when care is urgent (in mainland China: 120)</p>
+<p>zero dosage in this answer; fever medicine and antiviral decisions belong to doctors and pharmacists</p>
+</div>
+<p class="evid"><b>FACT</b>: WHO influenza figures: about 1 billion cases and 290,000–650,000 respiratory deaths annually · Source: WHO live fact sheet, read directly (carried verbatim from batch3 card c3)</p>
+<p class="evid"><b>FACT</b>: 48-hour antiviral treatment window · Source: PMID 31929434</p>
+<p class="evid"><b>FACT</b>: fever treatment targets comfort, not the number (NICE/AAP); bundling-up taboo · Source: NICE/AAP carried verbatim from source</p>
+<p class="evid"><b>MODEL</b>: how low each group's care threshold should sit · Source: translation of clinical reasoning (batch3 card c3)</p>
+</section>
+
+<section class="card" id="en_b3c4">
+<h2>EN-B3-4 · What to do about diarrhea</h2>
+<div class="one">**One-sentence answer.** With acute diarrhea, the biggest danger is usually not the diarrhea — it is dehydration. So the first task is not to stop it, but to put water and salts back.
+
+**The tool medicine built for exactly this.** Oral rehydration salts (ORS) — sold at pharmacies. Sip small amounts, often; that works better than gulping one big glass of water. Use it as the package and your doctor direct; the formula and product choices are deliberately not covered here.
+
+**Eating.** Start bland, add foods back gradually, don't force greasy meals. Most acute diarrhea settles on its own within a few days.
+
+**See a doctor if:** the diarrhea runs several days without improving; there is a high fever; blood in the stool; severe abdominal pain; or signs of dehydration — much less urine, a dry mouth, sunken eyes, skin that stays tented when pinched. Older adults and infants tolerate dehydration worst of all and can worsen within hours — being seen early is the safe side. If a red-line combination below appears, call your local emergency number (in mainland China: 120).
+
+**Two myths, cleared while we're here.** First, "you must shut it down fast": much of the time, diarrhea is the body clearing a pathogen out. Whether to use an anti-diarrheal medicine, and when, is the doctor's judgment. Second, "flush out the toxins" / fasting colon-cleanses: no evidence. Don't pay for them.
+
+**Evidence &amp; boundary.** FACT: WHO definition of diarrhea and ORS as first-line treatment (verbatim from source); dehydration red flags (infection canon, face 6). MODEL: holding anti-diarrheal timing for the doctor = translation of clinical reasoning. UNKNOWN: the pathogen layer deliberately not covered. Home-care knowledge level; the care threshold is low for infants and older adults.
+
+**When to see a doctor (one line).** Blood in stool + high fever + severe abdominal pain together → seek care immediately; palpitations, shakiness, or feeling too unsteady to stand after a bout → get seen promptly.</div>
+<div class="redflags">
+<p>blood in stool + high fever + severe abdominal pain together → seek care immediately</p>
+<p>palpitations / shakiness / cannot stand steadily after a bout → get seen promptly</p>
+<p>signs of dehydration (much less urine, dry mouth, sunken eyes, slow skin recoil) → doctor, especially infants and older adults</p>
+<p>call your local emergency number for red-line combinations (in mainland China: 120)</p>
+</div>
+<p class="evid"><b>FACT</b>: WHO definition of diarrhea and ORS as first-line treatment · Source: carried verbatim from batch3 card c4</p>
+<p class="evid"><b>FACT</b>: dehydration red flags · Source: infection canon, face 6 (carried from source)</p>
+<p class="evid"><b>MODEL</b>: anti-diarrheal timing held for the doctor's judgment · Source: translation of clinical reasoning (batch3 card c4)</p>
+<p class="evid"><b>UNKNOWN</b>: pathogen layer deliberately not covered · Source: batch3 card c4 evidence grading</p>
+</section>
+
+<section class="card" id="en_b3c5">
+<h2>EN-B3-5 · "A little alcohol protects the liver" — true?</h2>
+<div class="one">**One-sentence answer.** No — it is not true. The largest evidence base to date (**83 prospective studies, about 600,000 people**) gives a plain conclusion: the group with the lowest health risk is the one that doesn't drink, or drinks very little. The old curve that promised benefit from light drinking largely collapses once study biases are corrected. Drinking "to protect the liver" has no medical footing.
+
+**The most widespread myth of all: "a red face when drinking means a good metabolism — a good capacity for it."** The opposite is true. Facial flushing is a signal that acetaldehyde is piling up in the body. Three to five in ten people of East Asian descent carry this metabolic variant, and acetaldehyde is a recognized carcinogen. People with this variant who also drink have a clearly higher risk of esophageal cancer (PMID 37795758). A red face is not a badge of tolerance — it is a red warning light.
+
+**The good news.** Simple fatty liver mostly reverses, measurably, within weeks to months of stopping. Even fibrosis and cirrhosis — quitting clearly blocks the road to worse. The earlier you cut back, the more your body thanks you.
+
+**Two small starters if you want to cut down.** Fix two alcohol-free days every week. And pour one drink less than usual each time.
+
+**One caution that matters.** If you have been drinking heavily for a long time, do **not** stop dead — withdrawal can be dangerous. Ask a doctor first, and reduce on a plan.
+
+**Evidence &amp; boundary.** FACT: Lancet 2018 risk-threshold analysis, 83 prospective studies / ~600,000 participants (PMID 30496095); ALDH2 variant × esophageal cancer (PMID 37795758); the reversible/irreversible boundary = clinical-consensus direction. MODEL: "flushing = a warning light" is a translation line from the liver canon. Boundary: this is knowledge, not a prescription; no drug intervention is involved; withdrawal assessment belongs to a doctor (stated in text); a specific health assessment belongs to a doctor.
+
+**When to see a doctor (one line).** Long-term heavy drinking → talk to a doctor *before* stopping; any signs of liver trouble (persistent fatigue, abdominal swelling, yellowing of eyes/skin) → medical assessment, don't self-manage.</div>
+<div class="redflags">
+<p>long-term heavy drinking → do not stop dead; withdrawal can be dangerous — ask a doctor first</p>
+<p>signs of liver trouble (persistent fatigue, abdominal swelling, yellowing of eyes/skin) → medical assessment</p>
+<p>this answer is knowledge, not a prescription; no drug intervention involved</p>
+</div>
+<p class="evid"><b>FACT</b>: lowest health risk sits with non-drinkers or very light drinkers · Source: Lancet 2018 risk-threshold analysis, 83 prospective studies / ~600,000 participants, PMID 30496095</p>
+<p class="evid"><b>FACT</b>: ALDH2 metabolic variant × drinking → clearly higher esophageal cancer risk; acetaldehyde is a recognized carcinogen · Source: PMID 37795758</p>
+<p class="evid"><b>FACT</b>: reversible / irreversible boundary (fatty liver reverses; quitting blocks worsening at fibrosis/cirrhosis) · Source: clinical-consensus direction, carried from batch3 card c5</p>
+<p class="evid"><b>MODEL</b>: "flushing = a warning light" · Source: translation line from the liver canon (batch3 card c5)</p>
+</section>
+
+<section class="card" id="en_b3c6">
+<h2>EN-B3-6 · A checkup report full of arrows and "nodules" — panic?</h2>
+<div class="one">**One-sentence answer.** Take a deep breath before you read it — three facts will reassure you by half. First: an arrow does not mean disease. Second: more "nodules" are found because machines got better at seeing, not because bodies got worse. Third: a mildly raised tumor marker is not cancer.
+
+**Fact one — many arrows come from statistics, not illness.** A reference interval is the range that covers 95% of healthy people — by design, 5% of perfectly healthy people sit outside it. Test twenty or thirty items in one sitting, and the chance that at least one arrow appears is better than even. That is arithmetic, not pathology.
+
+**Fact two — the nodule story.** High-resolution ultrasound and CT now see what a previous generation carried quietly for a lifetime without ever knowing. Thyroid, lung, and breast nodules share one script: grading systems split the "findings" into "the vast majority = periodic observation" and "a few = action." The right response to a nodule report is not fear; it is two questions: *What is the grade? How often do we recheck?*
+
+**Fact three — tumor markers.** A mild rise does not equal cancer. In people without symptoms, the share of alarmed patients who truly have disease is low; smoking, inflammation, and benign conditions all push the numbers up. What deserves escalation is the **combination**: the same marker rising persistently + a large magnitude + imaging that actually shows something + a high-risk background. That judgment belongs to a doctor — never convict yourself on a single number.
+
+**Last line.** Choose next year's checkup items by your age and family history, not by price or item count; the age-based specialty screenings are not replaced by any bundle.
+
+**Evidence &amp; boundary.** FACT: the 95% reference-interval definition; Fleischner 2017 lung-nodule stratification; low positive predictive value of tumor markers in asymptomatic people (PMID 42522803). MODEL: the Bayesian structure of predictive values; the BI-RADS conceptual skeleton (canon annotations). UNKNOWN: what an individual's value means requires a doctor with the history. Report-reading common sense; grading judgments, recheck plans, and biopsy decisions all belong to doctors; this card cross-points to the thyroid-nodule card (batch2 ⑧) without overlap.
+
+**When to see a doctor (one line).** No acute red line in this answer — but a marker climbing persistently, a nodule graded for action, or any symptom alongside the numbers → take it to a doctor, not to a search engine.</div>
+<div class="redflags">
+<p>no acute emergency red line in this answer</p>
+<p>same marker rising persistently + large magnitude + imaging finding + high-risk background → escalate to a doctor</p>
+<p>grading, recheck plans, biopsy decisions all belong to doctors — no self-conviction on single numbers</p>
+</div>
+<p class="evid"><b>FACT</b>: reference intervals cover 95% of healthy people by definition · Source: definitional fact, carried from batch3 card c6</p>
+<p class="evid"><b>FACT</b>: lung-nodule management is stratified · Source: Fleischner 2017 (carried from source)</p>
+<p class="evid"><b>FACT</b>: tumor markers have low positive predictive value in asymptomatic people · Source: PMID 42522803</p>
+<p class="evid"><b>MODEL</b>: Bayesian structure of predictive values; BI-RADS conceptual skeleton · Source: canon annotations (batch3 card c6)</p>
+<p class="evid"><b>UNKNOWN</b>: what an individual value means requires a doctor with the history · Source: batch3 card c6 evidence grading</p>
+</section>
+
+<section class="card" id="en_b4q1">
+<h2>EN-B4-1 · What is time — and why does it keep feeling scarcer?</h2>
+<div class="one">**One-sentence answer.** Physics describes time as a uniformly flowing river — its most solid part has been verified repeatedly: time slows with speed and with gravity, and GPS satellites are recalibrated for it every single day. But that river does not answer your real question: why did one childhood summer stretch so long, while a whole year now blinks past?
+
+**Psychology's answer: the time you feel is not clock time — it is attention time.** When you are absorbed, attention is fully occupied by what is in front of you and the brain has no spare capacity to "record time," so the sense of time vanishes — three hours of flow feel like twenty minutes. When you are bored and waiting, attention fixes on "why isn't it over yet," and minutes stretch like hours. Whether a stretch of days feels long in memory depends on how many fresh memories it holds: a stretch of identical days recalls as a single day; a stretch full of new things recalls as long. Here is the common mechanism behind "time keeps speeding up": adult life grows more repetitive, fresh memories thin out, and recall naturally compresses — this is not an illusion, it is the arithmetic of memory density. And one plain reason of proportion: for a one-year-old, "a year" is an entire life; for a forty-year-old, it is one fortieth.
+
+**The clock gives everyone the same amount — but experienced time can be "encrypted" by what you do.** Learn something new, go somewhere you haven't been, take on one hard thing seriously — not to make the days look good, but so that the year in your memory was truly a year. There is also a shortcut: time spent with people recalls as unusually long — shared new experience is the densest memory material there is.
+
+**Attention has two thieves: notifications and choosing.** Every ping slices your time into fragments, and fragments leave almost no recall. Every "which one is better" micro-decision spends attention that could have been invested. Turning off non-human notifications, and deciding in advance the few things today is for, are the two cheapest steps for taking time back.
+
+**The other side to watch.** If your sense of time is fragmenting and every day feels like being chased, that is often not a time problem — chronic stress or emotional load is requisitioning your attention. The thing to treat is the stress, not the schedule. "No time" is very often not a lack of time but the brain's subjective conclusion after attention is shredded into trivia; settle the attention, and time returns to your hands.
+
+**Evidence &amp; boundary.** FACT: time dilation (speed/gravity slows time) is a textbook-grade, repeatedly verified physical fact; GPS needs daily engineering correction (public record). MODEL: time perception is modulated by attention — the "attentional gate" family of models in time psychology; Zimbardo &amp; Boyd, *The Time Paradox*. MODEL: "time speeds up" correlates with memory-density/proportion hypotheses (reviewable literature); individual differences and quantitative thresholds = UNKNOWN.
+
+**When to seek help (one line).** No acute medical red line in this answer — but a persistently fragmenting sense of time plus chronic stress or low mood → treat the stressor, and seek professional psychological support when it needs more than you.</div>
+<div class="redflags">
+<p>no acute medical red line in this answer</p>
+<p>persistently fragmenting time sense + chronic stress / emotional load → treat the stressor; seek professional psychological support when needed</p>
+</div>
+<p class="evid"><b>FACT</b>: time dilation (speed/gravity slows time) is a repeatedly verified physical fact; GPS corrects for it daily · Source: special/general relativity textbook-grade conclusions; GPS engineering literature (public record), carried from b4q1</p>
+<p class="evid"><b>MODEL</b>: time perception is modulated by attention: occupied attention shortens or abolishes the sense of time · Source: attentional-gate models in time psychology; Zimbardo &amp; Boyd, The Time Paradox (carried from b4q1)</p>
+<p class="evid"><b>MODEL</b>: "time speeds up" correlates with memory-density / proportion hypotheses; individual differences and quantitative thresholds unknown · Source: proportion / memory-storage hypotheses in time-perception literature (reviews exist); individual quantification = UNKNOWN, carried from b4q1</p>
+</section>
+
+<section class="card" id="en_b4q2">
+<h2>EN-B4-2 · More entertainment than ever — so why do people feel emptier?</h2>
+<div class="one">**A fact that wrongs no one: emptiness is not entertainment's fault — it is "only entertainment"'s fault.**
+
+**The brain's motivation system runs on a plain rule: pleasure comes not from getting, but from getting better than expected.** Neuroscience calls it reward prediction error — dopamine neurons respond most fiercely to rewards that exceed expectations. Short videos and infinite feeds exploit this mechanism to its limit: a "maybe something better" cliffhanger planted every dozen seconds. The problem is adaptation — the same surprise delivered too often raises the baseline; the same content stops moving you; the stimulus you need keeps climbing while the satisfaction you get keeps thinning. This is not moral decay, it is mechanism — and seeing the mechanism is more useful than blaming yourself.
+
+**The other half is more everyday: passive consuming and actively creating are two different psychological experiences.** Flow research has observed it repeatedly: people's deepest satisfaction appears in things that are hands-on, pitched slightly above current skill, and visibly fed back — cooking, writing, repairing, moving, real conversation. Passive entertainment offers almost no challenge and shows no progress. It works like a painkiller: it genuinely numbs the pain called "boredom," but it cannot treat the hollowness called "I am not growing."
+
+**One distinction neuroscience says is constantly misread: dopamine is more the molecule of "wanting" than of "liking."** The urge to reach for the next swipe gets fed stronger and stronger, while the part that would actually feel satisfied barely moves. That is why two hours of scrolling ends not in fullness but in hollowness: the wanting system ran the whole race; the liking system never took the field. Emptiness is also tied to "no one to share it with": an experience that is never told, that enters no relationship, barely stays.
+
+**The workable alternative is not a preachy quitting plan — it is changing the structure.** One: keep a small daily block of "making time" — even twenty minutes of something with output: three lines written, a passage of piano practiced, a meal cooked, a new route walked. Two: swap some solo scrolling for consumption with people — watching one film with a friend and then talking about it leaves more than ten videos alone. Three: give entertainment a fixed place rather than all day — no phone beyond the sofa zone, and the hour before sleep is entertainment's exit, not its entrance.
+
+Entertainment is not guilty. What empties a person is not how many good things they watched — it is ending the day with nothing in hand that says "I made this."
+
+**Evidence &amp; boundary.** FACT: dopamine neurons respond most strongly to rewards exceeding expectation — reward prediction error (Schultz, Dayan &amp; Montague, 1997, Science, PMID 9054347). MODEL: flow conditions = matched challenge-skill + immediate feedback, deep satisfaction concentrating in active activities (Csikszentmihalyi and the flow research tradition, reviews exist). MODEL: dopamine signaling tracks "wanting" more than "liking" (Berridge &amp; Robinson incentive-salience tradition, reviews exist). UNKNOWN: thresholds and individual differences in long-term adaptation to high-intensity stimulation — no single quantitative conclusion; better empty than invented.
+
+**When to seek help (one line).** No medical red line in this answer — but emptiness lasting weeks together with low mood, lost interest, or changed sleep → see the published answers on "always tired" and "can't sleep," and the seek-care advice there.</div>
+<div class="redflags">
+<p>no medical red line in this answer</p>
+<p>emptiness persisting for weeks + low mood / lost interest / sleep changes → follow the seek-care advice in the published answers "always tired" and "can't sleep"</p>
+</div>
+<p class="evid"><b>FACT</b>: dopamine neurons respond most strongly to rewards exceeding expectation (reward prediction error) · Source: Schultz, Dayan &amp; Montague, 1997, Science, PMID 9054347 (carried from b4q2)</p>
+<p class="evid"><b>MODEL</b>: flow conditions = challenge-skill match + immediate feedback; deepest satisfaction found in active activities · Source: Csikszentmihalyi and subsequent flow research tradition (carried from b4q2)</p>
+<p class="evid"><b>UNKNOWN</b>: thresholds and individual differences of long-term adaptation to high-intensity stimulation (hedonic baseline upshift) · Source: no single quantitative conclusion on individual adaptation speed and reversibility — carried from b4q2, better empty than invented</p>
+<p class="evid"><b>MODEL</b>: dopamine signaling tracks "wanting" rather than "liking" · Source: Berridge &amp; Robinson incentive-salience research tradition (carried from b4q2)</p>
+</section>
+
+<section class="card" id="en_b4q3">
+<h2>EN-B4-3 · What is my life actually for?</h2>
+<div class="one">**This question is almost humanity's standard pain.** It shows up late at night; it shows up after a loss; it shows up after a serious illness, a job lost, a relationship ended. First, an honest answer: **asking this question does not mean you are broken — it means you changed glasses while shifting gears in life.** The sense of meaning is not a constant background hum; it rises and falls and sometimes disappears for a while — that itself is normal, and it deserves no extra layer of shame for "having such thoughts at all."
+
+**What the checkable research says.** Logotherapy — the meaning-centered school of existential therapy, founded by a concentration-camp survivor who became a neurologist and psychiatrist, Viktor Frankl — left one famous observation: what holds people up is not the chase for pleasure but three connections: **to people** (loving and being loved), **to things** (being invested in something worth doing, however small), **to the future** (having a direction worth walking toward). Recent large-sample surveys agree: when people are asked "what makes life meaningful," about nine in ten answer relationships first, health second. This explains two things at once — why the question of meaning spikes hardest when relationships break, at retirement, at loss (the connections snapped); and where the road is: when meaning runs low, repairing connections is more useful than contemplating "the meaning of the universe."
+
+**Small things doable this week.** Do one concrete good deed for one person. Bring one small thing in your hands to the point of your own satisfaction. Make a worthwhile appointment with yourself for three months from now. Meaning usually shows itself looking backward — do first, understand after.
+
+**Psychology has also taken "meaning" apart into three blocks — find which one is missing and fix that, instead of asking "the meaning of life" in bulk:** **life is comprehensible** (I roughly know what is happening in my days), **there is direction** (I know where I am heading), **there is mattering** (I genuinely matter to some people). A person may lack all three or just one — the newly retired often lack only "direction," and rebuilding one small piece of daily order returns most of the meaning. Find out which block is missing first, and no strength is wasted.
+
+**The honest other side.** If the "no meaning" feeling persists for weeks and comes with low mood, loss of interest in everything, changed sleep and appetite — it may be one of depression's presentations. Depression is a treatable state, not a philosophical conclusion; the thing to see at that point is not a book but a psychiatrist or clinical psychologist. And if a thought like "life is pointless, I want to disappear" appears: call the **988 Suicide &amp; Crisis Lifeline (US)** or your local crisis line / nearest emergency department right away (in mainland China: 12356, 24 hours). The thought is a symptom, not an answer.
+
+**Evidence &amp; boundary.** MODEL: the sense of meaning is supported by three classes of connection and can be rebuilt by action (Frankl, *Man's Search for Meaning*, 1946, and the logotherapy tradition). FACT: in "what makes life meaningful" surveys, relationships rank first (about nine in ten), health second (German cohort survey, PMC 2021; secondhand via docs/xyz/humanity-top-questions-v1-20260914.md — original literature in the canon). FACT: persistent feelings of meaninglessness / worthlessness are one of the core symptom entries of depression (clinical-consensus symptomatology; see docs/healing/mood-canon-v1-20260912.md).
+
+**When to see a doctor (one line).** Meaninglessness lasting more than two weeks with low mood / lost interest → psychiatric or psychological care; any thought of self-harm or suicide → 988 (US) or local crisis line / emergency department now (mainland China: 12356).</div>
+<div class="redflags">
+<p>meaninglessness persisting &gt;2 weeks with low mood / lost interest → psychiatric or psychological care</p>
+<p>self-harm / suicide thoughts → 988 (US) or local crisis line / emergency department immediately; in mainland China: 12356</p>
+<p>zero diagnosis in this answer: no "you are depressed" verdicts — only the care line</p>
+<p>judgment about one's own life meaning belongs to the person; this answer gives connections and care routes, not conclusions</p>
+</div>
+<p class="evid"><b>MODEL</b>: the sense of meaning is supported by three classes of connection (creation/experience/attitude) and can be rebuilt by action · Source: Frankl, Man's Search for Meaning (1946), and the logotherapy tradition (carried from b4q3)</p>
+<p class="evid"><b>FACT</b>: in "what makes life meaningful" surveys relationships rank first (about nine in ten), health second · Source: German cohort survey (PMC 2021), secondhand via docs/xyz/humanity-top-questions-v1-20260914.md (carried from b4q3)</p>
+<p class="evid"><b>FACT</b>: persistent meaninglessness / worthlessness is one of depression's core symptom entries · Source: clinical-consensus symptomatology; see docs/healing/mood-canon-v1-20260912.md (carried from b4q3)</p>
+</section>
+
+<section class="card" id="en_b4q4">
+<h2>EN-B4-4 · Always exhausted, and the tests say nothing's wrong</h2>
+<div class="one">**Reassurance first: "no major disease found" does not mean "you're fine," and it does not mean "you're imagining it."** Medicine has a large class of functional problems — consumption the instruments cannot see while the body genuinely pays for it. Fatigue is a bill the body hands you; routine checkups often don't list that account category. Reconcile it item by item — four accounts are common and reversible:
+
+**One: sleep debt.** It is not "enough total hours" — it is rhythm: bedtimes that wander, ten-hour weekend catch-ups, scrolling to late night all count as debt. Try two full weeks of the same bedtime and the same wake time; many people halve their fatigue on this one item alone.
+
+**Two: iron stores.** Especially for people with heavier periods: a normal blood count does not guarantee full iron stores — fatigue from "ferritin low but not yet anemic" is a well-documented medical phenomenon. Whether you are deficient and whether to supplement: a blood draw and a doctor decide; no self-bought, self-taken iron pills. Also: thyroid dysfunction is another common, checkable, treatable cause of fatigue — next blood draw, put it on the discussion list with your doctor. Listing a discussion item is not self-diagnosing; it is making sure what should be tested gets tested.
+
+**Three: emotional load.** Anxiety and depression most often wear "tired" as their coat — emotional and physical exertion draw on the same ledger. If you also feel driveless, easily irritated, and unrefreshed by sleep, this item moves to the front of the queue. It is not weakness.
+
+**Four: sitting + mild dehydration + chaotic meals.** Even mild dehydration drags down attention and energy; a whole day in a chair tires you more than a walk does. Drink enough water across the day; stand up two or three minutes every half hour; don't prop noon up with coffee plus something sweet.
+
+**One counterintuitive but repeatedly verified fact: regular moderate activity is itself one of the known improvers of fatigue** — "the less I move, the tireder I get" is the common loop. Start with a ten-minute daily walk and build slowly over two to four weeks. If chest pain, marked breathlessness, or dizziness appears during activity — stop, get a medical evaluation first; talk about increasing later.
+
+**When lifestyle adjustment is not enough — go to the hospital:** unintentional marked weight loss within half a year; recurrent or persistent fever; night sweats soaking the clothes; fatigue that keeps worsening (breathless on flat ground); blood in stool or urine, or a lump you can feel; heavy snoring plus irresistible daytime sleepiness (get sleep-breathing checked). These are red lights, not scare tactics — most of the time the tests find nothing, but a red light only counts as cleared when a doctor has looked at it.
+
+**One honest last line:** the four adjustments above usually need two to four weeks to show their hand — don't conclude at day three. Fatigue is a slow account, and it is repaid slowly.
+
+**Evidence &amp; boundary.** FACT: low iron stores without anemia can cause fatigue (hematology/general-practice textbook grade; deficiency judgment and supplementation decisions belong to doctors — zero prescription, zero dosage in this answer). FACT: anxiety/depression commonly present with fatigue as first or main complaint (somatization; psychiatry textbook grade; see docs/healing/mood-canon-v1-20260912.md). MODEL: regular moderate exercise improves fatigue, including trial evidence in chronic-fatigue populations (systematic-review tradition such as Cochrane; effect sizes vary by person = UNKNOWN). MODEL: mild dehydration impairs attention and energy; sedentariness and rhythm disruption associate with fatigue (nutrition/occupational-health reviews; individual thresholds and magnitudes = UNKNOWN).
+
+**When to see a doctor (one line).** Any red light above → hospital, no self-conclusions; otherwise run the four-account reconciliation for two to four weeks, then take the results to a doctor.</div>
+<div class="redflags">
+<p>unintentional marked weight loss within 6 months</p>
+<p>recurrent or persistent fever</p>
+<p>night sweats soaking clothes</p>
+<p>progressively worsening fatigue (breathless on flat ground)</p>
+<p>blood in stool / blood in urine / a lump you can feel</p>
+<p>heavy snoring + irresistible daytime sleepiness → sleep-breathing check</p>
+<p>all red lights above → see a doctor; no self-conclusions</p>
+</div>
+<p class="evid"><b>FACT</b>: low iron stores without anemia (low ferritin) can cause fatigue · Source: hematology / general-practice textbook-grade conclusion; deficiency and supplementation decisions belong to doctors (carried from b4q4)</p>
+<p class="evid"><b>FACT</b>: anxiety/depression commonly present with fatigue as first or main complaint (somatization) · Source: psychiatry textbook-grade conclusion; see docs/healing/mood-canon-v1-20260912.md (carried from b4q4)</p>
+<p class="evid"><b>MODEL</b>: regular moderate exercise improves fatigue (including chronic-fatigue trial evidence) · Source: systematic-review tradition (Cochrane and public reviews); effect sizes vary by person = UNKNOWN (carried from b4q4)</p>
+<p class="evid"><b>MODEL</b>: mild dehydration impairs attention and energy; sedentariness and rhythm disruption associate with fatigue · Source: nutrition / occupational-health review tradition, direction consistent; individual thresholds and magnitudes = UNKNOWN (carried from b4q4)</p>
+</section>
+
+<section class="card" id="en_b4q5">
+<h2>EN-B4-5 · Too anxious to sleep — the mind won't shut up</h2>
+<div class="one">**The harder you try to sleep, the more sleep escapes — because anxiety and sleep share one switch: when the alerting system is on, the sleep system has to yield.** A mind that won't stop is not weak will. It is the brain doing the "right" thing at the wrong time — it believes those unfinished matters are dangerous, so it replays them. Two verified roads handle it: move the worry out of your head, and move the body back to safety.
+
+**Road one: worry unload (bedtime writing).** An hour before bed, write everything spinning in your head onto paper, in two columns. For what you can act on: write "tomorrow, what time, where, what the first step is." For what you cannot: write one line — "this is beyond me; here is what it needs / whose it is" — and close the notebook. Experimental research has watched this work: people who wrote to-do lists before bed fell asleep faster than people who wrote journal summaries — once the brain is assured "this will not be forgotten," it consents to stop the loop. Paper beats phone: no screen-light arousal, and no "just one more scroll" entrance.
+
+**Road two: physiological settling.** If you have been tossing past twenty minutes, leave the bed and sit somewhere dim. Breathe with the exhale longer than the inhale: in for four counts, out for six to eight. The extended exhale is the body's built-in brake pedal. Do not wrestle in bed — the bed is reserved for sleep alone. This is an old rule inside first-line insomnia treatment: the more you wrestle, the deeper the "bed = awake" association is learned.
+
+**Night is billed from the day; three small daytime things support the night.** Naps: no longer than twenty minutes, and never later than 3 pm — otherwise you pre-spend tonight's sleep. Caffeine: hands off after early afternoon — coffee, strong tea, and cola can linger four to six hours or more in the body. Body: give it something "effort-spent" by early evening — a walk counts; when the body has been tired, the mind agrees to hand over the shift.
+
+**The red line, written separately:** trouble falling asleep or early waking more than three nights a week, lasting over a month — or daytime function already affected (drifting off in meetings, drowsy behind the wheel, irritable) — please see a doctor. Insomnia is very much worth treating; there are more methods than people imagine, and no need to white-knuckle it. Which intervention to use is the doctor's assessment. And if something "unbearable" is pressing on your chest, or a thought like "life is pointless" appears — call the **988 Suicide &amp; Crisis Lifeline (US)** or your local crisis line / emergency department immediately (in mainland China: 12356, 24 hours).
+
+The fuller sleep picture lives in the published answers page "What to do when you can't sleep" — this piece covers the racing mind; the two are complementary, not overlapping.
+
+**Evidence &amp; boundary.** FACT: cognitive behavioral therapy for insomnia (CBT-I) is the first-line recommendation, including stimulus-control components such as leaving the bed after ~20 minutes awake (clinical-guideline grade, e.g. the American College of Physicians 2016 insomnia-management guideline; see docs/healing/star-healing-sleep-protocol-v1-20260908.md). FACT: bedtime writing of to-do lists shortens sleep latency (measured by polysomnography; Scullin et al., 2018, Journal of Experimental Psychology: General — the Baylor bedtime-writing experiment). MODEL: prolonged exhale shifts autonomic balance toward parasympathetic dominance / lowers arousal; quantitative effects vary by person (breathing–autonomic research tradition; individual magnitudes = UNKNOWN). FACT: caffeine half-life is roughly four to six hours, so afternoon intake can reach into the night (pharmacology textbook-grade figure; individual metabolism varies widely — exact values = UNKNOWN). Zero medication advice in this answer; sleeping-pill decisions belong to doctors.
+
+**When to see a doctor (one line).** Insomnia ≥3 nights/week for &gt;1 month, or daytime function already impaired → see a doctor; "life is pointless" thoughts → 988 (US) / local crisis line / emergency department now (mainland China: 12356).</div>
+<div class="redflags">
+<p>insomnia ≥3 nights/week persisting &gt;1 month, or daytime function already impaired → see a doctor</p>
+<p>"life is pointless" thoughts → 988 (US) or local crisis line / emergency department immediately; in mainland China: 12356</p>
+<p>zero medication advice in this answer; sleeping-pill decisions belong to doctors</p>
+</div>
+<p class="evid"><b>FACT</b>: CBT-I is first-line for insomnia, including stimulus control (leave the bed after ~20 minutes awake) · Source: clinical-guideline grade (e.g. American College of Physicians 2016 insomnia guideline); see docs/healing/star-healing-sleep-protocol-v1-20260908.md (carried from b4q5)</p>
+<p class="evid"><b>FACT</b>: bedtime to-do-list writing shortens sleep latency (polysomnography-measured) · Source: Scullin et al., 2018, Journal of Experimental Psychology: General (Baylor bedtime-writing experiment; carried from b4q5)</p>
+<p class="evid"><b>MODEL</b>: prolonged exhale increases parasympathetic dominance / lowers arousal; quantitative effects vary by person · Source: breathing–autonomic research tradition, mechanism direction consistent; individual magnitudes = UNKNOWN (carried from b4q5)</p>
+<p class="evid"><b>FACT</b>: caffeine half-life about four to six hours; afternoon intake can persist into the night · Source: pharmacology textbook-grade figure; individual metabolism varies widely, exact values = UNKNOWN (carried from b4q5)</p>
+</section>
+
+<section class="card" id="en_b4q6">
+<h2>EN-B4-6 · This relationship hurts — do I stay, or do I leave?</h2>
+<div class="one">**No one can answer this for you — but there is a framework that helps you answer it yourself.** People stuck between "stay" and "leave" usually lack not an answer but two lists.
+
+**List one: what in this relationship is changeable?** Communication patterns (how fights run, whether repair follows afterward); shared time and rituals; how external pressure is divided (money, housework, both extended families); and whether you are both willing to learn (talking seriously, reading and taking courses together, couples counseling). Note the complete definition of "changeable": **both people admit it is a problem, and both are willing to work on it.** Change is almost never a one-person project — one person changing while the other won't own their half usually produces deeper exhaustion, not a better relationship.
+
+**List two: what is unchangeable, or unreasonable to demand?** Bedrock values (children or no children, how money is used, what loyalty means); the other person's personality bedrock; and most fundamentally — **your safety**. Values can coexist inside respect, but they cannot be unified through oppression; demanding that a person "become a different person" usually loses on both sides.
+
+**The red line must be said on its own — it outranks every framework: physical violence, threats and intimidation, control over money and social contact, sexual coercion.** This is not a "relationship problem"; it is a safety problem. The right move in a safety problem is not improving the relationship — it is securing safety for you and your children first: in immediate danger, call your local emergency number (US: 911); National Domestic Violence Hotline (US): **800-799-7233**; in mainland China: police **110**, women's-rights service hotline **12338**. The hardest step in these situations is often admitting "this is outside what can be worked on."
+
+**In the wide territory between the two red lines, cut with three questions.** One: is the pain an "event" or a "pattern"? Long relationships almost all contain hurtful events; what repeats is the pattern. Two: does the other person acknowledge the problem, and are they willing to work on it together? Three: honestly picture five more years exactly as they are — can you accept that? Stay for what is worth staying for; leave what has repeatedly proven it will not change. The hardest part is admitting which side you are standing on — and the admission itself is the first step out.
+
+**Three moves that steady the judgment.** One: take your judgment to one or two people who know you well and favor neither side — pain inside a long relationship is most easily evaluated in isolation; outside eyes calibrate reality. Two: if you are both willing, try couples counseling once or twice — its greatest value is often not "fixing it," but making visible the key variable: whether there is any willingness to work together at all. Three: whichever way it ends, slowly get three things ready — a place to stay, money, and people who support you. Hands that hold a plan leave — or stay — more composed.
+
+**Evidence &amp; boundary.** MODEL: couples therapy has evidence-based support for relationship distress; willingness to participate is the key premise (couples/marriage-therapy review tradition; individual outcomes vary = UNKNOWN). FACT: violence and coercive control in intimate relationships are a safety problem, handled safety-first (WHO intimate-partner-violence position papers; 911 / 800-799-7233 are public US numbers, and 110 / 12338 / 12356 are public official mainland-China lines). MODEL: relationships are most people's first-named source of meaning, which is why relationship pain weighs so heavily (German cohort, PMC 2021, about nine in ten first answers = relationships, via docs/xyz/humanity-top-questions-v1-20260914.md; the causal direction between this fact and the framework = UNKNOWN).
+
+**When to seek help (one line).** Violence / threats / coercive control / sexual coercion → safety first: local emergency number (US 911), National Domestic Violence Hotline 800-799-7233 (US), mainland China 110 / 12338 — safety outranks every relationship decision; self-harm thoughts arising from relationship pain → 988 / 12356.</div>
+<div class="redflags">
+<p>physical violence / threats / coercive control / sexual coercion = safety problem: local emergency number (US 911), National Domestic Violence Hotline 800-799-7233 (US); in mainland China: police 110, women's hotline 12338 — safety before relationship decisions</p>
+<p>this answer gives no "stay or split" verdict — judgment belongs to the person living it</p>
+<p>self-harm thoughts arising from relationship pain → 988 (US) / local crisis line; in mainland China: 12356</p>
+</div>
+<p class="evid"><b>MODEL</b>: couples therapy has evidence-based support for relationship distress; willingness to participate is the key premise · Source: couples/marriage-therapy evidence-review tradition, direction consistent; individual outcomes = UNKNOWN (carried from b4q6)</p>
+<p class="evid"><b>FACT</b>: violence / coercive control in intimate relationships is a safety problem; the handling path is safety-first · Source: WHO intimate-partner-violence position papers (public); 911 / 800-799-7233 public US numbers; 110 / 12338 / 12356 public official mainland-China lines (carried from b4q6, hotlines localized with dual-track)</p>
+<p class="evid"><b>MODEL</b>: relationships are most people's first-named source of meaning, which is why relationship pain weighs heavily · Source: German cohort (PMC 2021, ~nine in ten first answers = relationships), via docs/xyz/humanity-top-questions-v1-20260914.md; causal direction to this framework = UNKNOWN (carried from b4q6)</p>
+</section>
+</main>
+<footer>
+<p>18 answers · English Edition · FACT / MODEL / UNKNOWN grading carried as the sources state it</p>
+</footer>
+</body>
+</html>
