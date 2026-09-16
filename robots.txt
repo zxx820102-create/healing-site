@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zxx820102-create.github.io/healing-site/sitemap.xml
