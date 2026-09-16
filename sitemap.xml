@@ -1,39 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- W665 discoverability pack round 3 · PARKED, NOT INSTALLED · owner install door
-     本文件=W665 三轮包副本：A节 9 行自 W655 包 sitemap 逐字承袭（W655 包封存零改动·SHA a92eaa4e）；
-     B节=W655 原有 8 行 + 三轮补 3 行（batch8/live/about·成于 W655 二轮之后的停泊面）
-     + 四轮补 1 行（catalog 总目·W674 接入·成于 W665 三轮之后的停泊面）=12 行，
-     共 21 URL。候选路径沿 W664 跑簿 §0.2（live→answers/live-backup.html·about→en/about.html·owner 可改）
-     与 W671 README 发布前置（catalog→answers/catalog.html·owner 可改）。
-     batch3 注（历史）：闸一红已由 W659 解红（commit 4127017b70）·发布余项=owner 门。
-     wave2/wave3/en/live/about 注：发布形态与最终文件名归 owner 裁·下列为候选路径。
-     本文件任何一节单独安装前，请先删去未发布页的 <url> 行（或等页面发布后整文件安装）。
-     安装窗注意：本包只有 sitemap.xml；robots.txt 与 og 备份段仍以 W655 包为准（robots 两版逐字同·W636 复验）。 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- ===== A. 已发布（9/9 · 与 W636 包一致） ===== -->
-  <url><loc>https://zxx820102-create.github.io/healing-site/</loc><lastmod>2026-09-15</lastmod></url>
+  <url><loc>https://zxx820102-create.github.io/healing-site/</loc><lastmod>2026-09-16</lastmod></url>
   <url><loc>https://zxx820102-create.github.io/healing-site/canon-index.html</loc><lastmod>2026-09-16</lastmod></url>
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/index.html</loc><lastmod>2026-09-16</lastmod></url>
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/batch2.html</loc><lastmod>2026-09-16</lastmod></url>
-  <url><loc>https://zxx820102-create.github.io/healing-site/blueprint/index.html</loc><lastmod>2026-09-16</lastmod></url>
-  <url><loc>https://zxx820102-create.github.io/healing-site/diary/index.html</loc><lastmod>2026-09-16</lastmod></url>
-  <url><loc>https://zxx820102-create.github.io/healing-site/en/index.html</loc><lastmod>2026-09-16</lastmod></url>
-  <url><loc>https://zxx820102-create.github.io/healing-site/frequency/index.html</loc><lastmod>2026-09-16</lastmod></url>
   <url><loc>https://zxx820102-create.github.io/healing-site/live/index.html</loc><lastmod>2026-09-16</lastmod></url>
-  <!-- ===== B. 停泊稿 NOT PUBLISHED（12 · 候选路径·发布门后安装） ===== -->
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/batch3.html</loc><lastmod>2026-09-16</lastmod></url><!-- 闸一红：修源前禁装 -->
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/batch4.html</loc><lastmod>2026-09-16</lastmod></url><!-- 四闸绿·待 owner 发布门 -->
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/batch5.html</loc><lastmod>2026-09-16</lastmod></url><!-- 四闸绿·待 owner 发布门 -->
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/batch6.html</loc><lastmod>2026-09-16</lastmod></url><!-- 四闸绿·待 owner 发布门 -->
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/batch7.html</loc><lastmod>2026-09-16</lastmod></url><!-- 四闸绿·待 owner 发布门 -->
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/en-batch1+2.html</loc><lastmod>2026-09-16</lastmod></url><!-- 候选名（w644 README 建议·owner 可改）·四闸两轮绿 -->
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/wave2.html</loc><lastmod>2026-09-16</lastmod></url><!-- 候选路径：并入现页或独立页归 owner 裁 -->
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/wave3.html</loc><lastmod>2026-09-16</lastmod></url><!-- 候选路径：并入/独立/与wave2合并归 owner 裁 -->
-  <!-- ===== B+. W665 三轮补 3 行（batch8/live/about·成于 W655 二轮之后的停泊面·四闸绿·待 owner 发布门） ===== -->
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/batch8.html</loc><lastmod>2026-09-16</lastmod></url><!-- 四闸绿（W664 dry-run 步骤一 23/23）·待 owner 发布门 -->
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/live-backup.html</loc><lastmod>2026-09-16</lastmod></url><!-- 候选名（W664 跑簿 §0.2·owner 可改）·四闸绿·待 owner 发布门 -->
-  <!-- en/about.html 行已由 W746 撤单删除（2026-09-16·about-en 双占位符待 owner+内部门槛报告未备公开发布·见 receipts/2026-09-16-w746-wave2-publish.md） -->
-  <!-- ===== B2. W674 四轮补 1 行（catalog 总目·成于 W665 三轮之后的停泊面·四闸绿·待 owner 发布门） ===== -->
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/catalog.html</loc><lastmod>2026-09-16</lastmod></url>
-  <url><loc>https://zxx820102-create.github.io/healing-site/answers/en-batch4.html</loc><lastmod>2026-09-16</lastmod></url><!-- W703 EN batch4 十卡·W746 安装 2026-09-16 --><!-- 候选名（W671 README 发布前置·owner 可改）·四闸绿（闸②条数三方一致在装配器）·待 owner 发布门 -->
+  <url><loc>https://zxx820102-create.github.io/healing-site/answers/index.html</loc><lastmod>2026-09-16</lastmod></url>
+  <url><loc>https://zxx820102-create.github.io/healing-site/en/index.html</loc><lastmod>2026-09-16</lastmod></url>
+  <url><loc>https://zxx820102-create.github.io/healing-site/diary/index.html</loc><lastmod>2026-09-16</lastmod></url>
 </urlset>
