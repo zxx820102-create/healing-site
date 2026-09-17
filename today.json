@@ -1,7 +1,7 @@
 {
  "radio": "v1",
- "date": "2026-09-17",
- "generated_at": "2026-09-17T09:13:52",
+ "date": "2026-09-18",
+ "generated_at": "2026-09-18T07:30:02",
  "tz": "Asia/Shanghai",
  "censored": false,
  "message": {
@@ -10,28 +10,19 @@
   "censored": false
  },
  "counters": {
-  "nodes": 1808385,
-  "edges": null,
+  "nodes": 1808386,
+  "edges": 12629662,
   "healing_cards": 13814,
-  "edges_today": 798,
+  "edges_today": 14,
   "censored": false
  },
  "card_of_day": {
-  "title": "② 为什么娱乐越来越多，人却越来越空虚？",
-  "url": "answers/batch4.html#c2",
+  "title": "③ 我这一生到底有什么意义？",
+  "url": "answers/batch4.html#c3",
   "censored": false
  },
  "world_pulse": {
   "items": [
-   {
-    "region": "全球多国",
-    "text": "Families received early-warning messages to prepare for the dry months ahead, along with support and information in key areas such as nutrition, ...",
-    "url": "https://www.wfp.org/stories/mighty-el-nino-deepens-global-hunger-early-action-pays",
-    "epistemic": "FACT",
-    "censored": false,
-    "source": "www.wfp.org",
-    "date": "2026-09-11"
-   },
    {
     "region": "东亚·日本",
     "text": "9月の初めに夜明け前の空で、月が火星、木星に接近します。9月半ばには夕空で月が金星と、月末には満月が土星と接近する様子が見られます。25日は中秋の名月です。",
@@ -39,7 +30,25 @@
     "epistemic": "FACT",
     "censored": false,
     "source": "www.nao.ac.jp",
-    "date": "2026-09-16"
+    "date": "2026-09-18"
+   },
+   {
+    "region": "北美·美国",
+    "text": "On Friday, September 11, 2026, approximately 50,000 volunteers in communities across the U.S. are expected to donate their time as part of this ...",
+    "url": "https://portal.ct.gov/governor/news/press-releases/2026/09-2026/governor-lamont-highlights-volunteer-opportunities-available-as-part-of-the-september-11",
+    "epistemic": "FACT",
+    "censored": false,
+    "source": "portal.ct.gov",
+    "date": "2026-09-18"
+   },
+   {
+    "region": "全球多国",
+    "text": "more than 50,000 cumulative cholera cases and 338 deaths reported since 1 January 2026 in all the country with major outbreak in Borno State as of end July ...",
+    "url": "https://www.unicef.org/press-releases/cholera-spreads-across-borders-west-and-central-africa-unicef-calls-urgent-action",
+    "epistemic": "FACT",
+    "censored": false,
+    "source": "www.unicef.org",
+    "date": "2026-09-18"
    }
   ],
   "censored": false
