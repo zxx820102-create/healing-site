@@ -3,7 +3,7 @@ canonical_id: tuning-answer-v0
 title: 调频安顿答案卡 v0
 created: 1789571698046
 updated: 1789571698046
-author: subagent:W773
+author: 疗愈答案道
 parent_session: zcode-4c74
 provenance: parent_attested
 case_id: pc-20260915-03
@@ -12,7 +12,7 @@ status: candidate-v0
 version: v0
 date: 2026-09-17
 time_source: pg_clock_timestamp
-built_on: W592 调频室 v1 (data/repos/healing-site/frequency/index.html @72e75cc 已在 origin/main·页面定位内测)
+built_on: 调频室 v1 (data/repos/healing-site/frequency/index.html @72e75cc 已在 origin/main·页面定位内测)
 red_lines: 零诊断·零处方·零剂量·不承诺结果·就医红线常驻·12356 常驻·频率=类比层·署名纪律
 audience: 伙伴个案（内测·未发布）
 ---
@@ -20,9 +20,9 @@ audience: 伙伴个案（内测·未发布）
 # 调频安顿答案卡 v0
 
 > **为谁而铸**：伙伴·调频安顿（pc-20260915-03）——需求=调频室。owner 令整合所有伙伴需求全部实现：
-> 本卡在 W592 调频室 v1 基础上，把「调频」转译为一张伙伴可自用的知识地图：
+> 本卡在调频室 v1 基础上，把「调频」转译为一张伙伴可自用的知识地图：
 > 什么是调频 + 自我观察清单 + 三条今日可上手的练习（呼吸/声振/节律）+ 就医红线 + 12356。
-> 生成：W773 疗愈答案道（parent zcode-4c74）· 实际时钟 2026-09-16（pg_clock_timestamp）· 道次日期 2026-09-17
+> 生成：疗愈答案道（parent zcode-4c74）· 实际时钟 2026-09-16（pg_clock_timestamp）· 道次日期 2026-09-17
 
 ## 0. 本卡是什么（先说清·免得期望错位）
 
@@ -152,7 +152,7 @@ healing_red_flags_en_v1·10 行全量在 PG·此处摘常见项）：
 
 | 资产 | 位置 | 认识态 |
 | --- | --- | --- |
-| W592 调频室 v1（红旗旗标/呼吸引导器/音乐角/全息星环/见证四区） | data/repos/healing-site/frequency/index.html（commit 72e75cc·已在 origin/main·页面定位内测） | 页面自标 ANALOGY/MODEL/传统/INFERENCE |
+| 调频室 v1（红旗旗标/呼吸引导器/音乐角/全息星环/见证四区） | data/repos/healing-site/frequency/index.html（commit 72e75cc·已在 origin/main·页面定位内测） | 页面自标 ANALOGY/MODEL/传统/INFERENCE |
 | 音声疗愈正典 v1（巫·祝由·五音·骨笛编钟·RCT 面·证伪面） | docs/healing/spiritual/sound-healing-canon-20260912.md | 逐条分层（§1.3/§2 本卡引用） |
 | 星医传导服务化设计 v1（署名纪律·缺口①） | docs/healing/service/star-healer-service-design-v1-20260914.md | 设计层 |
 | 分享包三讲（调频室「疗愈见证」出处：安姨/阿花/小远） | docs/healing/share/lecture-1..3-*.md | 个案代称重述 INFERENCE·零映射 |
@@ -183,6 +183,6 @@ healing_red_flags_en_v1·10 行全量在 PG·此处摘常见项）：
 
 ## 姊妹卡与生成器
 
-- 同道先例：善终圆满路径卡 v0（pc-20260916-03·data/healing/gooddeath/）· 创伤印记检索器 v0（W756）
+- 同道先例：善终圆满路径卡 v0（pc-20260916-03·data/healing/gooddeath/）· 创伤印记检索器 v0
 - 生成器：`python3 scripts/xyz-tuning-answer-v0.py [--track-date YYYYMMDD]`
 - 内测页原身：调频室 v1（healing-site /frequency·本卡不替代页面·双仓零接触未改动）

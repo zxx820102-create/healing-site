@@ -18,7 +18,7 @@
 ### 桥接知识卡摘录（card 层·知识卡非诊断书）
 
 - **卡#420「Arrhythmias, Cardiac」**（degree=318·状态=candidate）：…候选·运动梯度被久坐抹平·错误连接堆积占位 逆操作:律2每日运动+律4间歇与留白(源:xyz_human_health_practices_v1·八律=七流调度·compass-v4) 红旗检测:病名/别名未命中红旗词(胸痛/呼吸困难/意识模糊/大出血/自伤类九词口径) 边界:candidate_only·非诊断·不构成医疗建议·缺数据维度留空标UNKNOWN
-- **卡#1903「Magnesium Deficiency」**（degree=4·状态=candidate）：候选级线索卡·支持资料，不是诊断、处方或治疗替代；就医与治疗决定归本人与医生【营养面实质·W2富化 2026-09-07 conw2-e124·整体CANDIDATE】本卡病名含元素英文规范名词面「Magnesium/镁」（英文规范名词桥 xyz_element_en_bridge_v1·wave2全词严格锚·词边界）。元素面（xyz_elements_nutrition_v1#11·macro·essential）：镁·RDA 约33…
+- **卡#1903「Magnesium Deficiency」**（degree=4·状态=candidate）：候选级线索卡·支持资料，不是诊断、处方或治疗替代；就医与治疗决定归本人与医生【营养面实质·富化 2026-09-07 conw2-e124·整体CANDIDATE】本卡病名含元素英文规范名词面「Magnesium/镁」（英文规范名词桥 xyz_element_en_bridge_v1·wave2全词严格锚·词边界）。元素面（xyz_elements_nutrition_v1#11·macro·essential）：镁·RDA 约33…
 
 ### 身心知识正典节选（关键词行·出处逐条可溯）
 
