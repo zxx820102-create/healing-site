@@ -3,7 +3,7 @@
 
 <head>
  <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>星际疗愈 · 今天的一片理解</title>
  <style>
   :root {
@@ -49,7 +49,7 @@
    inset: 0;
    overflow: hidden;
    z-index: 1;
-   touch-action: none
+   touch-action: pinch-zoom
   }
 
   #plane {
@@ -747,6 +747,7 @@
   };
   let cur = 'hub', lock = false;
   const plane = document.getElementById('plane');
+  const vp = document.getElementById('viewport'); /* 热修：vp 未定义曾致首屏全黑与互动层失效 */
   function apply() {
    const [gx, gy] = POS[cur];
    plane.style.transform = `translate(${(-100 - gx * 100).toFixed(2)}vw, ${(-100 - gy * 100).toFixed(2)}vh)`;
