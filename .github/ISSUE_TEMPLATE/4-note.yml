@@ -1,0 +1,28 @@
+name: 随便说两句
+description: 想说什么都可以
+title: "留言："
+labels: ["留言"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        谢谢你愿意写给我们。每一条我们都会读，能做的会陆续去做；做到了会在周报里告诉大家。
+        想在周报里引用你的原话时，我们会先在这里问你"可以吗"，你说可以才引用。
+        请不要写手机号、住址、身份证号这类私人信息——这里的内容所有人都看得见。
+  - type: textarea
+    id: words
+    attributes:
+      label: 想对我们说的话
+      placeholder: 比如：今天读到星星那段，有点感动
+    validations:
+      required: true
+  - type: dropdown
+    id: quote
+    attributes:
+      label: 以后可以在周报里匿名引用这句话吗？
+      options:
+        - 先问我
+        - 可以，匿名引用
+        - 不要引用
+    validations:
+      required: true
